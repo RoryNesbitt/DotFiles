@@ -1,8 +1,10 @@
 # My Aliases
-#Get this screen
-alias aliases="sudo vim ~/.bash_aliases"
-alias aliasesrl="source ~/.bashrc && echo 'Reloaded'"
+# Get this screen
+alias aliases="sudo vim ~/.bash_aliases && source ~/.bashrc && echo 'Reloaded aliases'"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+# ls
+alias ls="ls -lhF"
 
 # fix screen
 alias fixscreen="sudo /etc/init.d/screen-cleanup start"
