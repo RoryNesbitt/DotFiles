@@ -1,7 +1,8 @@
 # My Aliases
 # Get this screen
 alias aliases="sudo vim ~/.bash_aliases && source ~/.bashrc && echo 'Reloaded aliases'"
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias aliasesrl="source ~/.bashrc && echo 'Reloaded aliases'"
+alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 # ls
 alias ls="ls -lhF"
