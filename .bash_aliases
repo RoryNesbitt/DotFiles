@@ -1,0 +1,37 @@
+# My Aliases
+#Get this screen
+alias aliases="sudo vim ~/.bash_aliases"
+alias aliasesrl="source ~/.bashrc && echo 'Reloaded'"
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+# fix screen
+alias fixscreen="sudo /etc/init.d/screen-cleanup start"
+
+# google drive
+alias md="screen -dmS drive rclone mount drive: /home/rory/drive/ && echo 'Google Drive mounted'"
+alias umd="screen -S drive -X stuff ^C && fusermount -u /home/rory/drive/ && echo 'Google Drive unmounted'"
+alias uni="cd /home/rory/drive/Important\ stuff/Uni/Masters/Term\ 2/"
+
+# SSHs 
+alias jackdaw="ssh root@192.168.1.4"
+alias red="ssh pi@192.168.1.3"
+alias blue="ssh pi@192.168.1.20"
+alias green="ssh pi@192.168.1.21"
+alias remote="ssh pi@rorynesbittdesign.com"
+
+# VPN
+alias vhome="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command connect Home && echo 'Connecting to Home'"
+alias vhomedc="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect Home && echo 'Disconnecting'"
+alias vthm="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command connect TryHackMe && echo 'Connecting to TryHackMe'"
+alias vthmdc="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect TryHackMe && echo 'Disconnecting from TryHackMe'"
+alias end="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect all; exit"
+
+# desktop
+alias desktop="sudo /etc/init.d/xrdp start; mstsc.exe /v localhost:3389; sudo /etc/init.d/xrdp stop" 
+alias desktopstart="sudo /etc/init.d/xrdp start"
+alias desktopstop="sudo /etc/init.d/xrdp stop"
+
+# shutdown
+alias shutdown="shutdown.exe /s /t 00"
+alias reboot="shutdown.exe /r /t 00"
+alias bios="runas.exe /savecred /user:Administrator 'shutdown.exe /fw /r /t 00'"
