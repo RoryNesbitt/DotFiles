@@ -5,7 +5,7 @@ alias aliasesrl="source ~/.bashrc && echo 'Reloaded aliases'"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 # ls
-alias ls="ls -lhF"
+alias ls="ls --color=auto -lhF"
 
 # fix screen
 alias fixscreen="sudo /etc/init.d/screen-cleanup start"
