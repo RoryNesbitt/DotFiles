@@ -30,7 +30,7 @@ alias vthmdc="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command discon
 alias end="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect_all; exit"
 
 # desktop
-alias desktop="sudo /etc/init.d/xrdp start; mstsc.exe /v localhost:3389; sudo /etc/init.d/xrdp stop" 
+alias desktop="sudo /etc/init.d/xrdp start; sleep 2s; mstsc.exe /v localhost:3389; sudo /etc/init.d/xrdp stop" 
 alias desktopstart="sudo /etc/init.d/xrdp start"
 alias desktopstop="sudo /etc/init.d/xrdp stop"
 
