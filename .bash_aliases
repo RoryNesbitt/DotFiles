@@ -38,3 +38,10 @@ alias desktopstop="sudo /etc/init.d/xrdp stop"
 alias shutdown="shutdown.exe /s /t 00"
 alias reboot="shutdown.exe /r /t 00"
 alias bios="runas.exe /savecred /user:Administrator 'shutdown.exe /fw /r /t 00'"
+
+
+
+#######################################
+# not alias stuff
+
+neofetch
