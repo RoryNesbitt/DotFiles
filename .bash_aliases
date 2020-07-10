@@ -1,7 +1,7 @@
 # My Aliases
 # Get this screen
-alias aliases="sudo vim ~/.bash_aliases && source ~/.bashrc && echo 'Reloaded aliases'"
-alias aliasesrl="source ~/.bashrc && echo 'Reloaded aliases'"
+alias aliases="sudo vim ~/.bash_aliases && clear && source ~/.bashrc && echo 'Reloaded aliases'"
+alias aliasesrl="clear && source ~/.bashrc && echo 'Reloaded aliases'"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 # ls
@@ -44,5 +44,4 @@ alias bios="runas.exe /savecred /user:Administrator 'shutdown.exe /fw /r /t 00'"
 #######################################
 # not alias stuff
 
-clear
 neofetch || { sudo apt install neofetch -y && clear && neofetch ;}
