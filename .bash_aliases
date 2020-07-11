@@ -19,6 +19,7 @@ alias uni="cd /home/rory/drive/Important\ stuff/Uni/Masters/Term\ 2/"
 
 # SSHs 
 alias jackdaw="ssh root@192.168.1.4"
+alias black="ssh pi@192.168.1.2"
 alias red="ssh pi@192.168.1.3"
 alias blue="ssh pi@192.168.1.20"
 alias green="ssh pi@192.168.1.21"
