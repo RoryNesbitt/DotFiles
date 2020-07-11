@@ -1,8 +1,9 @@
 # My Aliases
 # Get this screen
-alias aliases="sudo vim ~/.bash_aliases && clear && source ~/.bashrc && echo 'Reloaded aliases'"
+alias aliases="vim ~/.bash_aliases && clear && source ~/.bashrc && echo 'Reloaded aliases'"
 alias aliasesrl="clear && source ~/.bashrc && echo 'Reloaded aliases'"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+alias addbash="config add ~/.bash_aliases && echo 'added bash_aliases'"
 
 # ls
 alias ls="ls --color=auto -lhF"
@@ -32,7 +33,7 @@ alias end="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnec
 # desktop
 alias desktop="sudo /etc/init.d/xrdp start; sleep 1s; mstsc.exe /v localhost:3389; sleep 1s; sudo /etc/init.d/xrdp stop" 
 alias desktopstart="sudo /etc/init.d/xrdp start"
-alias desktopstop="sudo /etc/init.d/xrdp stop"
+alias desktopstop="sudo etc/init.d/xrdp stop"
 
 # shutdown
 alias shutdown="shutdown.exe /s /t 00"
