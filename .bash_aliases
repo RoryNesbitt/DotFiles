@@ -50,4 +50,4 @@ echo "██████╗ ███╗   ██╗██████╗
 ██╔══██╗██║╚██╗██║██║  ██║
 ██║  ██║██║ ╚████║██████╔╝
 ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝" 
-neofetch || { sudo apt install neofetch -y && clear && neofetch ;}
+# neofetch || { sudo apt install neofetch -y && clear && neofetch ;}
