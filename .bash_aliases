@@ -44,4 +44,10 @@ alias bios="runas.exe /savecred /user:Administrator 'shutdown.exe /fw /r /t 00'"
 #######################################
 # not alias stuff
 
+echo "██████╗ ███╗   ██╗██████╗ 
+██╔══██╗████╗  ██║██╔══██╗
+██████╔╝██╔██╗ ██║██║  ██║
+██╔══██╗██║╚██╗██║██║  ██║
+██║  ██║██║ ╚████║██████╔╝
+╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝" 
 neofetch || { sudo apt install neofetch -y && clear && neofetch ;}
