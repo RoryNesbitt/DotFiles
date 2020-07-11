@@ -3,7 +3,8 @@
 alias aliases="vim ~/.bash_aliases && clear && source ~/.bashrc && echo 'Reloaded aliases'"
 alias aliasesrl="clear && source ~/.bashrc && echo 'Reloaded aliases'"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
-alias configadd="config add ~/.bash_aliases && config add ~/.config/awesome/rc.lua && echo 'added configs'"
+alias configbash="config add ~/.bash_aliases && echo 'added bash aliases'"
+alias configawe="config add ~/.config/awesome/rc.lua && echo 'added awesome config'"
 
 # ls
 alias ls="ls --color=auto -lhF"
