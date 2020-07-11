@@ -34,7 +34,7 @@ alias end="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnec
 # desktop
 alias desktop="sudo /etc/init.d/xrdp start; sleep 1s; mstsc.exe /v localhost:3389; sleep 1s; sudo /etc/init.d/xrdp stop" 
 alias desktopstart="sudo /etc/init.d/xrdp start"
-alias desktopstop="sudo etc/init.d/xrdp stop"
+alias desktopstop="sudo /etc/init.d/xrdp stop"
 
 # shutdown
 alias shutdown="shutdown.exe /s /t 00"
