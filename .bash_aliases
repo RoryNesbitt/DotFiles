@@ -30,7 +30,7 @@ alias la="ls --color=auto -lhFa"
 # google drive
 alias md="screen -dmS drive rclone mount drive: /home/rory/drive/ && echo 'Google Drive mounted'"
 alias umd="screen -S drive -X stuff ^C && fusermount -u /home/rory/drive/ && echo 'Google Drive unmounted'"
-alias uni="cd /home/rory/drive/Important\ stuff/Uni/Masters/Term\ 2/"
+alias uni="cd /home/rory/drive/Important\ stuff/Uni/Masters/"
 
 if [ "`uname -r`" =~ "microsoft" ]
 then
@@ -46,10 +46,10 @@ then
 	alias remote="ssh pi@rorynesbittdesign.com"
 	
 	# VPN
-	alias vhome="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command connect Home && echo 'Connecting to Home'"
-	alias vhomedc="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect Home && echo 'Disconnecting'"
-	alias vthm="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command connect TryHackMe && echo 'Connecting to TryHackMe'"
-	alias vthmdc="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect TryHackMe && echo 'Disconnecting from TryHackMe'"
+	alias vh="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command connect Home && echo 'Connecting to Home'"
+	alias vhd="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect Home && echo 'Disconnecting'"
+	alias vt="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command connect TryHackMe && echo 'Connecting to TryHackMe'"
+	alias vtd="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect TryHackMe && echo 'Disconnecting from TryHackMe'"
 	alias end="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect_all; exit"
 	
 	# desktop
