@@ -1,7 +1,9 @@
 # My Aliases
 # Get this screen
+alias rc="vim ~/.zshrc && clear && source ~/.zshrc && echo 'Reloaded aliases'"
+alias rcrl="clear && source ~/.zshrc && echo 'Reloaded aliases'"
 alias aliases="vim ~/.bash_aliases && clear && source ~/.zshrc && echo 'Reloaded aliases'"
-alias aliasesrl="clear && source ~/.zshrc && echo 'Reloaded aliases'"
+alias aliasesrl="rcrl"
 
 # Git
 alias gpl="git pull"
