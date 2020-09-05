@@ -34,18 +34,18 @@ alias md="screen -dmS drive rclone mount drive: /home/rory/drive/ && echo 'Googl
 alias umd="screen -S drive -X stuff ^C && fusermount -u /home/rory/drive/ && echo 'Google Drive unmounted'"
 alias uni="cd /home/rory/drive/Important\ stuff/Uni/Masters/"
 
+# SSHs 
+alias jackdaw="ssh root@192.168.1.4"
+alias black="ssh pi@192.168.1.2"
+alias red="ssh pi@192.168.1.3"
+alias blue="ssh pi@192.168.1.20"
+alias green="ssh pi@192.168.1.21"
+alias remote="ssh pi@rorynesbittdesign.com"
+
 if [ "`uname -r`" =~ "microsoft" ]
 then
 	# fix screen
 	alias fixscreen="sudo /etc/init.d/screen-cleanup start"
-	
-	# SSHs 
-	alias jackdaw="ssh root@192.168.1.4"
-	alias black="ssh pi@192.168.1.2"
-	alias red="ssh pi@192.168.1.3"
-	alias blue="ssh pi@192.168.1.20"
-	alias green="ssh pi@192.168.1.21"
-	alias remote="ssh pi@rorynesbittdesign.com"
 	
 	# VPN
 	alias vh="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command connect Home && echo 'Connecting to Home'"
