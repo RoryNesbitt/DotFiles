@@ -42,17 +42,42 @@ alias blue="ssh pi@192.168.1.20"
 alias green="ssh pi@192.168.1.21"
 alias remote="ssh pi@rorynesbittdesign.com"
 
-if [ "`uname -r`" =~ "microsoft" ]
+if [ "`uname -r`" =~ "icrosoft" ]
 then
 	# fix screen
 	alias fixscreen="sudo /etc/init.d/screen-cleanup start"
 	
 	# VPN
-	alias vh="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command connect Home && echo 'Connecting to Home'"
-	alias vhd="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect Home && echo 'Disconnecting'"
-	alias vt="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command connect TryHackMe && echo 'Connecting to TryHackMe'"
-	alias vtd="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect TryHackMe && echo 'Disconnecting from TryHackMe'"
 	alias end="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect_all; exit"
+
+	v() {
+		case "$1" in
+			"h")
+		    		if [ "$2" = "d" ]
+				then
+					/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect Home
+					echo 'Disconnecting from Home'
+				else
+					/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command connect Hom
+					echo 'Connecting to Home'
+				fi
+		    		;;
+			"t")
+		    		if [ "$2" = "d" ]
+				then
+					/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect TryHackMe
+					echo 'Disconnecting from TryHackMe'
+				else
+					/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command connect TryHackMe
+					echo 'Connecting to TryHackMe'
+				fi
+		    		;;
+			"d")
+				/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect_all
+				echo 'Disconnecting from all VPNs'
+				;;
+		esac    
+	    }
 	
 	# desktop
 	alias desktop="sudo /etc/init.d/xrdp start; sleep 1s; mstsc.exe /v localhost:3389; sleep 1s; sudo /etc/init.d/xrdp stop" 
