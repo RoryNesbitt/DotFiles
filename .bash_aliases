@@ -16,10 +16,10 @@ alias gs="git status"
 
 # Config
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
-alias configbash="config add ~/.bash_aliases && echo 'added bash aliases'"
 alias cpl="config pull"
 alias cps="config push"
-alias ca="config add -u"
+alias ca="config add"
+alias cau="config add -u"
 alias caa="config add --all"
 alias cc="config commit -m"
 alias cch="config checkout"
