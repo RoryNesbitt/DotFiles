@@ -201,9 +201,4 @@ if [ -f ~/.zsh_device ]; then
     . ~/.zsh_device 
 fi
 
-echo "██████╗ ███╗   ██╗██████╗
-██╔══██╗████╗  ██║██╔══██╗
-██████╔╝██╔██╗ ██║██║  ██║
-██╔══██╗██║╚██╗██║██║  ██║
-██║  ██║██║ ╚████║██████╔╝
-╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝"
+neofetch --source ~/.rnd || { sudo apt-get install neofetch -y && clear && neofetch --source ~/.rnd ;}
