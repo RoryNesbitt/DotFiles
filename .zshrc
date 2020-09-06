@@ -17,7 +17,7 @@ WORDCHARS=${WORDCHARS//\/} # Don't consider certain characters part of the word
 export PROMPT_EOL_MARK=""
 
 # configure key keybindings
-bindkey -e                                        # emacs key bindings
+bindkey -v                                        # vim key bindings
 bindkey ' ' magic-space                           # do history expansion on space
 bindkey '^[[3;5~' kill-word                       # ctrl + Supr
 bindkey '^[[1;5C' forward-word                    # ctrl + ->
@@ -184,11 +184,6 @@ if [ -x /usr/bin/dircolors ]; then
     zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 fi
 
-# some more ls aliases
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
-
 # enable auto-suggestions based on the history
 if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     . /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -196,6 +191,19 @@ if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
 fi
 
+# load bash_aliases if it exists
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+# load device specific customisations if they exist
+if [ -f ~/.zsh_device ]; then
+    . ~/.zsh_device 
+fi
+
+echo "██████╗ ███╗   ██╗██████╗
+██╔══██╗████╗  ██║██╔══██╗
+██████╔╝██╔██╗ ██║██║  ██║
+██╔══██╗██║╚██╗██║██║  ██║
+██║  ██║██║ ╚████║██████╔╝
+╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝"

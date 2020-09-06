@@ -1,9 +1,9 @@
 # My Aliases
 # Get this screen
-alias rc="vim ~/.zshrc && clear && source ~/.zshrc && echo 'Reloaded aliases'"
-alias rcrl="clear && source ~/.zshrc && echo 'Reloaded aliases'"
+alias rc="vim ~/.zshrc && clear && source ~/.zshrc && echo 'Reloaded zshrc'"
+alias rcrl="clear && source ~/.zshrc && echo 'Reloaded zshrc'"
 alias aliases="vim ~/.bash_aliases && clear && source ~/.zshrc && echo 'Reloaded aliases'"
-alias aliasesrl="rcrl"
+alias aliasesrl="clear && source ~/.zshrc && echo 'Reloaded aliases'"
 
 # Git
 alias gpl="git pull"
@@ -42,8 +42,7 @@ alias blue="ssh pi@192.168.1.20"
 alias green="ssh pi@192.168.1.21"
 alias remote="ssh pi@rorynesbittdesign.com"
 
-if [ "`uname -r`" =~ "icrosoft" ]
-then
+if [ "`uname -r`" =~ "icrosoft" ]; then
 	# fix screen
 	alias fixscreen="sudo /etc/init.d/screen-cleanup start"
 	
@@ -53,8 +52,7 @@ then
 	v() {
 		case "$1" in
 			"h")
-		    		if [ "$2" = "d" ]
-				then
+		    		if [ "$2" = "d" ]; then
 					/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect Home
 					echo 'Disconnecting from Home'
 				else
@@ -63,8 +61,7 @@ then
 				fi
 		    		;;
 			"t")
-		    		if [ "$2" = "d" ]
-				then
+		    		if [ "$2" = "d" ]; then
 					/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect TryHackMe
 					echo 'Disconnecting from TryHackMe'
 				else
@@ -89,15 +86,3 @@ then
 	alias reboot="shutdown.exe /r /t 00"
 	alias bios="runas.exe /savecred /user:Administrator 'shutdown.exe /fw /r /t 00'"
 fi
-
-
-#######################################
-# not alias stuff
-
-echo "██████╗ ███╗   ██╗██████╗ 
-██╔══██╗████╗  ██║██╔══██╗
-██████╔╝██╔██╗ ██║██║  ██║
-██╔══██╗██║╚██╗██║██║  ██║
-██║  ██║██║ ╚████║██████╔╝
-╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝" 
-# neofetch || { sudo apt install neofetch -y && clear && neofetch ;}
