@@ -59,7 +59,7 @@ if [ "`uname -r`" =~ "icrosoft" ]; then
 					/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect Home
 					echo 'Disconnecting from Home'
 				else
-					/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command connect Hom
+					/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command connect Home
 					echo 'Connecting to Home'
 				fi
 		    		;;
