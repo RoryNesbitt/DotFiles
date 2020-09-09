@@ -14,6 +14,7 @@ alias ga="git add -u"
 alias gaa="git add --all"
 alias gc="git commit -m"
 alias gch="git checkout"
+alias gcl="git clone"
 alias gs="git status"
 
 # Config
