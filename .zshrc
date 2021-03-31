@@ -201,4 +201,4 @@ if [ -f ~/.zsh_device ]; then
     . ~/.zsh_device 
 fi
 
-neofetch --source ~/.rnd || { sudo apt-get install neofetch -y && clear && neofetch --source ~/.rnd ;}
+neofetch --source ~/.zsh_img || { sudo apt-get install neofetch -y && clear && neofetch --source ~/.rnd ;}
