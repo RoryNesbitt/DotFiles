@@ -43,7 +43,7 @@ alias black="ssh pi@192.168.1.22"
 alias red="ssh pi@192.168.1.3"
 alias blue="ssh pi@192.168.1.20"
 alias green="ssh pi@192.168.1.21"
-alias remote="ssh pi@rorynesbittdesign.com"
+alias remote="ssh pi@ssh.rorynesbittdesign.com"
 
 if [ "`uname -r`" =~ "icrosoft" ]; then
 	# fix screen
