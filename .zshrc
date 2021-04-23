@@ -17,7 +17,7 @@ WORDCHARS=${WORDCHARS//\/} # Don't consider certain characters part of the word
 export PROMPT_EOL_MARK=""
 
 # configure key keybindings
-bindkey -v                                        # vim key bindings
+#bindkey -v                                        # vim key bindings
 bindkey ' ' magic-space                           # do history expansion on space
 bindkey '^[[3;5~' kill-word                       # ctrl + Supr
 bindkey '^[[1;5C' forward-word                    # ctrl + ->
