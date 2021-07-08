@@ -50,41 +50,22 @@ if [ "`uname -r`" =~ "icrosoft" ]; then
 	# fix screen
 	alias fixscreen="sudo /etc/init.d/screen-cleanup start"
 	
-	# VPN
-	alias end="/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect_all; exit"
-
-	v() {
-		case "$1" in
-			"h")
-		    		if [ "$2" = "d" ]; then
-					/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect Home
-					echo 'Disconnecting from Home'
-				else
-					/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command connect Home
-					echo 'Connecting to Home'
-				fi
-		    		;;
-			"t")
-		    		if [ "$2" = "d" ]; then
-					/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect TryHackMe
-					echo 'Disconnecting from TryHackMe'
-				else
-					/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command connect TryHackMe
-					echo 'Connecting to TryHackMe'
-				fi
-		    		;;
-			"d")
-				/mnt/c/Program\ Files/OpenVPN/bin/openvpn-gui.exe --command disconnect_all
-				echo 'Disconnecting from all VPNs'
-				;;
-		esac    
-	    }
-	
 	# desktop
-	alias desktop="sudo /etc/init.d/xrdp start; sleep 1s; mstsc.exe /v localhost:3389; sleep 1s; sudo /etc/init.d/xrdp stop" 
-	alias desktopstart="sudo /etc/init.d/xrdp start"
-	alias desktopstop="sudo /etc/init.d/xrdp stop"
-	
+
+	desktop() {
+		case "$1" in
+			start)
+				sudo /etc/init.d/xrdp start
+				;;
+			stop)
+				sudo /etc/init.d/xrdp stop
+				;;
+			*)
+				sudo /etc/init.d/xrdp start; sleep 1s; mstsc.exe /v localhost:3390; sleep 1s; sudo /etc/init.d/xrdp stop
+				;;
+		esac
+	}
+
 	# shutdown
 	alias shutdown="shutdown.exe /s /t 00"
 	alias reboot="shutdown.exe /r /t 00"
