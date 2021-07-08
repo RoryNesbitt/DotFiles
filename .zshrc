@@ -201,4 +201,4 @@ if [ -f ~/.zsh_device ]; then
     . ~/.zsh_device 
 fi
 
-neofetch --source ~/.zsh_img || echo "~/.zsh_img"
+neofetch --source ~/.zsh_img 2>/dev/null || cat ~/.zsh_img
