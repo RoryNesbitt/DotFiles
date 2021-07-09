@@ -3,7 +3,7 @@
 alias rc="vim ~/.zshrc && clear && source ~/.zshrc && echo 'Reloaded zshrc'"
 alias rcrl="clear && source ~/.zshrc && echo 'Reloaded zshrc'"
 alias aliases="vim ~/.bash_aliases && clear && source ~/.zshrc && echo 'Reloaded aliases'"
-alias aliasesrl="clear && source ~/.zshrc && echo 'Reloaded aliases'"
+alias aliasesrl="clear && source ~/.zshrc"
 alias device="vim ~/.zsh_device && clear && source ~/.zshrc && echo 'Reloaded device customisation'"
 alias devicerl="clear && source ~/.zshrc && echo 'Reloaded device customisation'"
 
