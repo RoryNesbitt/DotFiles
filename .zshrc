@@ -191,9 +191,9 @@ if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
 fi
 
-# load bash_aliases if it exists
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+# load zsh_aliases if it exists
+if [ -f ~/.zsh_aliases ]; then
+    . ~/.zsh_aliases
 fi
 
 # load device specific customisations if they exist
