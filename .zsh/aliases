@@ -27,8 +27,9 @@ alias cch="config checkout"
 alias cs="config status"
 
 # ls
-alias ls="ls --color=auto -lhF"
-alias la="ls --color=auto -lhFa"
+alias ls="ls --color=auto -lhFX"
+alias la="ls -A"
+alias le="ls -I"
 
 # google drive
 alias md="screen -dmS drive rclone mount drive: /home/rory/drive/ && echo 'Google Drive mounted'"
