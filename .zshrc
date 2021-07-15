@@ -191,14 +191,14 @@ if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
 fi
 
-# load zsh_aliases if it exists
-if [ -f ~/.zsh_aliases ]; then
-    . ~/.zsh_aliases
+# load zsh/aliases if it exists
+if [ -f ~/.zsh/aliases ]; then
+    . ~/.zsh/aliases
 fi
 
 # load device specific customisations if they exist
-if [ -f ~/.zsh_device ]; then
-    . ~/.zsh_device 
+if [ -f ~/.zsh/device ]; then
+    . ~/.zsh/device 
 fi
 
-neofetch --source ~/.zsh_img 2>/dev/null || cat ~/.zsh_img
+neofetch --source ~/.zsh/img 2>/dev/null || cat ~/.zsh/img
