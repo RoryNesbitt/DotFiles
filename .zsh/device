@@ -1,0 +1,2 @@
+PROMPT=$'%F{white}┌──${debian_chroot:+($debian_chroot)──}(%B%F{magenta}%n%(#.💀.@)%m%b%F{white})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{white}]\n└─%B%(#.%F{white}#.%F{magenta}$)%b%F{reset} '
+alias getset="scp pi@192.168.1.20:setdots ~"
