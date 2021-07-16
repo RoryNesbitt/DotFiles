@@ -69,4 +69,15 @@ if [ "`uname -r`" =~ "icrosoft" ]; then
 	alias shutdown="shutdown.exe /s /t 00"
 	alias reboot="shutdown.exe /r /t 00"
 	alias bios="runas.exe /savecred /user:Administrator 'shutdown.exe /fw /r /t 00'"
+
+    # mount other drives
+    mnt() {
+        sudo mkdir /mnt/$1
+        sudo mount -t drvfs $1\: /mnt/$1
+    }
+    
+    umnt() {
+        sudo umount /mnt/$1
+        sudo rmdir /mnt/$1
+    }
 fi
