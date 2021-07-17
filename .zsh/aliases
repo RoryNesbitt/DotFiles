@@ -1,7 +1,7 @@
 # My Aliases
 # Get this screen
 alias zrc="vim ~/.zshrc && clear && source ~/.zshrc && echo 'Reloaded zshrc'"
-alias zrc="vim ~/.vimrc"
+alias vrc="vim ~/.vimrc"
 alias rl="clear && source ~/.zshrc && echo 'Reloaded zshrc'"
 alias aliases="vim ~/.zsh/aliases && clear && source ~/.zshrc && echo 'Reloaded aliases'"
 alias device="vim ~/.zsh/device && clear && source ~/.zshrc && echo 'Reloaded device customisation'"
