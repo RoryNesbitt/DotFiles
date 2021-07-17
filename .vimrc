@@ -22,7 +22,7 @@ set smartcase		        " Do smart case matching
 "misc
 set exrc                    " Loads directory specific .vimrc files
 set noerrorbells            " Silence
-set colorcolumn=100         " 
+"set colorcolumn=100         " Adds a colour marker on the # column
 set signcolumn=yes          " 
 set scrolloff=6             " Keeps the cursor away from the top/bottom of the page
 set showmatch		        " Show matching brackets.
