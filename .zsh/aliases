@@ -1,10 +1,10 @@
 # My Aliases
 # Get this screen
-alias zrc="vim ~/.zshrc && clear && source ~/.zshrc && echo 'Reloaded zshrc'"
-alias vrc="vim ~/.vimrc"
+alias zrc="$EDITOR ~/.zshrc && clear && source ~/.zshrc && echo 'Reloaded zshrc'"
+alias vrc="$EDITOR ~/.vimrc"
 alias rl="clear && source ~/.zshrc && echo 'Reloaded zshrc'"
-alias aliases="vim ~/.zsh/aliases && clear && source ~/.zshrc && echo 'Reloaded aliases'"
-alias device="vim ~/.zsh/device && clear && source ~/.zshrc && echo 'Reloaded device customisation'"
+alias aliases="$EDITOR ~/.zsh/aliases && clear && source ~/.zshrc && echo 'Reloaded aliases'"
+alias device="$EDITOR ~/.zsh/device && clear && source ~/.zshrc && echo 'Reloaded device customisation'"
 
 # Git
 alias gpl="git pull"
