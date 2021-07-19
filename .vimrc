@@ -30,3 +30,14 @@ set showcmd		            " Show (partial) command in status line.
 set mouse=a		            " Enable mouse usage (all modes)
 "set hidden		            " Hide buffers when they are abandoned
 
+"history
+set noswapfile              "
+set nobackup                "
+set undodir=~/.vim/undo     "
+set undofile                "
+
+if &term =~ "xterm"
+    let &t_SI = "\<Esc>[6 q"
+    let &t_SR = "\<Esc>[4 q"
+    let &t_EI = "\<Esc>[2 q"
+endif
