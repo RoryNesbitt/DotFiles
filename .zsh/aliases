@@ -46,6 +46,17 @@ alias black="ssh pi@192.168.1.22"
 alias purple="ssh pi@192.168.1.23"
 alias remote="ssh pi@ssh.rorynesbittdesign.com"
 
+# Misc
+ndir() {
+    mkdir $1
+    cd $1
+}
+kdir() {
+    PD=`pwd`
+    cd ..
+    rm -rf $PD
+}
+
 if [ "`uname -r`" =~ "icrosoft" ]; then
 	# fix screen
 	alias fixscreen="sudo /etc/init.d/screen-cleanup start"
