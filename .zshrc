@@ -191,8 +191,8 @@ if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
 fi
 
-# set cursor
-echo -ne '\e[2 q'
+echo -ne '\e[2 q'           # Set cursor
+export EDITOR="vim"         # Set editor to Vim
 
 # load zsh/aliases if it exists
 if [ -f ~/.zsh/aliases ]; then
