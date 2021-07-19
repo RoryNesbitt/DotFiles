@@ -77,8 +77,6 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PROMPT=$'%F{%(#.blue.green)}┌──${debian_chroot:+($debian_chroot)──}(%B%F{%(#.red.blue)}%n%(#.💀.@)%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]\n└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
-    RPROMPT=$'%(?.. %? %F{red}%B⨯%b%F{reset})%(1j. %j %F{yellow}%B⚙%b%F{reset}.)'
 
     # enable syntax-highlighting
     if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && [ "$color_prompt" = yes ]; then
@@ -130,8 +128,6 @@ if [ "$color_prompt" = yes ]; then
 	ZSH_HIGHLIGHT_STYLES[bracket-level-5]=fg=cyan,bold
 	ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]=standout
     fi
-else
-    PROMPT='${debian_chroot:+($debian_chroot)}%n@%m:%~%# '
 fi
 unset color_prompt force_color_prompt
 
@@ -204,4 +200,6 @@ if [ -f ~/.zsh/device ]; then
     . ~/.zsh/device 
 fi
 
+PROMPT="%F{$SHCOLOUR}$ %F{def}"
+RPROMPT="%F{white}[%F{$SHCOLOUR}%~%F{white}]"
 neofetch --source ~/.zsh/img 2>/dev/null || cat ~/.zsh/img
