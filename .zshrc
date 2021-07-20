@@ -17,7 +17,7 @@ WORDCHARS=${WORDCHARS//\/} # Don't consider certain characters part of the word
 export PROMPT_EOL_MARK=""
 
 # configure key keybindings
-#bindkey -v                                        # vim key bindings
+bindkey -v                                        # vim key bindings
 bindkey ' ' magic-space                           # do history expansion on space
 bindkey '^[[3;5~' kill-word                       # ctrl + Supr
 bindkey '^[[1;5C' forward-word                    # ctrl + ->
@@ -202,4 +202,4 @@ fi
 
 PROMPT="%F{$SHCOLOUR}$ %F{def}"
 RPROMPT="%F{white}[%F{$SHCOLOUR}%~%F{white}]"
-neofetch --source ~/.zsh/img 2>/dev/null || cat ~/.zsh/img
+neofetch --source ~/.zsh/img 2>/dev/null || ( cat ~/.zsh/img && echo -e "\033[0;${ECHOCOLOUR}m`whoami`\033[1;37m@\033[0;${ECHOCOLOUR}m`uname -n`\033[1;37m" )
