@@ -13,31 +13,31 @@ set number                  "
 set relativenumber          " 
 set ruler                   " 
 
-"search
+"Search
 set nohlsearch              " Stop hl when search stops
 set incsearch		        " Highlight as you search
 set ignorecase		        " Do case insensitive matching
 set smartcase		        " Do smart case matching
 
-"history
+"History
 set noswapfile              "
 set nobackup                "
 set undodir=~/.vim/undo     "
 set undofile                "
 
-" Disable Arrow keys in Normal mode
+"Disable Arrow keys in Normal mode
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 
-" Disable Arrow keys in Insert mode
+"Disable Arrow keys in Insert mode
 "imap <up> <nop>
 "imap <down> <nop>
 "imap <left> <nop>
 "imap <right> <nop>
 
-"misc
+"Misc
 set exrc                    " Loads directory specific .vimrc files
 set noerrorbells            " Silence
 "set colorcolumn=100         " Adds a colour marker on the # column
@@ -48,8 +48,10 @@ set showcmd		            " Show (partial) command in status line.
 set mouse=a		            " Enable mouse usage (all modes)
 "set hidden		            " Hide buffers when they are abandoned
 
+"Change cursor in different modes
 if &term =~ "xterm"
-    let &t_SI = "\<Esc>[6 q"
-    let &t_SR = "\<Esc>[4 q"
-    let &t_EI = "\<Esc>[2 q"
+    autocmd VimEnter * silent !echo -ne "\e[2 q"
+    let &t_SI = "\<Esc>[6 q"                        " Insert mode       Verticle bar
+    let &t_SR = "\<Esc>[4 q"                        " Replace mode      underscore
+    let &t_EI = "\<Esc>[2 q"                        " Normal mode       Block
 endif
