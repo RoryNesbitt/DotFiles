@@ -20,3 +20,7 @@ zinit light-mode for \
     zinit-zsh/z-a-bin-gem-node
 
 ### End of Zinit's installer chunk
+
+# [zsh-vi-mode](https://github.com/jeffreytse/zsh-vi-mode)
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
