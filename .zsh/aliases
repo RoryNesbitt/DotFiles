@@ -15,6 +15,7 @@ alias gc="git commit -m"
 alias gch="git checkout"
 alias gcl="git clone"
 alias gs="git status"
+alias gi="git update-index --skip-worktree"
 
 # Config
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
@@ -26,6 +27,7 @@ alias caa="config add --all"
 alias cc="config commit -m"
 alias cch="config checkout"
 alias cs="config status"
+alias ci="config update-index --skip-worktree"
 
 # ls
 alias ls="ls --color=auto -lhFX"
