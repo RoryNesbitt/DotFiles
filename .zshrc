@@ -37,11 +37,7 @@ setopt hist_ignore_space        # ignore commands that start with space
 setopt hist_verify              # show command with history expansion to user before running it
 
 precmd() {
-	if [ -z "$_NEW_LINE_BEFORE_PROMPT" ]; then  # If first line
-	    _NEW_LINE_BEFORE_PROMPT=1               # Mark nolonger first line
-	else                                        # Else
-	    print ""                                # Print empty line before prompt
-	fi
+print ""                                # Print empty line before prompt
 }
 
 # Defaults
