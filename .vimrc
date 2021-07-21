@@ -19,6 +19,24 @@ set incsearch		        " Highlight as you search
 set ignorecase		        " Do case insensitive matching
 set smartcase		        " Do smart case matching
 
+"history
+set noswapfile              "
+set nobackup                "
+set undodir=~/.vim/undo     "
+set undofile                "
+
+" Disable Arrow keys in Normal mode
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+" Disable Arrow keys in Insert mode
+"imap <up> <nop>
+"imap <down> <nop>
+"imap <left> <nop>
+"imap <right> <nop>
+
 "misc
 set exrc                    " Loads directory specific .vimrc files
 set noerrorbells            " Silence
@@ -29,12 +47,6 @@ set showmatch		        " Show matching brackets.
 set showcmd		            " Show (partial) command in status line.
 set mouse=a		            " Enable mouse usage (all modes)
 "set hidden		            " Hide buffers when they are abandoned
-
-"history
-set noswapfile              "
-set nobackup                "
-set undodir=~/.vim/undo     "
-set undofile                "
 
 if &term =~ "xterm"
     let &t_SI = "\<Esc>[6 q"

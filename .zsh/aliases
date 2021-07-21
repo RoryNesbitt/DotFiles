@@ -2,7 +2,7 @@
 # Get this screen
 alias zrc="$EDITOR ~/.zshrc && clear && source ~/.zshrc && echo 'Reloaded zshrc'"
 alias vrc="$EDITOR ~/.vimrc"
-alias rl="clear && source ~/.zshrc && echo 'Reloaded zshrc'"
+alias rl="clear && source ~/.zshrc"
 alias aliases="$EDITOR ~/.zsh/aliases && clear && source ~/.zshrc && echo 'Reloaded aliases'"
 alias device="$EDITOR ~/.zsh/device && clear && source ~/.zshrc && echo 'Reloaded device customisation'"
 
@@ -32,6 +32,13 @@ alias ls="ls --color=auto -lhFX"
 alias la="ls -A"
 alias le="ls -I"
 
+# Colour
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias diff='diff --color=auto'
+alias ip='ip --color=auto'
+
 # google drive
 alias md="screen -dmS drive rclone mount drive: /home/rory/drive/ && echo 'Google Drive mounted'"
 alias umd="screen -S drive -X stuff ^C && fusermount -u /home/rory/drive/ && echo 'Google Drive unmounted'"
@@ -58,7 +65,7 @@ kdir() {
     rm -rf $PD
 }
 
-if [ "`uname -r`" =~ "icrosoft" ]; then
+if [ "`uname -r`"=~"icrosoft" ]; then
 	# fix screen
 	alias fixscreen="sudo /etc/init.d/screen-cleanup start"
 	
