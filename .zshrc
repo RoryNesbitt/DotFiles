@@ -57,5 +57,5 @@ fi
 
 PROMPT="%F{$SHCOLOUR}$ %F{def}"
 RPROMPT="%F{white}[%F{$SHCOLOUR}%~%F{white}]"
-neofetch --source ~/.zsh/img 2>/dev/null || ( cat ~/.zsh/img && echo -e "\033[0;${ECHOCOLOUR}m`whoami`\033[1;37m@\033[0;${ECHOCOLOUR}m`uname -n`\033[1;37m" )
 
+neofetch --source ~/.zsh/img 2>/dev/null || ( cat ~/.zsh/img && echo -e "\033[${SHCOLOURN}m`whoami`\033[1;37m@\033[${SHCOLOURN}m`uname -n`\033[1;37m" )
