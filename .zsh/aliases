@@ -1,4 +1,8 @@
 # My Aliases
+#
+# alias -s suffix=tool
+# alias -g global=can go anywhere in command
+#
 # Get this screen
 alias zrc="$EDITOR ~/.zshrc && clear && source ~/.zshrc && echo 'Reloaded zshrc'"
 alias vrc="$EDITOR ~/.vimrc"
@@ -24,10 +28,17 @@ alias cps="config push"
 alias ca="config add"
 alias cau="config add -u"
 alias caa="config add --all"
-alias cc="config commit -m"
 alias cch="config checkout"
 alias cs="config status"
 alias ci="config update-index --skip-worktree"
+cc() {
+    if [ "$1" != "" ]
+    then
+        echo "$@"
+    else
+        echo "update"
+    fi
+}
 
 # ls
 alias ls="ls --color=auto -lhFX"
