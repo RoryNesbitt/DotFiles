@@ -35,7 +35,7 @@ alias ci="config update-index --skip-worktree"
 cc() {
     if [ "$1" != "" ]
     then
-        config commit -m "$@" && echo "Commited: $@"
+        config commit -m "$*" && echo "Commited: $*"
     else
         config commit -m "Update" && echo "Commited: Update"
     fi
