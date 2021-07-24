@@ -49,6 +49,17 @@ set mouse=a		                " Enable mouse usage (all modes)
 set wildmode=longest,list,full  " Enable autocomplete files
 "set hidden		                " Hide buffers when they are abandoned
 
+"WSL Cipboard
+func! GetSelectedText()
+    normal gv"xy
+    let result = getreg("x")
+    return result
+endfunc
+if !has("clipboard") && executable("clip.exe")
+    noremap <C-C> :call system('clip.exe', GetSelectedText())<CR>       " TODO: replicate this with leader c
+    noremap <C-X> :call system('clip.exe', GetSelectedText())<CR>gvx    " TODO: replicate this with leader x
+endif
+
 "Change cursor in different modes
 if &term =~ "xterm"
     autocmd VimEnter * silent !echo -ne "\e[2 q"
