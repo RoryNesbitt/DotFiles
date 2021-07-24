@@ -31,12 +31,13 @@ alias caa="config add --all"
 alias cch="config checkout"
 alias cs="config status"
 alias ci="config update-index --skip-worktree"
+
 cc() {
     if [ "$1" != "" ]
     then
-        echo "$@"
+        config commit -m "$@" && echo "Commited: $@"
     else
-        echo "update"
+        config commit -m "Update" && echo "Commited: Update"
     fi
 }
 
@@ -113,4 +114,17 @@ if [ "`uname -r`"=~"icrosoft" ]; then
         sudo umount /mnt/$1
         sudo rmdir /mnt/$1
     }
+
+    # Browser
+    BROWSER="/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe"
+    BROWSR="/mnt/c/Program Files/Mozilla Firefox/firefox.exe"
+
+    alias -s com="$BROWSER"
+    alias -s uk="$BROWSER"
+    alias -s net="$BROWSR"
+
+    search() {
+        $BROWSR "https://www.startpage.com/do/dsearch?query=$*"
+    }
+
 fi

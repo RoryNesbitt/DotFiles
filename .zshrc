@@ -43,6 +43,7 @@ print ""                                # Print empty line before prompt
 # Defaults
 echo -ne '\e[2 q'               # Set cursor
 export EDITOR="vim"             # Set editor to Vim
+export PATH="$HOME/bin:$PATH"
 
 # Load files
 if [ -f ~/.zsh/aliases ]; then
