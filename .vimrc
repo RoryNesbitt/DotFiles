@@ -1,3 +1,4 @@
+let mapleader=" "
 syntax on                       " Syntax highlighting
 set background=dark             " changs the colours to fit with a dark background
 filetype plugin indent on       " enable file type indenting && language dependent indenting
@@ -67,3 +68,24 @@ if &term =~ "xterm"
     let &t_SR = "\<Esc>[4 q"                        " Replace mode      underscore
     let &t_EI = "\<Esc>[2 q"                        " Normal mode       Block
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+:
+call plug#begin()
+Plug 'preservim/NERDTree'
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-surround'
+call plug#end()
+
+"NERDTree
+map <F5> :NERDTreeToggle<CR>
+"airline
+let g:airline#extensions#tabline#enabled = 1
