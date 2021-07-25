@@ -50,10 +50,10 @@ if [ -f ~/.zsh/aliases ]; then
     . ~/.zsh/aliases
 fi
 if [ -f ~/.zsh/device ]; then
-    . ~/.zsh/device 
+    . ~/.zsh/device
 fi
 if [ -f ~/.zsh/zinit ]; then
-    . ~/.zsh/zinit 
+    . ~/.zsh/zinit
 fi
 
 PROMPT="%F{$SHCOLOUR}$ %F{def}"
