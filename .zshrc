@@ -56,6 +56,9 @@ fi
 if [ -f ~/.zsh/device ]; then
     . ~/.zsh/device
 fi
+if [ -f ~/.zsh/dependencies ]; then
+    . ~/.zsh/dependencies
+fi
 if [ -f ~/.zsh/zinit ]; then
     . ~/.zsh/zinit
 fi
