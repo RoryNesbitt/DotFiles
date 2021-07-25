@@ -122,12 +122,19 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/NERDTree'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
+Plug 'alvan/vim-closetag'
 call plug#end()
+"coc
+let g:coc_global_extensions = [
+    \ 'coc-json',
+    \ 'coc-pairs'
+    \ ]
 
 "NERDTree
 map <F5> :NERDTreeToggle<CR>

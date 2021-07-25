@@ -44,6 +44,10 @@ print ""                                # Print empty line before prompt
 echo -ne '\e[2 q'               # Set cursor
 export EDITOR="vim"             # Set editor to Vim
 export PATH="$HOME/.scripts:$PATH"
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Load files
 if [ -f ~/.zsh/aliases ]; then
