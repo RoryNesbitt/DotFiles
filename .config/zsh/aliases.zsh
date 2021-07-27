@@ -15,11 +15,19 @@ alias gpl="git pull"
 alias gps="git push"
 alias ga="git add -u"
 alias gaa="git add --all"
-alias gc="git commit -m"
 alias gch="git checkout"
 alias gcl="git clone"
 alias gs="git status"
 alias gi="git update-index --skip-worktree"
+gc() {
+    if [ "$1" != "" ]
+    then
+        git commit -m "$*" && echo "Commited: $*"
+    else
+        git commit -m "Update" && echo "Commited: Updated"
+    fi
+}
+
 
 # Config
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
