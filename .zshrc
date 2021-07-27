@@ -50,18 +50,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Load files
-if [ -f ~/.zsh/aliases ]; then
-    . ~/.zsh/aliases
-fi
-if [ -f ~/.zsh/device ]; then
-    . ~/.zsh/device
-fi
-if [ -f ~/.zsh/dependencies ]; then
-    . ~/.zsh/dependencies
-fi
-if [ -f ~/.zsh/zinit ]; then
-    . ~/.zsh/zinit
-fi
+for FILE (~/.zsh/*.zsh); do
+  . $FILE
+done
+unset FILE
 
 PROMPT="%F{$SHCOLOUR}$ %F{def}"
 RPROMPT="%F{white}[%F{$SHCOLOUR}%~%F{white}]"
