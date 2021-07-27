@@ -7,8 +7,8 @@
 alias zrc="$EDITOR ~/.zshrc && clear && source ~/.zshrc && echo 'Reloaded zshrc'"
 alias vrc="$EDITOR ~/.vim/vimrc"
 alias rl="clear && source ~/.zshrc"
-alias aliases="$EDITOR ~/.zsh/aliases && clear && source ~/.zshrc && echo 'Reloaded aliases'"
-alias device="$EDITOR ~/.zsh/device && clear && source ~/.zshrc && echo 'Reloaded device customisation'"
+alias aliases="$EDITOR ~/.config/zsh/aliases.zsh && clear && source ~/.zshrc && echo 'Reloaded aliases'"
+alias device="$EDITOR ~/.config/zsh/device.zsh && clear && source ~/.zshrc && echo 'Reloaded device customisation'"
 
 # Git
 alias gpl="git pull"
