@@ -28,7 +28,7 @@ zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # case insensitive tab completion
 
 # History configurations
-HISTFILE=~/.zsh_history
+HISTFILE=~/.cache/zsh/zsh_history
 HISTSIZE=1000
 SAVEHIST=2000
 setopt hist_expire_dups_first   # delete duplicates first when HISTFILE size exceeds HISTSIZE
@@ -50,7 +50,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Load files
-for FILE (~/.zsh/*.zsh); do
+for FILE (~/.config/zsh/*.zsh); do
   . $FILE
 done
 unset FILE
@@ -58,4 +58,4 @@ unset FILE
 PROMPT="%F{$SHCOLOUR}$ %F{def}"
 RPROMPT="%F{white}[%F{$SHCOLOUR}%~%F{white}]"
 
-neofetch --source ~/.zsh/img 2>/dev/null || ( cat ~/.zsh/img && echo -e "\033[${SHCOLOURN}m`whoami`\033[1;37m@\033[${SHCOLOURN}m`uname -n`\033[1;37m" )
+neofetch --source ~/.config/zsh/img 2>/dev/null || ( cat ~/.config/zsh/img && echo -e "\033[${SHCOLOURN}m`whoami`\033[1;37m@\033[${SHCOLOURN}m`uname -n`\033[1;37m" )
