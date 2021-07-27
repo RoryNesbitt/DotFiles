@@ -12,14 +12,10 @@ setopt autocd                   # change directory just by typing its name
 set splitbelow                  # Open split bellow
 set splitright                  # Open verticle split to the right
 
-# Keybindings
-bindkey -v                                        # vim key bindings
-bindkey '^[[1;5C' forward-word                    # ctrl + ->
-bindkey '^[[C' forward-word                       # ctrl + ->
-bindkey '^[[1;5D' backward-word                   # ctrl + <-
-bindkey '^[[D' backward-word                      # ctrl + <-
-bindkey '^[[5~' beginning-of-buffer-or-history    # page up
-bindkey '^[[6~' end-of-buffer-or-history          # page down
+# Vim control
+bindkey -v                                      # vim key bindings
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line                  # edit command in editor
 
 # Completion
 autoload -Uz compinit
