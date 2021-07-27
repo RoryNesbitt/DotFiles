@@ -37,7 +37,7 @@ setopt hist_ignore_space        # ignore commands that start with space
 setopt hist_verify              # show command with history expansion to user before running it
 
 precmd() {
-print ""                        # Print empty line before prompt
+#print ""                        # Print empty line before prompt
 }
 
 # Defaults
