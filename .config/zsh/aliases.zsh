@@ -30,7 +30,7 @@ gc() {
 
 
 # Config
-alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+alias config="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
 alias cpl="config pull"
 alias cps="config push"
 alias ca="config add"
