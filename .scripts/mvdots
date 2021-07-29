@@ -3,6 +3,7 @@ cp $HOME/.config/zsh/device.zsh $HOME/tmp
 
 rm -rf $HOME/.cfg
 
+alias config="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
 git clone --bare git@github.com:RoryNesbitt/DotFiles.git $HOME/.config/dotfiles/
 config checkout --force
 config push --set-upstream origin master
