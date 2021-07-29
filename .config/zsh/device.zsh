@@ -9,5 +9,5 @@
 # Cyan         0;36     Light Cyan    1;36
 # Light Gray   0;37     White         1;37
 #
-SHCOLOUR="196"
-SHCOLOURN="1;31"
+SHCOLOUR="14"
+SHCOLOURN="1;36"

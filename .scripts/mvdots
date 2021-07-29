@@ -8,4 +8,7 @@ config push --set-upstream origin master
 config config --local status.showUntrackedFiles no
 config update-index --skip-worktree $HOME/.config/zsh/device.zsh
 
+unalias gc
+unalias cc
 mv $HOME/tmp $HOME/.config/zsh/device.zsh
+rl
