@@ -24,7 +24,7 @@ gc() {
     then
         git commit -m "$*" && echo "Commited: $*"
     else
-        git commit -m "Update" && echo "Commited: Updated"
+        git commit -m "Updated" && echo "Commited: Updated"
     fi
 }
 
@@ -45,7 +45,7 @@ cc() {
     then
         config commit -m "$*" && echo "Commited: $*"
     else
-        config commit -m "Update" && echo "Commited: Update"
+        config commit -m "Updated" && echo "Commited: Updated"
     fi
 }
 

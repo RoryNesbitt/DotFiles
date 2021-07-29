@@ -1,6 +1,4 @@
 #!/bin/sh
-cp $HOME/.config/zsh/device.zsh $HOME/tmp
-
 rm -rf $HOME/.cfg
 
 alias config="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
