@@ -102,6 +102,9 @@ map <leader>l :setlocal spell spell! spelllang=en_gb<CR>
 "run shellcheck on current file
 map <leader>p :!clear && shellcheck %<cr>
 
+"Open terminal
+nnoremap <leader>t :vertical terminal<cr>
+
 "split navigation
 map <C-h> <c-w>h
 map <C-j> <c-w>j
@@ -144,7 +147,7 @@ let g:coc_global_extensions = [
 
 "NERDTree
 map <F5> :NERDTreeToggle<CR>
-nnoremap <leader>t :NERDTreeFind<CR>
+nnoremap <leader>n :NERDTreeFind<CR>
 "airline
 let g:airline#extensions#tabline#enabled = 1
 "colorscheme
