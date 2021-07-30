@@ -54,5 +54,3 @@ unset FILE
 
 PROMPT="%F{$SHCOLOUR}$ %F{def}"
 RPROMPT="%F{white}[%F{$SHCOLOUR}%~%F{white}]"
-
-neofetch --source ~/.config/zsh/img 2>/dev/null || ( cat ~/.config/zsh/img && echo -e "\033[${SHCOLOURN}m`whoami`\033[1;37m@\033[${SHCOLOURN}m`uname -n`\033[1;37m" )
