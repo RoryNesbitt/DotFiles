@@ -1,6 +1,7 @@
 let mapleader=" "
 syntax on                       " Syntax highlighting
-set background=dark             " changs the colours to fit with a dark background
+set background=dark             " changes the colours to fit with a dark background
+set t_Co=256                    "
 filetype plugin indent on       " enable file type indenting && language dependent indenting
 set mouse=a		                " Enable mouse usage (all modes)
 
@@ -40,9 +41,6 @@ map <right> <nop>
 "imap <down> <nop>
 "imap <left> <nop>
 "imap <right> <nop>
-
-"colours
-set termguicolors
 
 "cursor lines
 "set cursorline
