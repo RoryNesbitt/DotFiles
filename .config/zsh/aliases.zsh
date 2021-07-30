@@ -76,6 +76,7 @@ alias purple="ssh pi@192.168.1.23"
 alias remote="ssh pi@ssh.rorynesbittdesign.com"
 
 # Misc
+alias :q='exit'
 alias cx='chmod +x'
 ndir() {
     mkdir $1
