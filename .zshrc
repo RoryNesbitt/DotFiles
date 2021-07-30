@@ -19,7 +19,8 @@ bindkey '^e' edit-command-line                  # edit command in editor
 
 # Completion
 autoload -Uz compinit
-compinit -d ~/.cache/zcompdump
+compinit -d ~/.cache/zsh/zcompdump
+compinit
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # case insensitive tab completion
 

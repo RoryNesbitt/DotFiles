@@ -2,6 +2,7 @@ let mapleader=" "
 syntax on                       " Syntax highlighting
 set background=dark             " changs the colours to fit with a dark background
 filetype plugin indent on       " enable file type indenting && language dependent indenting
+set mouse=a		                " Enable mouse usage (all modes)
 
 "Tabs
 set tabstop=4 softtabstop=4     "
@@ -26,6 +27,7 @@ set noswapfile                  "
 set nobackup                    "
 set undodir=~/.vim/undo         "
 set undofile                    "
+set hidden		                " Hide buffers when they are abandoned
 
 "Disable Arrow keys in Normal mode
 map <up> <nop>
@@ -55,14 +57,12 @@ set splitright                  " vertical split right
 "Misc
 set exrc                        " Loads directory specific .vimrc files
 set noerrorbells                " Silence
-"set colorcolumn=100             " Adds a colour marker on the # column
+"set colorcolumn=80             " Adds a colour marker on the # column
 set signcolumn=yes              "
 set scrolloff=6                 " Keeps the cursor away from the top/bottom of the page
 set showmatch		            " Show matching brackets.
 set showcmd		                " Show (partial) command in status line.
-set mouse=a		                " Enable mouse usage (all modes)
 set wildmode=longest,list,full  " Enable autocomplete files
-"set hidden		                " Hide buffers when they are abandoned
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "WSL
@@ -102,7 +102,8 @@ map <leader>l :setlocal spell spell! spelllang=en_gb<CR>
 "run shellcheck on current file
 map <leader>p :!clear && shellcheck %<cr>
 
-"Open terminal
+"Open windows
+nnoremap <leader>v :vsp ./
 nnoremap <leader>t :vertical terminal<cr>
 
 "split navigation
