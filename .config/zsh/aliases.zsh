@@ -67,13 +67,13 @@ alias umd="screen -S drive -X stuff ^C && fusermount -u /home/rory/drive/ && ech
 alias uni="cd /home/rory/drive/Important\ stuff/Uni/Masters/"
 
 # SSHs
-alias jackdaw="ssh root@192.168.1.4"
-alias red="ssh pi@192.168.1.3"
-alias blue="ssh pi@192.168.1.20"
-alias green="ssh pi@192.168.1.21"
-alias black="ssh pi@192.168.1.22"
-alias purple="ssh pi@192.168.1.23"
-alias remote="ssh pi@ssh.rorynesbittdesign.com"
+alias jackdaw="ssh -q root@192.168.1.4"
+alias red="ssh -q pi@192.168.1.3"
+alias blue="ssh -q pi@192.168.1.20"
+alias green="ssh -q pi@192.168.1.21"
+alias black="ssh -q pi@192.168.1.22"
+alias purple="ssh -q pi@192.168.1.23"
+alias remote="ssh -q pi@ssh -q.rorynesbittdesign.com"
 
 # Misc
 alias :q='exit'
