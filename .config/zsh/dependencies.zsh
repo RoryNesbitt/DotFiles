@@ -8,7 +8,11 @@ if ! [ -d $NVM_DIR ]; then
     nvm install --lts
 fi
 
-if [ -z $HOME/.scripts/nvim ]; then
-    curl -Lo $HOME/.scripts/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-    chmod u+x $HOME/.scripts/nvim
+if [ -z $HOME/.bin/nvim ]; then
+	if [ "$USER" = "pi" ]; then
+        # TODO: Build from source probably
+    else
+        curl -Lo $HOME/.bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+        chmod u+x $HOME/.bin/nvim
+    fi
 fi
