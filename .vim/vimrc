@@ -2,10 +2,20 @@ let HARDMODE=1
 
 let mapleader=" "
 syntax on                       " Syntax highlighting
-set background=dark             " changes the colours to fit with a dark background
-set t_Co=256                    "
 filetype plugin indent on       " enable file type indenting && language dependent indenting
 set mouse=a		                " Enable mouse usage (all modes)
+
+"visual
+set background=dark             " changes the colours for a dark background
+set t_Co=256                    "
+set cursorline                  " Highlights the current line
+set cursorcolumn                " Highlights the current column
+highlight CursorLine ctermbg=yellow cterm=bold guibg=#2b2b2b
+highlight Cursorcolumn ctermbg=yellow cterm=bold guibg=#2b2b2b
+set nowrap                      " Long lines won't wrap
+set colorcolumn=80              " Adds a colour marker on the # column
+set signcolumn=yes              " Left side info column
+set scrolloff=4                 " Keeps the cursor away from the screen edge
 
 "Tabs
 set tabstop=4 softtabstop=4     "
@@ -32,12 +42,6 @@ set undodir=~/.vim/undo         "
 set undofile                    "
 set hidden		                " Hide buffers when they are abandoned
 
-"cursor lines
-"set cursorline
-set cursorcolumn
-"highlight CursorLine ctermbg=yellow cterm=bold guibg=#2b2b2b
-highlight Cursorcolumn ctermbg=yellow cterm=bold guibg=#2b2b2b
-
 "splitview
 set splitbelow                  " split down
 set splitright                  " vertical split right
@@ -45,15 +49,11 @@ set splitright                  " vertical split right
 "Misc
 set exrc                        " Loads directory specific .vimrc files
 set noerrorbells                " Silence
-set nowrap                      " Long lines won't wrap
-"set colorcolumn=80             " Adds a colour marker on the # column
-set signcolumn=yes              "
-set scrolloff=6                 " Keeps the cursor away from the top/bottom of the page
 set showmatch		            " Show matching brackets.
 set showcmd		                " Show (partial) command in status line.
 set wildmode=longest,list,full  " Enable autocomplete files
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "WSL
 "WSL Cipboard
 func! GetSelectedText()
@@ -70,12 +70,12 @@ if &term =~ "xterm"
     let &t_EI = "\<Esc>[2 q"                        " Normal mode       Block
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "AutoCmds
 "remove trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Shortcuts
 
 if HARDMODE
@@ -134,7 +134,7 @@ noremap <leader>s :s//gI<Left><Left><Left>
 "replace in file
 noremap <leader>S :%s//gI<Left><Left><Left>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -167,6 +167,7 @@ let g:airline#extensions#tabline#enabled = 1
 "colorscheme
 colorscheme codedark
 let g:airline_theme = 'codedark'
+highlight ColorColumn ctermbg=8 guibg=lightgrey
 "GitGutter
 let g:gitgutter_terminal_reports_focus=0
 nnoremap <leader>gh :GitGutterLineHighlightsToggle<cr>
@@ -174,22 +175,25 @@ nnoremap <leader>gc :GitGutterEnable<cr>
 "coc
 let g:coc_disable_startup_warning = 1
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-closetag
 " filenames like *.xml, *.html, *.xhtml, ...
 " These are the file extensions where this plugin is enabled.
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php,*.js,*.jsx,*.tsx'
 " filenames like *.xml, *.xhtml, ...
-" This will make the list of non-closing tags self-closing in the specified files.
+" This will make the list of non-closing tags self-closing in the
+" specified files.
 let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
 " filetypes like xml, html, xhtml, ...
 " These are the file types where this plugin is enabled.
 let g:closetag_filetypes = 'html,xhtml,phtml'
 " filetypes like xml, xhtml, ...
-" This will make the list of non-closing tags self-closing in the specified files.
+" This will make the list of non-closing tags self-closing
+" in the specified files.
 let g:closetag_xhtml_filetypes = 'xhtml,jsx'
 " integer value [0|1]
-" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+" This will make the list of non-closing tags case-sensitive (e.g.
+" `<Link>` will be closed while `<link>` won't.)
 let g:closetag_emptyTags_caseSensitive = 1
 " dict
 " Disables auto-close if not in a "valid" region (based on filetype)
