@@ -152,6 +152,10 @@ let g:airline#extensions#tabline#enabled = 1
 "colorscheme
 colorscheme codedark
 let g:airline_theme = 'codedark'
+"GitGutter
+let g:gitgutter_terminal_reports_focus=0
+nnoremap <leader>gh :GitGutterLineHighlightsToggle<cr>
+nnoremap <leader>gc :GitGutterEnable<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-closetag
