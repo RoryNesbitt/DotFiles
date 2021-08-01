@@ -6,6 +6,7 @@
 # Get this screen
 alias zrc="$EDITOR ~/.zshrc && clear && source ~/.zshrc && echo 'Reloaded zshrc'"
 alias vrc="$EDITOR ~/.vim/vimrc"
+alias nrc="$EDITOR ~/.config/nvim/init.vim"
 alias rl="clear && source ~/.zshrc"
 alias aliases="$EDITOR ~/.config/zsh/aliases.zsh && clear && source ~/.zshrc && echo 'Reloaded aliases'"
 alias device="$EDITOR ~/.config/zsh/device.zsh && clear && source ~/.zshrc && echo 'Reloaded device customisation'"
