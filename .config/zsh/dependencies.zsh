@@ -1,5 +1,13 @@
+if [ ! -f /usr/bin/tmux ] && [ ! -f /bin/tmux ]; then
+    echo "Installing tmux"
+    sudo apt install tmux -y
+fi
 if [ "$USER" = "pi" ]; then
     # Raspberry Pi only dependencies
+    if ! [ -f $HOME/.bin/nvim ]; then
+        echo "Installing Neovim"
+        # sudo mux new-session -d -s "Neovim Install" $HOME/.config/zsh/neovim.sh
+    fi
 else
     # Non-Raspberry Pi dependencies
     if ! [ -d $NVM_DIR ]; then
@@ -18,4 +26,3 @@ else
         chmod u+x $HOME/.bin/nvim
     fi
 fi
-# System agnostic dependencies
