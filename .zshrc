@@ -39,7 +39,7 @@ precmd() {
 
 # Defaults
 echo -ne '\e[2 q'               # Set cursor
-export EDITOR="vim"             # Set editor to Vim
+export EDITOR="nvim"             # Set editor to Vim
 export PATH="$HOME/.scripts:$PATH"
 # NVM
 export NVM_DIR="$HOME/.config/nvm"
