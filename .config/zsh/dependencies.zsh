@@ -1,8 +1,9 @@
-# Raspberry Pi only dependencies
 if [ "$USER" = "pi" ]; then
-# Non-Raspberry Pi dependencies
+    # Raspberry Pi only dependencies
 else
+    # Non-Raspberry Pi dependencies
     if ! [ -d $NVM_DIR ]; then
+        echo "Installing Node via NVM"
         mkdir $NVM_DIR
         XDG_OLD=$XDG_CONFIG_HOME
         XDG_CONFIG_HOME=$NVM_DIR
@@ -11,7 +12,8 @@ else
         source $HOME/.zshrc
         nvm install --lts
     fi
-    if [ -z $HOME/.bin/nvim ]; then
+    if ! [ -f $HOME/.bin/nvim ]; then
+        echo "Installing Neovim"
         curl -Lo $HOME/.bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
         chmod u+x $HOME/.bin/nvim
     fi
