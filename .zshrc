@@ -39,7 +39,7 @@ precmd() {
 
 # Defaults
 echo -ne '\e[2 q'               # Set cursor
-export EDITOR="vim"             # Set editor to Vim
+export EDITOR="nvim"             # Set editor to Vim
 export PATH="$HOME/.scripts:$PATH"
 # NVM
 export NVM_DIR="$HOME/.config/nvm"
@@ -55,7 +55,6 @@ unset FILE
 PROMPT="%F{$SHCOLOUR}$ %F{def}"
 RPROMPT="%F{white}[%F{$SHCOLOUR}%~%F{white}]"
 
-cpl
 if [ -z "$SSH_CLIENT" ]
 then
     neofetch --source ~/.config/zsh/img 2>/dev/null || ( cat ~/.config/zsh/img && echo -e "\033[${SHCOLOURN}m`whoami`\033[1;37m@\033[${SHCOLOURN}m`uname -n`\033[1;37m" )

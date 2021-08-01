@@ -7,3 +7,8 @@ if ! [ -d $NVM_DIR ]; then
     source $HOME/.zshrc
     nvm install --lts
 fi
+
+if [ -z $HOME/.scripts/nvim ]; then
+    curl -Lo $HOME/.scripts/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    chmod u+x $HOME/.scripts/nvim
+fi
