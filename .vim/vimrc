@@ -10,8 +10,8 @@ set background=dark             " changes the colours for a dark background
 set t_Co=256                    "
 set cursorline                  " Highlights the current line
 set cursorcolumn                " Highlights the current column
-highlight CursorLine ctermbg=yellow cterm=bold guibg=#2b2b2b
-highlight Cursorcolumn ctermbg=yellow cterm=bold guibg=#2b2b2b
+highlight CursorLine ctermbg=black cterm=bold
+highlight Cursorcolumn ctermbg=black cterm=bold
 set nowrap                      " Long lines won't wrap
 set colorcolumn=80              " Adds a colour marker on the # column
 set signcolumn=yes              " Left side info column
@@ -144,7 +144,7 @@ endif
 
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tomasiser/vim-code-dark'
+Plug 'gruvbox-community/gruvbox'
 Plug 'preservim/NERDTree'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
@@ -165,9 +165,9 @@ let NERDTreeShowHidden=1
 "airline
 let g:airline#extensions#tabline#enabled = 1
 "colorscheme
-colorscheme codedark
+colorscheme gruvbox
 let g:airline_theme = 'codedark'
-highlight ColorColumn ctermbg=8 guibg=lightgrey
+highlight ColorColumn ctermbg=8
 "GitGutter
 let g:gitgutter_terminal_reports_focus=0
 nnoremap <leader>gh :GitGutterLineHighlightsToggle<cr>
