@@ -1,12 +1,9 @@
 let HARDMODE=1
 
 let mapleader=" "
-syntax on                       " Syntax highlighting
-filetype plugin indent on       " enable file type indenting && language dependent indenting
 set mouse=a		                " Enable mouse usage (all modes)
 
 "visual
-set background=dark             " changes the colours for a dark background
 set t_Co=256                    "
 set cursorline                  " Highlights the current line
 set cursorcolumn                " Highlights the current column
@@ -22,7 +19,6 @@ set tabstop=4 softtabstop=4     "
 set shiftwidth=4                "
 set expandtab                   "
 set smartindent                 "
-set autoindent                  "
 
 "Numbers
 set number                      "
@@ -30,14 +26,12 @@ set relativenumber              "
 
 "Search
 set nohlsearch                  " Stop hl when search stops
-set incsearch		            " Highlight as you search
 set ignorecase		            " Do case insensitive matching
 set smartcase		            " Do smart case matching
 
 "History
 set noswapfile                  "
 set nobackup                    "
-set undodir=~/.vim/undo         "
 set undofile                    "
 set hidden		                " Hide buffers when they are abandoned
 
@@ -138,9 +132,9 @@ noremap <leader>S :%s//gI<Left><Left><Left>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Vim-plug
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
