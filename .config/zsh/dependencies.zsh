@@ -5,7 +5,7 @@ fi
 if [ "$USER" = "pi" ]; then
     # Raspberry Pi only dependencies
     if ! [ -f $HOME/.bin/nvim ]; then
-        echo "Installing Neovim"
+        # echo "Installing Neovim"
         # sudo mux new-session -d -s "Neovim Install" $HOME/.config/zsh/neovim.sh
     fi
 else
