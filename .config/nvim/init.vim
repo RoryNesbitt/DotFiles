@@ -143,6 +143,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'neovim/nvim-lspconfig'
 Plug 'preservim/NERDTree'
 Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
