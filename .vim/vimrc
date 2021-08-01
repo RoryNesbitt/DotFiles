@@ -1,3 +1,5 @@
+let HARDMODE=1
+
 let mapleader=" "
 syntax on                       " Syntax highlighting
 set background=dark             " changes the colours to fit with a dark background
@@ -30,18 +32,6 @@ set undodir=~/.vim/undo         "
 set undofile                    "
 set hidden		                " Hide buffers when they are abandoned
 
-"Disable Arrow keys in Normal mode
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
-
-"Disable Arrow keys in Insert mode
-"imap <up> <nop>
-"imap <down> <nop>
-"imap <left> <nop>
-"imap <right> <nop>
-
 "cursor lines
 "set cursorline
 set cursorcolumn
@@ -55,6 +45,7 @@ set splitright                  " vertical split right
 "Misc
 set exrc                        " Loads directory specific .vimrc files
 set noerrorbells                " Silence
+set nowrap                      " Long lines won't wrap
 "set colorcolumn=80             " Adds a colour marker on the # column
 set signcolumn=yes              "
 set scrolloff=6                 " Keeps the cursor away from the top/bottom of the page
@@ -86,6 +77,29 @@ autocmd BufWritePre * %s/\s\+$//e
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Shortcuts
+
+if HARDMODE
+    "Disable Arrow keys in Normal mode
+    map <up> <nop>
+    map <down> <nop>
+    map <left> <nop>
+    map <right> <nop>
+    "Disable hjkl in Normal mode
+    map h <nop>
+    map j <nop>
+    map k <nop>
+    map l <nop>
+    "Disable Arrow keys in Insert mode
+    imap <up> <nop>
+    imap <down> <nop>
+    imap <left> <nop>
+    imap <right> <nop>
+endif
+
+"Move line
+vnoremap J :m '>+1<cr>gv=gv
+vnoremap K :m '<-2<cr>gv=gv
+
 "WSL clipboard
 if !has("clipboard") && executable("clip.exe")
     noremap <C-C> :call system('clip.exe', GetSelectedText())<CR>
@@ -95,24 +109,24 @@ if !has("clipboard") && executable("clip.exe")
 endif
 
 "set spellcheck
-map <leader>l :setlocal spell spell! spelllang=en_gb<CR>
+nnoremap <leader>l :setlocal spell spell! spelllang=en_gb<CR>
 
 "run shellcheck on current file
-map <leader>p :!clear && shellcheck %<cr>
+nnoremap <leader>p :!clear && shellcheck %<cr>
 
 "Open windows
-nnoremap <leader>v :vsp ./
+nnoremap <leader>o :vsp .<cr>
 nnoremap <leader>t :vertical terminal<cr>
 
 "split navigation
-map <C-h> <c-w>h
-map <C-j> <c-w>j
-map <C-k> <c-w>k
-map <C-l> <c-w>l
-map <leader>h :wincmd h<cr>
-map <leader>j :wincmd j<cr>
-map <leader>k :wincmd k<cr>
-map <leader>l :wincmd l<cr>
+noremap <C-h> <c-w>h
+noremap <C-j> <c-w>j
+noremap <C-k> <c-w>k
+noremap <C-l> <c-w>l
+noremap <leader>h :wincmd h<cr>
+noremap <leader>j :wincmd j<cr>
+noremap <leader>k :wincmd k<cr>
+noremap <leader>l :wincmd l<cr>
 
 "search
 "replace in line
@@ -145,8 +159,9 @@ let g:coc_global_extensions = [
     \ ]
 
 "NERDTree
-map <F5> :NERDTreeToggle<CR>
+noremap <F5> :NERDTreeToggle<CR>
 nnoremap <leader>n :NERDTreeFind<CR>
+let NERDTreeShowHidden=1
 "airline
 let g:airline#extensions#tabline#enabled = 1
 "colorscheme
@@ -156,6 +171,8 @@ let g:airline_theme = 'codedark'
 let g:gitgutter_terminal_reports_focus=0
 nnoremap <leader>gh :GitGutterLineHighlightsToggle<cr>
 nnoremap <leader>gc :GitGutterEnable<cr>
+"coc
+let g:coc_disable_startup_warning = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-closetag
