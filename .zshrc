@@ -40,7 +40,7 @@ precmd() {
 # Defaults
 echo -ne '\e[2 q'               # Set cursor
 export EDITOR="nvim"             # Set editor to Vim
-export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.bin:/snap/bin:$PATH"
 # NVM
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                    # This loads nvm

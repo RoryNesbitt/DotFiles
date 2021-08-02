@@ -4,10 +4,10 @@ if [ ! -f /usr/bin/tmux ] && [ ! -f /bin/tmux ]; then
 fi
 if [ "$USER" = "pi" ]; then
     # Raspberry Pi only dependencies
-    if [ ! -f /bin/snap ] && [ ! -f /bin/snap ]; then
-        sudo apt install snap -y
+    if [ ! -f /bin/snap ] && [ ! -f /usr/bin/snap ]; then
+        sudo apt install snapd -y
     fi
-    if ! [ -f $HOME/.bin/nvim ]; then
+    if ! [ -f /snap/bin/nvim ]; then
         sudo snap install nvim --beta --classic
     fi
 else
