@@ -5,9 +5,11 @@ fi
 if [ "$USER" = "pi" ]; then
     # Raspberry Pi only dependencies
     if [ ! -f /bin/snap ] && [ ! -f /usr/bin/snap ]; then
+        echo "Installing snap"
         sudo apt install snapd -y
     fi
     if ! [ -f /snap/bin/nvim ]; then
+        echo "Installing neovim"
         sudo snap install nvim --beta --classic
     fi
 else
