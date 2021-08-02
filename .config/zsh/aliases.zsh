@@ -19,6 +19,7 @@ alias gaa="git add --all"
 alias gch="git checkout"
 alias gcl="git clone"
 alias gs="git status"
+alias gd="git diff"
 alias gi="git update-index --skip-worktree"
 gc() {
     if [ "$1" != "" ]
@@ -30,23 +31,24 @@ gc() {
 }
 
 
-# Config
-alias config="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
-alias cpl="config pull"
-alias cps="config push"
-alias ca="config add"
-alias cau="config add -u"
-alias caa="config add --all"
-alias cch="config checkout"
-alias cs="config status"
-alias ci="config update-index --skip-worktree"
+# Dotfile git
+alias dots="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
+alias dpl="dots pull"
+alias dps="dots push"
+alias da="dots add"
+alias dau="dots add -u"
+alias daa="dots add --all"
+alias dch="dots checkout"
+alias ds="dots status"
+alias dd="dots diff"
+alias di="dots update-index --skip-worktree"
 
-cc() {
+dc() {
     if [ "$1" != "" ]
     then
-        config commit -m "$*" && echo "Commited: $*"
+        dots commit -m "$*" && echo "Commited: $*"
     else
-        config commit -m "Updated" && echo "Commited: Updated"
+        dots commit -m "Updated" && echo "Commited: Updated"
     fi
 }
 
