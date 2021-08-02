@@ -1,4 +1,4 @@
-let HARDMODE=1
+let HARDMODE=0
 
 let mapleader=" "
 set mouse=a		                " Enable mouse usage (all modes)
