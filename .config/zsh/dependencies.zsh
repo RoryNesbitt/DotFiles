@@ -1,6 +1,6 @@
 if [ ! -f /usr/bin/tmux ] && [ ! -f /bin/tmux ]; then
     echo "Installing tmux"
-    sudo apt install tmux -y
+    sudo apt install tmux -y || pacman -S tmux
 fi
 if [ "$USER" = "pi" ]; then
     # Raspberry Pi only dependencies
@@ -9,7 +9,7 @@ if [ "$USER" = "pi" ]; then
         sudo apt install snapd -y
     fi
     if ! [ -f /snap/bin/nvim ]; then
-        echo "Installing neovim"
+        echo "Installing neovim via snap"
         sudo snap install nvim --beta --classic
     fi
 else
