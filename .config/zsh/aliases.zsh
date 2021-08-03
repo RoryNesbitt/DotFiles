@@ -91,7 +91,7 @@ kdir() {
     rm -rf $PD
 }
 
-if [ "`uname -r`"=~"icrosoft" ]; then
+if [[ "`uname -r`" =~ "icrosoft" ]]; then
 	# fix screen
 	alias fixscreen="sudo /etc/init.d/screen-cleanup start"
 

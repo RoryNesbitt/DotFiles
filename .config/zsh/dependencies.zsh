@@ -1,6 +1,6 @@
 if [ ! -f /usr/bin/tmux ] && [ ! -f /bin/tmux ]; then
     echo "Installing tmux"
-    sudo apt install tmux -y || pacman -S tmux
+    sudo apt install tmux -y || sudo pacman -S --noconfirm tmux
 fi
 if [ "$USER" = "pi" ]; then
     # Raspberry Pi only dependencies
