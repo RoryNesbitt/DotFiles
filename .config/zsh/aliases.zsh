@@ -4,12 +4,16 @@
 # alias -g global=can go anywhere in command
 #
 # Get this screen
-alias zrc="$EDITOR ~/.zshrc && clear && source ~/.zshrc && echo 'Reloaded zshrc'"
+alias zrc="$EDITOR ~/.zshrc"
+alias i3c="$EDITOR ~/.i3/config"
 alias vrc="$EDITOR ~/.vim/vimrc"
 alias nrc="$EDITOR ~/.config/nvim/init.vim"
 alias rl="clear && source ~/.zshrc"
-alias aliases="$EDITOR ~/.config/zsh/aliases.zsh && clear && source ~/.zshrc && echo 'Reloaded aliases'"
-alias device="$EDITOR ~/.config/zsh/device.zsh && clear && source ~/.zshrc && echo 'Reloaded device customisation'"
+alias aliases="$EDITOR ~/.config/zsh/aliases.zsh"
+
+config() {
+    $EDITOR ~/.config/$1
+}
 
 # Git
 alias gpl="git pull"
