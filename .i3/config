@@ -183,8 +183,8 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 
 # Open applications on specific workspaces
-assign [class="firefox"] $ws3
-assign [class="discord"] $ws2
+# assign [class="firefox"] $ws3
+# assign [class="discord"] $ws2
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
@@ -421,5 +421,5 @@ mode "$mode_gaps_outer" {
 }
 
 # Remap Caps to Escape
-exec setxkbmap -option
-exec setxkbmap -option "caps:escape"
+exec --no-startup-id setxkbmap -option
+exec --no-startup-id setxkbmap -option "caps:escape"
