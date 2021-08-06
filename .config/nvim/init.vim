@@ -92,6 +92,11 @@ if HARDMODE
     imap <right> <nop>
 endif
 
+"Center to focus
+nnoremap { {zz
+nnoremap } }zz
+nnoremap i zzi
+
 "Move line
 vnoremap J :m '>+1<cr>gv=gv
 vnoremap K :m '<-2<cr>gv=gv
