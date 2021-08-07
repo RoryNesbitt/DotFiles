@@ -178,6 +178,8 @@ let g:airline#extensions#tabline#enabled = 1
 colorscheme gruvbox
 let g:airline_theme = 'gruvbox'
 highlight ColorColumn ctermbg=8
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
 "GitGutter
 let g:gitgutter_terminal_reports_focus=0
 nnoremap <leader>gh :GitGutterLineHighlightsToggle<cr>
