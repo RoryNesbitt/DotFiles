@@ -95,7 +95,7 @@ endif
 "Center to focus
 nnoremap { {zz
 nnoremap } }zz
-nnoremap i zzi
+"nnoremap i zzi
 
 "Move line
 vnoremap J :m '>+1<cr>gv=gv
