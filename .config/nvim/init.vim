@@ -103,10 +103,17 @@ vnoremap K :m '<-2<cr>gv=gv
 
 "WSL clipboard
 if !has("clipboard") && executable("clip.exe")
-    noremap <C-C> :call system('clip.exe', GetSelectedText())<CR>
-    noremap <C-X> :call system('clip.exe', GetSelectedText())<CR>gvx
-    noremap <leader>c :call system('clip.exe', GetSelectedText())<CR>
-    noremap <leader>x :call system('clip.exe', GetSelectedText())<CR>gvx
+    vnoremap <C-C> :call system('clip.exe', GetSelectedText())<CR>
+    vnoremap <C-X> :call system('clip.exe', GetSelectedText())<CR>gvx
+    vnoremap <leader>c :call system('clip.exe', GetSelectedText())<CR>
+    vnoremap <leader>x :call system('clip.exe', GetSelectedText())<CR>gvx
+else
+    vnoremap <C-c> "+y
+    vnoremap <C-x> "+ygvx
+    noremap <C-S-v> "+p
+    vnoremap <leader>c "+y
+    vnoremap <leader>x "+ygvx
+    noremap <leader>v "+p
 endif
 
 "set spellcheck
