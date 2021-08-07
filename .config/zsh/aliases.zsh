@@ -18,7 +18,8 @@ config() {
 # Git
 alias gpl="git pull"
 alias gps="git push"
-alias ga="git add -u"
+alias ga="git add"
+alias gau="git add -u"
 alias gaa="git add --all"
 alias gch="git checkout"
 alias gcl="git clone"
