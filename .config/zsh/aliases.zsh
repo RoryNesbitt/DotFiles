@@ -80,7 +80,7 @@ alias blue="ssh -q pi@192.168.1.20"
 alias green="ssh -q pi@192.168.1.21"
 alias black="ssh -q pi@192.168.1.22"
 alias purple="ssh -q pi@192.168.1.23"
-alias remote="ssh -q pi@ssh -q.rorynesbittdesign.com"
+alias work-pi="ssh -q pi@raspberrypi.local -t zsh"
 
 # Misc
 alias :q='exit'
