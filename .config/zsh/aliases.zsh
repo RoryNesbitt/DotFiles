@@ -34,7 +34,7 @@ gc() {
         git commit -m "Updated" && echo "Commited: Updated"
     fi
 }
-
+alias gg="gau && gc && gps"
 
 # Dotfile git
 alias dots="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
@@ -46,7 +46,6 @@ alias dch="dots checkout"
 alias ds="dots status"
 alias dd="dots diff"
 alias di="dots update-index --skip-worktree"
-
 dc() {
     if [ "$1" != "" ]
     then
@@ -55,6 +54,7 @@ dc() {
         dots commit -m "Updated" && echo "Commited: Updated"
     fi
 }
+alias dd="dau && dc && dps"
 
 # ls
 alias ls="ls --color=auto -lhFX"
@@ -80,7 +80,7 @@ alias blue="ssh -q pi@192.168.1.20"
 alias green="ssh -q pi@192.168.1.21"
 alias black="ssh -q pi@192.168.1.22"
 alias purple="ssh -q pi@192.168.1.23"
-alias remote="ssh -q pi@ssh -q.rorynesbittdesign.com"
+alias work-pi="ssh -q pi@raspberrypi.local -t zsh"
 
 # Misc
 alias :q='exit'
