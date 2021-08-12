@@ -32,6 +32,8 @@ setopt hist_expire_dups_first   # delete duplicates first when HISTFILE size exc
 setopt hist_ignore_dups         # ignore duplicated commands history list
 setopt hist_ignore_space        # ignore commands that start with space
 setopt hist_verify              # show command with history expansion to user before running it
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
 
 precmd() {
 #print ""                        # Print empty line before prompt
