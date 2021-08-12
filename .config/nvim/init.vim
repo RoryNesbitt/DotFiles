@@ -4,7 +4,7 @@ let mapleader=" "
 set mouse=a		                " Enable mouse usage (all modes)
 
 "visual
-set t_Co=256                    "
+set t_Co=256                    "  
 set cursorline                  " Highlights the current line
 set cursorcolumn                " Highlights the current column
 highlight CursorLine ctermbg=black cterm=bold
@@ -15,14 +15,14 @@ set signcolumn=yes              " Left side info column
 set scrolloff=4                 " Keeps the cursor away from the screen edge
 
 "Tabs
-set tabstop=4 softtabstop=4     "
-set shiftwidth=4                "
-set expandtab                   "
-set smartindent                 "
+set tabstop=4 softtabstop=4     " 
+set shiftwidth=4                " 
+set expandtab                   " 
+set smartindent                 " 
 
 "Numbers
-set number                      "
-set relativenumber              "
+set number                      " 
+set relativenumber              " 
 
 "Search
 set nohlsearch                  " Stop hl when search stops
@@ -30,9 +30,9 @@ set ignorecase		            " Do case insensitive matching
 set smartcase		            " Do smart case matching
 
 "History
-set noswapfile                  "
-set nobackup                    "
-set undofile                    "
+set noswapfile                  " 
+set nobackup                    " 
+set undofile                    " 
 set hidden		                " Hide buffers when they are abandoned
 
 "splitview
@@ -68,7 +68,8 @@ endif
 augroup RND
     autocmd!
     "remove trailing whitespace
-    autocmd BufWritePre * %s/\s\+$//e
+    "This breaks markdown formatting
+    "autocmd BufWritePre * %s/\s\+$//e
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -153,6 +154,7 @@ endif
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
+Plug 'tomasiser/vim-code-dark'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neovim/nvim-lspconfig'
@@ -161,6 +163,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'alvan/vim-closetag'
+Plug 'vim-syntastic/syntastic'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-repeat'
+Plug 'lervag/vimtex'
 call plug#end()
 "coc
 let g:coc_global_extensions = [
@@ -175,8 +181,8 @@ let NERDTreeShowHidden=1
 "airline
 let g:airline#extensions#tabline#enabled = 1
 "colorscheme
-colorscheme gruvbox
-let g:airline_theme = 'gruvbox'
+colorscheme codedark
+let g:airline_theme = 'codedark'
 highlight ColorColumn ctermbg=8
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
@@ -184,8 +190,22 @@ highlight NonText ctermbg=none
 let g:gitgutter_terminal_reports_focus=0
 nnoremap <leader>gh :GitGutterLineHighlightsToggle<cr>
 nnoremap <leader>gc :GitGutterEnable<cr>
-"coc
-let g:coc_disable_startup_warning = 1
+"Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+"Airline Syntastic  
+let g:airline#extensions#syntastic#enabled = 1
+let airline#extensions#syntastic#error_symbol = 'E:'
+let airline#extensions#syntastic#stl_format_err = '%E{[%fe(#%e)]}'
+let airline#extensions#syntastic#warning_symbol = 'W:'
+let airline#extensions#syntastic#stl_format_warn = '%W{[%fw(#%w)]}'
+"vim-reapet
+silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-closetag

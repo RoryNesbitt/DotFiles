@@ -44,7 +44,7 @@ alias da="dots add"
 alias dau="dots add -u"
 alias dch="dots checkout"
 alias ds="dots status"
-alias dd="dots diff"
+alias ddf="dots diff"
 alias di="dots update-index --skip-worktree"
 dc() {
     if [ "$1" != "" ]
