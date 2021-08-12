@@ -167,6 +167,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
 Plug 'lervag/vimtex'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 "coc
 let g:coc_global_extensions = [
