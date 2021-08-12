@@ -182,7 +182,7 @@ let NERDTreeShowHidden=1
 "airline
 let g:airline#extensions#tabline#enabled = 1
 "colorscheme
-colorscheme codedark
+colorscheme gruvbox
 let g:airline_theme = 'codedark'
 highlight ColorColumn ctermbg=8
 highlight Normal ctermbg=none
