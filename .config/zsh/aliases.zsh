@@ -5,7 +5,6 @@
 #
 # Get this screen
 alias zrc="$EDITOR ~/.zshrc"
-alias i3c="$EDITOR ~/.i3/config"
 alias vrc="$EDITOR ~/.vim/vimrc"
 alias nrc="$EDITOR ~/.config/nvim/init.vim"
 alias rl="clear && source ~/.zshrc"
