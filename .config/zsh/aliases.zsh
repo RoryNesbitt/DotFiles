@@ -98,22 +98,6 @@ if [[ "`uname -r`" =~ "icrosoft" ]]; then
 	# fix screen
 	alias fixscreen="sudo /etc/init.d/screen-cleanup start"
 
-	# desktop
-
-	desktop() {
-		case "$1" in
-			start)
-				sudo /etc/init.d/xrdp start
-				;;
-			stop)
-				sudo /etc/init.d/xrdp stop
-				;;
-			*)
-				sudo /etc/init.d/xrdp start; sleep 1s; mstsc.exe /v localhost:3390; sleep 1s; sudo /etc/init.d/xrdp stop
-				;;
-		esac
-	}
-
 	# shutdown
 	alias shutdown="shutdown.exe /s /t 00"
 	alias reboot="shutdown.exe /r /t 00"
@@ -132,14 +116,14 @@ if [[ "`uname -r`" =~ "icrosoft" ]]; then
 
     # Browser
     BROWSER="/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe"
-    BROWSR="/mnt/c/Program Files/Mozilla Firefox/firefox.exe"
-
-    alias -s com="$BROWSER"
-    alias -s uk="$BROWSER"
-    alias -s net="$BROWSR"
-
-    search() {
-        $BROWSR "https://www.startpage.com/do/dsearch?query=$*"
-    }
-
+    
 fi
+
+alias -s com="$BROWSER"
+alias -s uk="$BROWSER"
+alias -s net="$BROWSER"
+
+search() {
+    $BROWSER "https://www.startpage.com/do/dsearch?query=$*"
+}
+

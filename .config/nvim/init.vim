@@ -1,7 +1,7 @@
 let HARDMODE=0
 
 let mapleader=" "
-set mouse=a		                " Enable mouse usage (all modes)
+"set mouse=a		                " Enable mouse usage (all modes)
 
 "visual
 set t_Co=256                    "  
@@ -157,6 +157,7 @@ Plug 'morhetz/gruvbox'
 Plug 'tomasiser/vim-code-dark'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'nvim-lua/completion-nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'preservim/NERDTree'
 Plug 'airblade/vim-gitgutter'
