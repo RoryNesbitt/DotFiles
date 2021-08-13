@@ -157,8 +157,8 @@ Plug 'morhetz/gruvbox'
 Plug 'tomasiser/vim-code-dark'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'nvim-lua/completion-nvim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
 Plug 'preservim/NERDTree'
 Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
@@ -170,11 +170,16 @@ Plug 'tpope/vim-repeat'
 Plug 'lervag/vimtex'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
+
 "coc
 let g:coc_global_extensions = [
     \ 'coc-json',
     \ 'coc-pairs'
     \ ]
+"Lsp
+lua << EOF
+require'lspconfig'.pyright.setup{}
+EOF
 
 "NERDTree
 noremap <F5> :NERDTreeToggle<CR>
