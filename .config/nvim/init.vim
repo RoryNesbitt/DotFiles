@@ -152,23 +152,37 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin()
+"coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Colours
 Plug 'morhetz/gruvbox'
 Plug 'tomasiser/vim-code-dark'
+"Lsp
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+Plug 'glepnir/lspsaga.nvim'
+Plug 'simrat39/symbols-outline.nvim'
+"Treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+"Extra info
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
 Plug 'preservim/NERDTree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tpope/vim-fugitive'
+"git
 Plug 'airblade/vim-gitgutter'
+"Functionality
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'alvan/vim-closetag'
 Plug 'vim-syntastic/syntastic'
+"Uhm..TODO:Remember why I added there
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
+"Language addons
 Plug 'lervag/vimtex'
-Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 "coc
@@ -176,10 +190,6 @@ let g:coc_global_extensions = [
     \ 'coc-json',
     \ 'coc-pairs'
     \ ]
-"Lsp
-lua << EOF
-require'lspconfig'.pyright.setup{}
-EOF
 
 "NERDTree
 noremap <F5> :NERDTreeToggle<CR>
@@ -189,7 +199,7 @@ let NERDTreeShowHidden=1
 let g:airline#extensions#tabline#enabled = 1
 "colorscheme
 colorscheme gruvbox
-let g:airline_theme = 'codedark'
+let g:airline_theme = 'gruvbox'
 highlight ColorColumn ctermbg=8
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
@@ -213,6 +223,32 @@ let airline#extensions#syntastic#warning_symbol = 'W:'
 let airline#extensions#syntastic#stl_format_warn = '%W{[%fw(#%w)]}'
 "vim-reapet
 silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
+
+"Lsp
+set completeopt=menuone,noinsert,noselect
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+lua require('lspconfig').pyright.setup{ on_attach=on_attach }
+"nvim-compe
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.incomplete_delay = 400
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+let g:compe.source.vsnip = v:true
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-closetag
