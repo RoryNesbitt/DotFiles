@@ -424,3 +424,4 @@ mode "$mode_gaps_outer" {
 # Remap Caps to Escape
 exec --no-startup-id setxkbmap -option
 exec --no-startup-id sleep 1 && setxkbmap -option "caps:escape"
+exec sleep 10 && node-red &

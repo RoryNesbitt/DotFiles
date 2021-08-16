@@ -35,7 +35,7 @@ gc() {
 }
 alias gg="gau && gc && gps"
 
-# Dotfile git
+# Dotfiles git
 alias dots="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
 alias dpl="dots pull"
 alias dps="dots push"
@@ -84,6 +84,7 @@ alias work-pi="ssh -q pi@raspberrypi.local -t zsh"
 # Misc
 alias :q='exit'
 alias cx='chmod +x'
+alias w='cd ~/Documents/work'
 ndir() {
     mkdir $1
     cd $1
