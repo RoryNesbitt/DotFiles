@@ -61,7 +61,14 @@ unset FILE
 PROMPT="%F{$SHCOLOUR}$ %F{def}"
 RPROMPT="%F{white}[%F{$SHCOLOUR}%~%F{white}]"
 
-if [ -z "$SSH_CLIENT" ]
-then
-    neofetch --source ~/.config/zsh/img | lolcat 2>/dev/null || neofetch --source ~/.config/zsh/img 2>/dev/null || ( cat ~/.config/zsh/img && echo -e "\033[${SHCOLOURN}m`whoami`\033[1;37m@\033[${SHCOLOURN}m`uname -n`\033[1;37m" )
+if [ -z "$SSH_CLIENT" ]; then
+    if [ -f /bin/neofetch ] && [ -f /bin/lolcat ]; then
+        neofetch --source ~/.config/zsh/img | lolcat
+    elif [ -f /bin/neofetch ]; then
+        neofetch --source ~/.config/zsh/img 
+    elif [ -f /bin/lolcat ]; then
+        ( cat ~/.config/zsh/img && echo -e "`whoami`@`uname -n`" ) | lolcat
+    else
+        cat ~/.config/zsh/img && echo -e "\033[${SHCOLOURN}m`whoami`\033[1;37m@\033[${SHCOLOURN}m`uname -n`\033[1;37m"
+    fi
 fi
