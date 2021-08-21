@@ -168,7 +168,7 @@ Plug 'nvim-treesitter/playground'
 "Extra info
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'preservim/NERDTree'
+"Plug 'preservim/NERDTree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
 "git
