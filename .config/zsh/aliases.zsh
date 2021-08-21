@@ -4,12 +4,13 @@
 # alias -g global=can go anywhere in command
 #
 # Get this screen
+alias aliases="$EDITOR ~/.config/zsh/aliases.zsh"
+alias rl="clear && source ~/.zshrc"
+
+#rc files
 alias zrc="$EDITOR ~/.zshrc"
 alias vrc="$EDITOR ~/.vim/vimrc"
 alias nrc="$EDITOR ~/.config/nvim/init.vim"
-alias rl="clear && source ~/.zshrc"
-alias aliases="$EDITOR ~/.config/zsh/aliases.zsh"
-
 config() {
     $EDITOR ~/.config/$1
 }
