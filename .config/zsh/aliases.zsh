@@ -33,7 +33,14 @@ gc() {
         git commit -m "Updated" && echo "Commited: Updated"
     fi
 }
-alias gg="gau && gc && gps"
+gg() {
+    if [ "$1" != "" ]
+    then
+        gau && gc $* && gp
+    else
+        gau && gc && gp
+    fi
+}
 
 # Dotfiles git
 alias dots="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
@@ -53,7 +60,14 @@ dc() {
         dots commit -m "Updated" && echo "Commited: Updated"
     fi
 }
-alias dd="dau && dc && dps"
+dd() {
+    if [ "$1" != "" ]
+    then
+        dau && dc $* && dp
+    else
+        dau && dc && dp
+    fi
+}
 
 # ls
 alias ls="ls --color=auto -lhFX"
