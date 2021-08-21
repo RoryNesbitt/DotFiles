@@ -36,9 +36,13 @@ gc() {
 gg() {
     if [ "$1" != "" ]
     then
-        gau && gc $* && gps
+        gau
+        gc $*
+        gps
     else
-        gau && gc && gps
+        gau
+        gc
+        gps
     fi
 }
 
@@ -63,9 +67,13 @@ dc() {
 dd() {
     if [ "$1" != "" ]
     then
-        dau && dc $* && dps
+        dau
+        dc $*
+        dps
     else
-        dau && dc && dps
+        dau
+        dc
+        dps
     fi
 }
 
