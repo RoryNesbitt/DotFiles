@@ -35,16 +35,14 @@ gc() {
     fi
 }
 gg() {
+    gau
     if [ "$1" != "" ]
     then
-        gau
         gc $*
-        gps
     else
-        gau
         gc
-        gps
     fi
+    gps
 }
 
 # Dotfiles git
@@ -66,16 +64,14 @@ dc() {
     fi
 }
 dd() {
+    dau
     if [ "$1" != "" ]
     then
-        dau
         dc $*
-        dps
     else
-        dau
         dc
-        dps
     fi
+    dps
 }
 
 # ls
@@ -89,11 +85,6 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias diff='diff --color=auto'
 alias ip='ip --color=auto'
-
-# google drive
-alias md="screen -dmS drive rclone mount drive: /home/rory/drive/ && echo 'Google Drive mounted'"
-alias umd="screen -S drive -X stuff ^C && fusermount -u /home/rory/drive/ && echo 'Google Drive unmounted'"
-alias uni="cd /home/rory/drive/Important\ stuff/Uni/Masters/"
 
 # SSHs
 alias jackdaw="ssh -q root@192.168.1.4"
@@ -119,9 +110,6 @@ kdir() {
 }
 
 if [[ "`uname -r`" =~ "icrosoft" ]]; then
-	# fix screen
-	alias fixscreen="sudo /etc/init.d/screen-cleanup start"
-
 	# shutdown
 	alias shutdown="shutdown.exe /s /t 00"
 	alias reboot="shutdown.exe /r /t 00"
