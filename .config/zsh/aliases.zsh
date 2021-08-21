@@ -26,6 +26,7 @@ alias gcl="git clone"
 alias gs="git status"
 alias gd="git diff"
 alias gi="git update-index --skip-worktree"
+alias gr="git reset --soft HEAD~1"
 gc() {
     if [ "$1" != "" ]
     then
@@ -55,6 +56,7 @@ alias dch="dots checkout"
 alias ds="dots status"
 alias ddf="dots diff"
 alias di="dots update-index --skip-worktree"
+alias dr="dots reset --soft HEAD~1"
 dc() {
     if [ "$1" != "" ]
     then
