@@ -45,6 +45,7 @@ set noerrorbells                " Silence
 set showmatch		            " Show matching brackets.
 set showcmd		                " Show (partial) command in status line.
 set wildmode=longest,list,full  " Enable autocomplete files
+match errorMsg /\s\+$/           " Marks trailing whitespace as an error
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "WSL
@@ -67,9 +68,6 @@ endif
 "AutoCmds
 augroup RND
     autocmd!
-    "remove trailing whitespace
-    "This breaks markdown formatting
-    "autocmd BufWritePre * %s/\s\+$//e
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -235,6 +233,7 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 lua << EOF
 require('lspconfig').ansiblels.setup{ on_attach=on_attach }
 require('lspconfig').bashls.setup{ on_attach=on_attach }
+require('lspconfig').clangd.setup{ on_attach=on_attach }
 require('lspconfig').dockerls.setup{ on_attach=on_attach }
 require('lspconfig').jsonls.setup{ on_attach=on_attach }
 require('lspconfig').pyright.setup{ on_attach=on_attach }
