@@ -102,7 +102,7 @@ nnoremap } }zz
 vnoremap J :m '>+1<cr>gv=gv
 vnoremap K :m '<-2<cr>gv=gv
 
-"WSL clipboard
+"Clipboard
 if !has("clipboard") && executable("clip.exe")
     vnoremap <C-C> :call system('clip.exe', GetSelectedText())<CR>
     vnoremap <C-X> :call system('clip.exe', GetSelectedText())<CR>gvx
@@ -159,6 +159,7 @@ Plug 'morhetz/gruvbox'
 Plug 'tomasiser/vim-code-dark'
 "Lsp
 Plug 'neovim/nvim-lspconfig'
+Plug 'alexaandru/nvim-lspupdate'
 Plug 'hrsh7th/nvim-compe'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'simrat39/symbols-outline.nvim'
@@ -169,6 +170,7 @@ Plug 'nvim-treesitter/playground'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 "Plug 'preservim/NERDTree'
+Plug 'liuchengxu/vim-which-key'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
 "git
@@ -178,19 +180,22 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'alvan/vim-closetag'
 Plug 'vim-syntastic/syntastic'
-"Uhm..TODO:Remember why I added there
+"Uhm..TODO:Remember why I added these
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
-"Language addons
-Plug 'lervag/vimtex'
+"Android studio integration
+Plug 'beeender/Comrade'
 call plug#end()
 
 "coc
 let g:coc_global_extensions = [
-    \ 'coc-json',
-    \ 'coc-pairs'
+    \ 'coc-pairs',
+    \ 'coc-java',
+    \ 'coc-java-debug'
     \ ]
-
+"Which key maps
+nnoremap <silent> <leader> :WhichKey '<Space>'<cr>
+vnoremap <silent> <leader> :WhichKeyVisual '<Space>'<cr>
 "NERDTree
 noremap <F5> :NERDTreeToggle<CR>
 nnoremap <leader>n :NERDTreeFind<CR>
@@ -227,7 +232,16 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 "Lsp
 set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-lua require('lspconfig').pyright.setup{ on_attach=on_attach }
+lua << EOF
+require('lspconfig').ansiblels.setup{ on_attach=on_attach }
+require('lspconfig').bashls.setup{ on_attach=on_attach }
+require('lspconfig').dockerls.setup{ on_attach=on_attach }
+require('lspconfig').jsonls.setup{ on_attach=on_attach }
+require('lspconfig').pyright.setup{ on_attach=on_attach }
+require('lspconfig').texlab.setup{ on_attach=on_attach }
+require('lspconfig').vimls.setup{ on_attach=on_attach }
+require('lspconfig').yamlls.setup{ on_attach=on_attach }
+EOF
 "nvim-compe
 let g:compe = {}
 let g:compe.enabled = v:true
