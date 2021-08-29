@@ -226,7 +226,7 @@ for_window [class="Xfburn"] floating enable
 for_window [urgent=latest] focus
 
 # reload the configuration file
-bindsym $mod+Shift+c exec "$HOME/.config/i3/buildFile -r -a $HOSTNAME.config none"
+bindsym $mod+Shift+c exec "$HOME/.config/i3/buildFile -r -a $(hostname).config none"
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
