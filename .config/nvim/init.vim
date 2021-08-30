@@ -106,13 +106,13 @@ vnoremap L >gv
 if !has("clipboard") && executable("clip.exe")
     vnoremap <C-C> :call system('clip.exe', GetSelectedText())<CR>
     vnoremap <C-X> :call system('clip.exe', GetSelectedText())<CR>gvx
-    vnoremap <leader>c :call system('clip.exe', GetSelectedText())<CR>
+    vnoremap <leader>y :call system('clip.exe', GetSelectedText())<CR>
     vnoremap <leader>x :call system('clip.exe', GetSelectedText())<CR>gvx
 else
     vnoremap <C-c> "+y
     vnoremap <C-x> "+ygvx
     noremap <C-S-v> "+p
-    vnoremap <leader>c "+y
+    vnoremap <leader>y "+y
     vnoremap <leader>x "+ygvx
     noremap <leader>v "+p
 endif
@@ -169,7 +169,6 @@ Plug 'nvim-treesitter/playground'
 "Extra info
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'preservim/NERDTree'
 Plug 'liuchengxu/vim-which-key'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
@@ -196,10 +195,6 @@ let g:coc_global_extensions = [
 "Which key maps
 nnoremap <silent> <leader> :WhichKey '<Space>'<cr>
 vnoremap <silent> <leader> :WhichKeyVisual '<Space>'<cr>
-"NERDTree
-noremap <F5> :NERDTreeToggle<CR>
-nnoremap <leader>n :NERDTreeFind<CR>
-let NERDTreeShowHidden=1
 "airline
 let g:airline#extensions#tabline#enabled = 1
 "colorscheme
