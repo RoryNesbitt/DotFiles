@@ -97,8 +97,10 @@ nnoremap } }zz
 "nnoremap i zzi
 
 "Move line
+vnoremap H <gv
 vnoremap J :m '>+1<cr>gv=gv
 vnoremap K :m '<-2<cr>gv=gv
+vnoremap L >gv
 
 "Clipboard
 if !has("clipboard") && executable("clip.exe")
@@ -224,7 +226,7 @@ let airline#extensions#syntastic#error_symbol = 'E:'
 let airline#extensions#syntastic#stl_format_err = '%E{[%fe(#%e)]}'
 let airline#extensions#syntastic#warning_symbol = 'W:'
 let airline#extensions#syntastic#stl_format_warn = '%W{[%fw(#%w)]}'
-"vim-reapet
+"vim-repeat
 silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 
 "Lsp
