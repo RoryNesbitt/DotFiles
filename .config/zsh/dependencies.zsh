@@ -24,9 +24,8 @@ else
         source $HOME/.zshrc
         nvm install --lts
     fi
-    if ! [ -f $HOME/.bin/nvim ]; then
+    if ! [ -f /usr/bin/nvim ]; then
         echo "Installing Neovim"
-        curl -Lo $HOME/.bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-        chmod u+x $HOME/.bin/nvim
+        sudo pacman -S neovim --noconfirm || curl -Lo $HOME/.bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage && chmod u+x $HOME/.bin/nvim
     fi
 fi
