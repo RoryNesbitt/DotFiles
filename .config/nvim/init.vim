@@ -143,6 +143,9 @@ noremap <leader>s :s//gI<Left><Left><Left>
 "replace in file
 noremap <leader>S :%s//gI<Left><Left><Left>
 
+"misc
+nnoremap " :norm zto""""""<CR><Left><Left>i
+nnoremap U <C-R>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Vim-plug
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
@@ -160,7 +163,7 @@ Plug 'tomasiser/vim-code-dark'
 "Lsp
 Plug 'neovim/nvim-lspconfig'
 Plug 'alexaandru/nvim-lspupdate'
-Plug 'hrsh7th/nvim-compe'
+"Plug 'hrsh7th/nvim-compe'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'simrat39/symbols-outline.nvim'
 "Treesitter
@@ -188,9 +191,7 @@ call plug#end()
 
 "coc
 let g:coc_global_extensions = [
-    \ 'coc-pairs',
-    \ 'coc-java',
-    \ 'coc-java-debug'
+    \ 'coc-pairs'
     \ ]
 "Which key maps
 nnoremap <silent> <leader> :WhichKey '<Space>'<cr>

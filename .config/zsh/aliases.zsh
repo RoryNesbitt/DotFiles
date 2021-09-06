@@ -95,7 +95,8 @@ alias blue="ssh -q pi@192.168.1.20"
 alias green="ssh -q pi@192.168.1.21"
 alias black="ssh -q pi@192.168.1.22"
 alias purple="ssh -q pi@192.168.1.23"
-alias work-pi="ssh -q pi@raspberrypi.local -t zsh"
+alias work-pi="ssh -q pi@192.168.8.100 -t zsh"
+alias work-db="ssh -q labadmin@10.192.31.13 -t mongo RFIOD"
 
 # Misc
 alias :q='exit'
