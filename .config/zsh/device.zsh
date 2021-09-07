@@ -11,4 +11,3 @@
 #
 SHCOLOUR="14"
 SHCOLOURN="1;36"
-alias vpn="echo zvP5sC6h6cjaMWr | sudo openconnect --config=workvpn.conf gucsasa1.cent.gla.ac.uk"
