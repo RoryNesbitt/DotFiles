@@ -102,6 +102,8 @@ alias work-db="ssh -q labadmin@10.192.31.13 -t mongo RFIOD"
 alias :q='exit'
 alias cx='chmod +x'
 alias w='cd ~/Documents/work'
+alias ww='cd ~/Documents/work-website'
+alias myip="echo $(ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p')"
 ndir() {
     mkdir $1
     cd $1
