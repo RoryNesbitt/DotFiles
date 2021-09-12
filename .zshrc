@@ -45,7 +45,7 @@ precmd() {
 # Defaults
 echo -ne '\e[2 q'                # Set cursor
 export EDITOR="nvim"             # Set editor
-export BROWSER="firefox"         # Set browser
+export BROWSER="vivaldi-stable"         # Set browser
 export PATH="$HOME/.bin:/snap/bin:$PATH"
 # NVM
 export NVM_DIR="$HOME/.config/nvm"
