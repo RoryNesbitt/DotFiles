@@ -169,6 +169,11 @@ Plug 'simrat39/symbols-outline.nvim'
 "Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
+"Telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fxy-native.nvim'
 "Extra info
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
