@@ -191,7 +191,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
 "Android studio integration
-Plug 'beeender/Comrade'
+"Plug 'beeender/Comrade'
 call plug#end()
 
 "coc
