@@ -125,7 +125,7 @@ nnoremap <leader>p :!clear && shellcheck %<cr>
 
 "Open windows
 nnoremap <leader>o :vsp .<cr>
-nnoremap <leader>t :vertical terminal<cr>
+"nnoremap <leader>t :vertical terminal<cr>
 
 "split navigation
 noremap <C-h> <c-w>h
@@ -173,7 +173,7 @@ Plug 'nvim-treesitter/playground'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fxy-native.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 "Extra info
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -298,3 +298,48 @@ let g:closetag_regions = {
 let g:closetag_shortcut = '>'
 " Add > at current position without closing the current tag, default is ''
 let g:closetag_close_shortcut = '<leader>>'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Telescope
+lua << EOF
+local actions = require('telescope.actions')
+require('telescope').setup {
+    defaults = {
+        file_sorter = require('telescope.sorters').get_fzy_sorter,
+        prompt_prefix = ' >',
+        color_devicons = true,
+
+        file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
+        grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
+        qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+
+        mappings = {
+            i = {
+                ["<C-x>"] = false,
+                ["<C-q>"] = actions.send_to_qflist,
+            },
+        }
+    },
+    extentions = {
+        fzy_native = {
+            overide_generic_sorter = false,
+            overide_file_sorter = true,
+        }
+    }
+}
+
+require('telescope').load_extension('fzy_native')
+
+local M = {}
+M.search_dotfiles = function()
+    require('telescope.builtin').find_files({
+        prompt_title = '< init.vim >',
+        cwd = '~/.config/nvim/',
+    })
+end
+
+return M
+
+EOF
+
+nnoremap <leader>t :Telescope find_files<cr>
