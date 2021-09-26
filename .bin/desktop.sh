@@ -1,7 +1,12 @@
 #!/bin/sh
 
-. ~/.bin/dependencies.sh
+sudo pacman -Syyu --noconfirm kitty vivaldi discord steam docker pavucontrol tmux neovim nodejs npm
 
-sudo pacman -Syyu kitty vivaldi discord steam docker pavucontrol --noconfirm
+yay -S --noconfirm realvnc-vnc-viewer openconnect
 
-yay -S realvnc-vnc-viewer openconnect --noconfirm
+### Docker
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+systemctl enable docker
+systemctl start docker
