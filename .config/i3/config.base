@@ -426,7 +426,3 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
-# Remap Caps to Escape
-exec --no-startup-id setxkbmap -option
-exec --no-startup-id sleep 1 && setxkbmap -option "caps:escape"

@@ -1,3 +1,0 @@
-#!/bin/sh
-/bin/xmodmap -e "clear lock"
-/bin/xmodmap -e "keysym Caps_Lock = Escape"
