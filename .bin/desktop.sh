@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo pacman -Syyu --noconfirm kitty vivaldi discord steam docker pavucontrol tmux neovim nodejs npm
+sudo pacman -Syyu --noconfirm kitty vivaldi discord steam docker pulseaudio pavucontrol tmux neovim nodejs npm
 
 yay -S --noconfirm realvnc-vnc-viewer openconnect
 

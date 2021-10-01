@@ -30,9 +30,9 @@ alias gr="git reset --soft HEAD~1"
 gc() {
     if [ "$1" != "" ]
     then
-        git commit -m "$*" && echo "Commited: $*"
+        git commit -m "$*"
     else
-        git commit -m "Updated" && echo "Commited: Updated"
+        git commit -m "Updated"
     fi
 }
 gg() {
@@ -60,9 +60,9 @@ alias dr="dots reset --soft HEAD~1"
 dc() {
     if [ "$1" != "" ]
     then
-        dots commit -m "$*" && echo "Commited: $*"
+        dots commit -m "$*"
     else
-        dots commit -m "Updated" && echo "Commited: Updated"
+        dots commit -m "Updated"
     fi
 }
 dd() {
