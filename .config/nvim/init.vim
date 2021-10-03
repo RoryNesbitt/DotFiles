@@ -144,7 +144,7 @@ noremap <leader>s :s//gI<Left><Left><Left>
 noremap <leader>S :%s//gI<Left><Left><Left>
 
 "misc
-nnoremap " :norm zto""""""<CR><Left><Left>i
+nnoremap "" :norm zto""""""<CR><Left><Left>i
 nnoremap U <C-R>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Vim-plug
