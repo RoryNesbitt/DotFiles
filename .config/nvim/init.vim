@@ -1,7 +1,7 @@
 let HARDMODE=0
 
 let mapleader=" "
-"set mouse=a		                " Enable mouse usage (all modes)
+set mouse=a		                " Enable mouse usage (all modes)
 
 "visual
 set t_Co=256                    "  
