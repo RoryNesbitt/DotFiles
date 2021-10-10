@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo pacman -Syyu --noconfirm kitty vivaldi discord steam docker pulseaudio pavucontrol tmux neovim nodejs npm
+sudo pacman -Syyu --noconfirm kitty vivaldi discord steam docker pulseaudio pavucontrol tmux neovim nodejs npm wine
 
 yay -S --noconfirm realvnc-vnc-viewer openconnect teams
 
@@ -10,3 +10,5 @@ sudo usermod -aG docker $USER
 newgrp docker
 systemctl enable docker
 systemctl start docker
+
+exit
