@@ -15,6 +15,12 @@ config() {
     $EDITOR ~/.config/$1
 }
 
+# ls
+alias l='\ls --color=auto -FX'
+alias ls="l -lh"
+alias la="ls -A"
+alias le="ls -I"
+
 # Git
 alias gpl="git pull"
 alias gps="git push"
@@ -76,11 +82,6 @@ dd() {
     dps
 }
 
-# ls
-alias ls="ls --color=auto -lhFX"
-alias la="ls -A"
-alias le="ls -I"
-
 # Colour
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -104,7 +105,7 @@ alias :q='exit'
 alias cx='chmod +x'
 alias w='cd ~/Documents/work'
 alias ww='cd ~/Documents/work-website'
-alias myip="echo $(ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p')"
+alias myip='curl icanhazip.com'
 ndir() {
     mkdir $1
     cd $1

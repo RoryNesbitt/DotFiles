@@ -1,0 +1,21 @@
+vim.g.compe = {}
+vim.g.compe.enabled = 'v:true'
+vim.g.compe.autocomplete = 'v:true'
+vim.g.compe.debug = 'v:false'
+vim.g.compe.min_length = 1
+vim.g.compe.preselect = 'enable'
+vim.g.compe.throttle_time = 80
+vim.g.compe.source_timeout = 200
+vim.g.compe.incomplete_delay = 400
+vim.g.compe.max_abbr_width = 100
+vim.g.compe.max_kind_width = 100
+vim.g.compe.max_menu_width = 100
+vim.g.compe.documentation = 'v:true'
+vim.g.compe.source = {
+    path = 'v:true',
+    buffer = 'v:true',
+    calc = 'v:true',
+    nvim_lsp = 'v:true',
+    nvim_lua = 'v:true',
+    vsnip = 'v:true'
+}
