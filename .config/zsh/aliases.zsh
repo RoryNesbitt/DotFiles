@@ -12,8 +12,7 @@ alias zrc="$EDITOR ~/.zshrc"
 alias vrc="$EDITOR ~/.vim/vimrc"
 alias nrc="$EDITOR ~/.config/nvim/init.vim"
 config() {
-
-    dir = $(pwd)
+    dir=$(pwd)
     cd ~/.config/$1
     $EDITOR .
     cd $dir
