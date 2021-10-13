@@ -1,7 +1,7 @@
 --VISUAL
 --vim.bo.t_Co = '256'                --
-vim.wo.cursorline = true          -- Highlights the current line
-vim.wo.cursorcolumn = true        -- Highlights the current column
+--vim.wo.cursorline = true          -- Highlights the current line
+--vim.wo.cursorcolumn = true        -- Highlights the current column
 vim.cmd([[
 highlight CursorLine ctermbg=black cterm=bold
 highlight Cursorcolumn ctermbg=black cterm=bold
