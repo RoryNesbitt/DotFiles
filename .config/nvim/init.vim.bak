@@ -4,7 +4,7 @@ let mapleader=" "
 set mouse=a		                " Enable mouse usage (all modes)
 
 "visual
-set t_Co=256                    "  
+set t_Co=256                    " 
 set cursorline                  " Highlights the current line
 set cursorcolumn                " Highlights the current column
 highlight CursorLine ctermbg=black cterm=bold
