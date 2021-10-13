@@ -12,7 +12,11 @@ alias zrc="$EDITOR ~/.zshrc"
 alias vrc="$EDITOR ~/.vim/vimrc"
 alias nrc="$EDITOR ~/.config/nvim/init.vim"
 config() {
-    $EDITOR ~/.config/$1
+
+    dir = $(pwd)
+    cd ~/.config/$1
+    $EDITOR .
+    cd $dir
 }
 
 # ls
@@ -49,7 +53,6 @@ gg() {
     else
         gc
     fi
-    gps
 }
 
 # Dotfiles git
@@ -79,7 +82,6 @@ dd() {
     else
         dc
     fi
-    dps
 }
 
 # Colour

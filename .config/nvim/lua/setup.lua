@@ -1,3 +1,5 @@
+vim.g.mapleader = ' '
+
 vim.cmd([[
 "Change cursor in different modes
 if &term =~ "xterm"
