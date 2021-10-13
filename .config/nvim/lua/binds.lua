@@ -1,4 +1,3 @@
-vim.g.mapleader = ' '
 local opts = {noremap = true}
 local silentOpts = {noremap = true, silent = true}
 
