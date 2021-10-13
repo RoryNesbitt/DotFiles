@@ -53,7 +53,6 @@ gg() {
     else
         gc
     fi
-    gps
 }
 
 # Dotfiles git
@@ -83,7 +82,6 @@ dd() {
     else
         dc
     fi
-    dps
 }
 
 # Colour

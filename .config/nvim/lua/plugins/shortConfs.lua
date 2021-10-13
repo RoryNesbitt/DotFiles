@@ -8,8 +8,8 @@ vim.api.nvim_set_keymap('n', '<leader>t', ':Telescope find_files<cr>', opts)
 vim.g.coc_global_extensions = 'coc-pairs'
 
 --Which key
-vim.api.nvim_set_keymap('n', ' ', ':WhichKey "<Space>"<cr>', opts)
-vim.api.nvim_set_keymap('v', ' ', ':WhichKeyVisual "<Space>"<cr>', opts)
+vim.api.nvim_set_keymap('n', '<leader>', ':WhichKey "<leader>"<cr>', opts)
+vim.api.nvim_set_keymap('v', '<leader>', ':WhichKeyVisual "<leader>"<cr>', opts)
 
 --GitGutter
 vim.g.gitgutter_terminal_reports_focus=0
