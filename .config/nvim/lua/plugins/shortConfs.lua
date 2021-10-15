@@ -5,7 +5,7 @@ local silentOpts = {noremap = true, silent = true}
 --The rest is in telescope.lua but if I include this line it whines
 vim.api.nvim_set_keymap('n', '<leader>t', ':Telescope find_files<cr>', opts)
 --coc
-vim.g.coc_global_extensions = 'coc-pairs'
+--vim.g.coc_global_extensions = 'coc-pairs'
 
 --Which key
 vim.api.nvim_set_keymap('n', '<leader>', ':WhichKey "<leader>"<cr>', opts)
