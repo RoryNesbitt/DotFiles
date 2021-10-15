@@ -9,13 +9,15 @@ highlight Cursorcolumn ctermbg=black cterm=bold
 vim.wo.wrap = false               -- Long lines won't wrap
 vim.wo.colorcolumn = '80'         -- Adds a colour marker on the # column
 vim.wo.signcolumn = 'yes'         -- Left side info column
-vim.wo.scrolloff = 4              -- Keeps the cursor away from the screen edge
+vim.wo.scrolloff = 4              -- Keeps the cursor away from the top/bottom
+vim.wo.sidescrolloff = 4          -- Keeps the cursor away from the sides
 
 --Tabs
 vim.bo.expandtab = true
 vim.bo.shiftwidth = 4
 vim.bo.tabstop = 4
 vim.bo.softtabstop = 4
+vim.bo.autoindent  = true
 vim.bo.smartindent  = true
 
 --Numbers
@@ -43,6 +45,8 @@ vim.o.errorbells = false        -- Silence
 vim.o.showmatch = true          -- Show matching brackets.
 vim.o.showcmd = true            -- Show (partial) command in status line.
 vim.o.wildmode = 'longest,list,full' -- Enable autocomplete files
+vim.o.whichwrap = '<,>,[,],h,l'--movement keys wrap when reaching the end of the line
+
 --Marks trailing whitespace as an error
 vim.cmd([[
 match errorMsg /\s\+$/
