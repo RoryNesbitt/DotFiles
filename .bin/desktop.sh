@@ -1,8 +1,20 @@
 #!/bin/sh
 
-sudo pacman -Syyu --noconfirm kitty vivaldi discord steam docker pulseaudio pavucontrol tmux neovim nodejs npm wine ttf-fira-code
-
+sudo pacman -Syyu --noconfirm kitty vivaldi discord steam docker pulseaudio pavucontrol tmux neovim nodejs npm wine ttf-fira-code yarn
 yay -S --noconfirm realvnc-vnc-viewer openconnect teams
+
+### LSP servers
+yarn global add ansible-language-server yaml-language-server
+npm i -g vscode-langservers-extracted emmet-ls vim-language-server typescript typescript-language-server
+pip3 install 'python-lsp-server[all]'
+
+#bashls
+#clangd
+#dockerls
+#jsonls
+#pylsp
+#sumneko_lua
+#texlab
 
 ###Nerd Font
 mkdir -p ~/.local/share/fonts
