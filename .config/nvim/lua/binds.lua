@@ -35,10 +35,10 @@ vim.api.nvim_set_keymap('v', 'L', '>gv', silentOpts)
 -- Clipboard
 vim.api.nvim_set_keymap('v', '<C-c>', '"+y', silentOpts)
 vim.api.nvim_set_keymap('v', '<C-x>', '"+ygvx', silentOpts)
-vim.api.nvim_set_keymap('n', '<C-S-v> ', '"+p', silentOpts)
+vim.api.nvim_set_keymap('n', '<C-S-v>', '"+p', silentOpts)
 vim.api.nvim_set_keymap('v', '<leader>y', '"+y', silentOpts)
 vim.api.nvim_set_keymap('v', '<leader>x', '"+ygvx', silentOpts)
-vim.api.nvim_set_keymap('n', '<leader>v ', '"+p', silentOpts)
+vim.api.nvim_set_keymap('n', '<leader>p', '"+p', silentOpts)
 
 -- set spellcheck
 vim.api.nvim_set_keymap('n', '<leader>l', ':setlocal spell spell! spelllang=en_gb<CR>', silentOpts)
