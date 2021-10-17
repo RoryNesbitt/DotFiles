@@ -11,7 +11,6 @@ require('packer').startup(function()
     use 'glepnir/lspsaga.nvim'
     use 'simrat39/symbols-outline.nvim'
 --nvim-cmp
-    use 'neovim/nvim-lspconfig'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/nvim-cmp'
@@ -36,14 +35,16 @@ require('packer').startup(function()
     use 'liuchengxu/vim-which-key'
     use 'ryanoasis/vim-devicons'
     use 'tpope/vim-fugitive'
+    use {
+	'kyazdani42/nvim-tree.lua',
+	requires = 'kyazdani42/nvim-web-devicons',
+	config = function() require'nvim-tree'.setup {} end
+    }
 --git
     use 'airblade/vim-gitgutter'
 --Functionality
     use 'terryma/vim-multiple-cursors'
     use 'tpope/vim-surround'
-    --use { 'alvan/vim-closetag',
-        --ft = {'html'}
-    --}
     use 'vim-syntastic/syntastic'
     use 'windwp/nvim-autopairs'
     use 'scrooloose/nerdcommenter'
