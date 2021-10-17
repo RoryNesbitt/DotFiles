@@ -1,11 +1,10 @@
 #!/bin/sh
 
-sudo pacman -Syyu --noconfirm kitty vivaldi discord steam docker pulseaudio pavucontrol tmux neovim nodejs npm wine ttf-fira-code yarn
+sudo pacman -Syyu --noconfirm kitty vivaldi discord steam docker pulseaudio pavucontrol tmux neovim nodejs npm wine ttf-fira-code yarn python-pip
 yay -S --noconfirm realvnc-vnc-viewer openconnect teams
 
 ### LSP servers
-yarn global add ansible-language-server yaml-language-server
-npm i -g vscode-langservers-extracted emmet-ls vim-language-server typescript typescript-language-server
+yarn global add ansible-language-server yaml-language-server vscode-langservers-extracted emmet-ls vim-language-server typescript typescript-language-server
 pip3 install 'python-lsp-server[all]'
 
 #bashls
@@ -24,7 +23,7 @@ cd ~/.local/share/fonts && curl -fLo "Fira Code Regular Nerd Font Complete Mono.
 sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
-systemctl enable docker
-systemctl start docker
+sudo systemctl enable docker
+sudo systemctl start docker
 
 exit
