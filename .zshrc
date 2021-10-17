@@ -51,7 +51,7 @@ precmd() {
 echo -ne '\e[2 q'                # Set cursor
 export EDITOR="nvim"             # Set editor
 export BROWSER="vivaldi-stable"         # Set browser
-export PATH="$HOME/.bin:/snap/bin:$PATH"
+export PATH="$HOME/.bin:$HOME/.local/bin:/snap/bin:$PATH"
 # NVM
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                    # This loads nvm
