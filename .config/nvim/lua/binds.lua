@@ -45,7 +45,7 @@ vim.api.nvim_set_keymap('n', '<leader>l', ':setlocal spell spell! spelllang=en_g
 
 -- Open windows
 vim.api.nvim_set_keymap('n', '<leader>o', ':vsp .<cr>', silentOpts)
-vim.api.nvim_set_keymap('n', '<leader><cr>', ':vertical terminal<cr>', silentOpts)
+vim.api.nvim_set_keymap('n', '<leader><cr>', ':vsp <bar> terminal<cr>', silentOpts)
 
 -- split navigation
 vim.api.nvim_set_keymap('n', '<C-h>', '<c-w>h', silentOpts)
