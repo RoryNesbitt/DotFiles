@@ -1,7 +1,7 @@
-if [ "$TMUX" = "" ]; then
-    tmux attach || tmux
-    exit
-fi
+#if [ "$TMUX" = "" ]; then
+    #tmux attach || tmux
+    #exit
+#fi
 
 #setopt interactivecomments      # allow comments in interactive mode
 #setopt ksharrays                # arrays start at 0
