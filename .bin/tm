@@ -1,0 +1,35 @@
+#!/bin/sh
+
+if [ $# = 1 ]; then
+    if [ $1 = 'w' ]; then
+        1='work'
+    elif [ $1 = 'ww' ]; then
+        1='work-website'
+    fi
+
+    if ! tmux has-session -t $1 2> /dev/null; then
+        tmux new -s $1 -d
+    fi  # has-session work
+
+    if [ $1 = 'work' ]; then
+        tmux send-keys -t work 'cd ~/Documents/work' Enter
+        tmux new-window -t work:2
+        tmux split-window -h -t work:2
+        tmux send-keys -t work:1 'nvim .' Enter
+        tmux send-keys -t work:2.1 ./start
+        tmux select-window -t work:1
+    elif [ $1 = 'work-website' ]; then
+        tmux send-keys -t work-website 'cd ~/Documents/work-website' Enter
+        tmux send-keys -t work-website:1 './home.sh' Enter
+    elif [ $1 = 'scripts' ]; then
+        tmux send-keys -t scripts 'cd ~/.bin' Enter
+        tmux send-keys -t scripts 'nvim .' Enter
+    fi  # if $1 is 'x'
+    if [ "$TMUX" = "" ]; then
+        tmux attach-session -t $1
+    else
+        tmux switch-client -t $1
+    fi
+fi
+
+
