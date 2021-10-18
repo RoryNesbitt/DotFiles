@@ -10,20 +10,21 @@ if [ $# = 1 ]; then
     fi
 
     if ! tmux has-session -t $session 2> /dev/null; then
-        tmux new -s $session -d
 	if [ $session = 'work' ]; then
-		tmux send-keys -t work 'cd ~/Documents/work' Enter
+		tmux new -s $session -d -c ~/Documents/work
 		tmux new-window -t work:2
 		tmux split-window -h -t work:2
 		tmux send-keys -t work:1 'nvim .' Enter
 		tmux send-keys -t work:2.1 ./start
 		tmux select-window -t work:1
 	elif [ $session = 'work-website' ]; then
-		tmux send-keys -t work-website 'cd ~/Documents/work-website' Enter
+		tmux new -s $session -d -c ~/Documents/work-website
 		tmux send-keys -t work-website:1 './home.sh' Enter
 	elif [ $session = 'scripts' ]; then
-		tmux send-keys -t scripts 'cd ~/.bin' Enter
+		tmux new -s $session -d -c ~/.bin
 		tmux send-keys -t scripts 'nvim .' Enter
+	else
+		tmux new -s $session -d
 	fi  # if $session is 'x'
     fi  # has-session work
 
