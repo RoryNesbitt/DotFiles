@@ -32,5 +32,5 @@ ScrollingUnlimited=TRUE
 TitleMode=TERMINAL_TITLE_REPLACE
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
 TextBlinkMode=TERMINAL_TEXT_BLINK_MODE_FOCUSED
-FontName=Fira Code
+FontName=FiraCode Nerd Font
 

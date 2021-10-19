@@ -1,7 +1,7 @@
 #!/bin/sh
 
-sudo pacman -Syyu --noconfirm kitty vivaldi discord steam docker pulseaudio pavucontrol tmux neovim nodejs npm wine ttf-fira-code yarn python-pip
-yay -S --noconfirm realvnc-vnc-viewer openconnect teams
+sudo pacman -Syyu --noconfirm kitty vivaldi discord steam docker pulseaudio pavucontrol tmux neovim nodejs npm wine yarn python-pip
+yay -S --noconfirm realvnc-vnc-viewer openconnect teams nerd-fonts-fira-code
 
 ### LSP servers
 yarn global add ansible-language-server yaml-language-server vscode-langservers-extracted emmet-ls vim-language-server typescript typescript-language-server
