@@ -1,54 +1,54 @@
 require('packer').startup(function()
---Self manage packer
+    --Self manage packer
     use 'wbthomason/packer.nvim'
---Colours
+    --Colours
     use 'morhetz/gruvbox'
     use 'tomasiser/vim-code-dark'
---Lsp
+    --Lsp
     use 'neovim/nvim-lspconfig'
     use 'alexaandru/nvim-lspupdate'
     --use 'hrsh7th/nvim-compe'
     use 'glepnir/lspsaga.nvim'
     use 'simrat39/symbols-outline.nvim'
---nvim-cmp
+    --nvim-cmp
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/vim-vsnip'
     use 'onsails/lspkind-nvim'
---Treesitter
+    --Treesitter
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'nvim-treesitter/playground'
     use 'windwp/nvim-ts-autotag'
     use 'p00f/nvim-ts-rainbow'
---Telescope
+    --Telescope
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
     use 'nvim-telescope/telescope-fzy-native.nvim'
---Extra info
+    --Extra info
     use {
-      'hoob3rt/lualine.nvim',
-      requires = {'kyazdani42/nvim-web-devicons', opt = true}
+        'hoob3rt/lualine.nvim',
+        requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
     use 'liuchengxu/vim-which-key'
     use 'ryanoasis/vim-devicons'
     use 'tpope/vim-fugitive'
     use {
-	'kyazdani42/nvim-tree.lua',
-	requires = 'kyazdani42/nvim-web-devicons',
-	config = function() require'nvim-tree'.setup {} end
+        'kyazdani42/nvim-tree.lua',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function() require'nvim-tree'.setup {} end
     }
---git
+    --git
     use 'airblade/vim-gitgutter'
---Functionality
+    --Functionality
     use 'terryma/vim-multiple-cursors'
     use 'tpope/vim-surround'
     use 'vim-syntastic/syntastic'
     use 'windwp/nvim-autopairs'
     use 'scrooloose/nerdcommenter'
     use 'tpope/vim-repeat'
---Android studio integration
+    --Android studio integration
     use { 'beeender/Comrade', opt = true }
 end)
