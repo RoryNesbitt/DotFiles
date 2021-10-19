@@ -13,11 +13,17 @@ vim.wo.scrolloff = 4              -- Keeps the cursor away from the top/bottom
 vim.wo.sidescrolloff = 4          -- Keeps the cursor away from the sides
 
 --Tabs
+vim.o.expandtab = true
 vim.bo.expandtab = true
+vim.o.shiftwidth = 4
 vim.bo.shiftwidth = 4
+vim.o.tabstop = 4
 vim.bo.tabstop = 4
+vim.o.softtabstop = 4
 vim.bo.softtabstop = 4
+vim.o.autoindent  = true
 vim.bo.autoindent  = true
+vim.o.smartindent  = true
 vim.bo.smartindent  = true
 
 --Numbers
