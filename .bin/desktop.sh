@@ -11,7 +11,6 @@ pip3 install 'python-lsp-server[all]'
 #clangd
 #dockerls
 #jsonls
-#pylsp
 #sumneko_lua
 #texlab
 
