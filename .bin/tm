@@ -14,15 +14,14 @@ if [ $# = 1 ]; then
 		tmux new -s $session -d -c ~/Documents/work
 		tmux new-window -t work:2
 		tmux split-window -h -t work:2
-		tmux send-keys -t work:1 'nvim .' Enter
+		tmux send-keys -t work:1 '$EDITOR .' Enter
 		tmux send-keys -t work:2.1 ./start
 		tmux select-window -t work:1
 	elif [ $session = 'work-website' ]; then
 		tmux new -s $session -d -c ~/Documents/work-website
 		tmux send-keys -t work-website:1 './home.sh' Enter
 	elif [ $session = 'scripts' ]; then
-		tmux new -s $session -d -c ~/.bin
-		tmux send-keys -t scripts 'nvim .' Enter
+		tmux new -s $session -d -c ~/.bin $EDITOR .
 	else
 		tmux new -s $session -d
 	fi  # if $session is 'x'
