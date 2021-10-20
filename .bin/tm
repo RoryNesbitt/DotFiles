@@ -1,10 +1,10 @@
 #!/bin/sh
 
-if [ $# = 1 ]; then
+if [ $# != 0 ]; then
     if [ $1 = 'w' ]; then
         session='work'
     elif [ $1 = 'ww' ]; then
-        session='work-website'
+        session='work2'
 	else
 	session=$1
     fi
@@ -12,12 +12,10 @@ if [ $# = 1 ]; then
     if ! tmux has-session -t $session 2> /dev/null; then
 	if [ $session = 'work' ]; then
 		tmux new -s $session -d -c ~/Documents/work
-		tmux new-window -t work:2
-		tmux split-window -h -t work:2
+		tmux new-window -t work:2 -c ~/Documents/work
 		tmux send-keys -t work:1 '$EDITOR .' Enter
-		tmux send-keys -t work:2.1 ./start
-		tmux select-window -t work:1
-	elif [ $session = 'work-website' ]; then
+		#tmux send-keys -t work:2.1 ./start
+	elif [ $session = 'work2' ]; then
 		tmux new -s $session -d -c ~/Documents/work-website
 		tmux send-keys -t work-website:1 './home.sh' Enter
 	elif [ $session = 'scripts' ]; then
