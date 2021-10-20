@@ -101,6 +101,11 @@ alias work-pi="ssh -q pi@192.168.8.100 -t zsh"
 alias work-server="ssh -q labadmin@10.192.31.13"
 alias work-db="ssh -q labadmin@10.192.31.13 -t mongo RFIOD"
 
+# Tmux
+alias tmls='tmux list-sessions'
+alias tmk='tmux kill-session -t'
+alias tmkk='tmux kill-session'
+
 # Misc
 alias :q='exit'
 alias cx='chmod +x'
