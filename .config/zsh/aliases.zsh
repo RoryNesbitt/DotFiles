@@ -41,7 +41,7 @@ gc() {
     then
         git commit -m "$*"
     else
-        git commit -m "Updated"
+        git commit
     fi
 }
 gg() {
@@ -70,7 +70,7 @@ dc() {
     then
         dots commit -m "$*"
     else
-        dots commit -m "Updated"
+        dots commit
     fi
 }
 dd() {
