@@ -17,9 +17,13 @@ zinit light-mode for \
     zinit-zsh/z-a-rust \
     zinit-zsh/z-a-as-monitor \
     zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
+    zinit-zsh/z-a-bin-gem-node 
 
 ### End of Zinit's installer chunk
+
+zinit light-mode for \
+    hlissner/zsh-autopair \
+    zsh-users/zsh-autosuggestions
 
 # [zsh-vi-mode](https://github.com/jeffreytse/zsh-vi-mode)
 zinit ice depth=1
