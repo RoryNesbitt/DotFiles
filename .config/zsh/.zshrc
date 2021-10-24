@@ -24,13 +24,13 @@ bindkey '^e' edit-command-line                  # edit command in editor
 
 # Completion
 autoload -Uz compinit
-compinit -d ~/.cache/zsh/zcompdump
+compinit -d $ZDOTDIR/zcompdump
 compinit
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # case insensitive tab completion
 
 # History configurations
-HISTFILE=~/.cache/zsh/zsh_history
+HISTFILE=$ZDOTDIR/zsh_history
 HISTSIZE=1000
 SAVEHIST=2000
 setopt hist_expire_dups_first   # delete duplicates first when HISTFILE size exceeds HISTSIZE
@@ -48,17 +48,14 @@ precmd() {
 }
 
 # Defaults
-echo -ne '\e[2 q'                # Set cursor
-export EDITOR="nvim"             # Set editor
-export BROWSER="vivaldi-stable"         # Set browser
-export PATH="$HOME/.bin:$HOME/.local/bin:/snap/bin:$PATH"
+#echo -ne '\e[2 q'                # Set cursor
 # NVM
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                    # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Load files
-for FILE (~/.config/zsh/*.zsh); do
+for FILE ($ZDOTDIR/rc/*.zsh); do
   . $FILE
 done
 unset FILE
