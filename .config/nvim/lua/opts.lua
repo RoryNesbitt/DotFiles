@@ -36,8 +36,10 @@ vim.o.ignorecase = true		-- ignore case when searching
 vim.o.smartcase = true		-- unless search includes upercase
 
 --History
+vim.o.swapfile = false
 vim.bo.swapfile = false
 vim.o.backup = false
+vim.o.undofile = true
 vim.bo.undofile = true
 vim.o.hidden = true             -- Hide buffers when they are abandoned
 
