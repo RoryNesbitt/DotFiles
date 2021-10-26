@@ -104,6 +104,9 @@ alias work-db="ssh -q labadmin@10.192.31.13 -t mongo RFIOD"
 alias tmls='tmux list-sessions'
 alias tmk='tmux kill-session -t'
 alias tmkk='tmux kill-session'
+alias scripts='tm scripts'
+alias work='tm work'
+alias work2='tm work2'
 
 # Misc
 alias :q='exit'
