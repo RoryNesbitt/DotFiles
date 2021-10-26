@@ -1,16 +1,12 @@
-if [ "$TMUX" = "" ] && [ -z "$SSH_CLIENT" ]; then
+# Always open main tmux if not in a tmux or ssh session
+if [ -z "$TMUX" ] && [ -z "$SSH_CLIENT" ]; then
     tmux attach -t main || tmux new -s main
     while true; do
-        if tmux has-session -t main; then
-            tmux attach-session -t main
-        else
-            exit
-        fi
+        tmux attach-session -t main || exit
     done
 fi
 
-setopt interactivecomments      # allow comments in interactive mode
-#setopt ksharrays                # arrays start at 0
+#setopt interactivecomments      # allow comments in interactive mode
 #setopt magicequalsubst          # enable filename expansion for arguments of the form ‘anything=expression’
 #setopt nonomatch                # hide error message if there is no match for the pattern
 #setopt notify                   # report the status of background jobs immediately
