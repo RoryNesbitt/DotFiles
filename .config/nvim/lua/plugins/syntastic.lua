@@ -1,6 +1,6 @@
-vim.wo.statusline = vim.wo.statusline .. '%#warningmsg#'
-vim.wo.statusline = vim.wo.statusline .. '%{SyntasticStatuslineFlag()}'
-vim.wo.statusline = vim.wo.statusline .. '%*'
+--vim.wo.statusline = vim.wo.statusline .. '%#warningmsg#'
+--vim.wo.statusline = vim.wo.statusline .. '%{SyntasticStatuslineFlag()}'
+--vim.wo.statusline = vim.wo.statusline .. '%*'
 
 vim.g.syntastic_always_populate_loc_list = 1
 vim.g.syntaestic_auto_loc_list = 1
