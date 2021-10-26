@@ -1,6 +1,12 @@
 if [ "$TMUX" = "" ] && [ -z "$SSH_CLIENT" ]; then
     tmux attach -t main || tmux new -s main
-    exit
+    while true; do
+        if tmux has-session -t main; then
+            tmux attach-session -t main
+        else
+            exit
+        fi
+    done
 fi
 
 setopt interactivecomments      # allow comments in interactive mode
