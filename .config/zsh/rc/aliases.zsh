@@ -97,7 +97,7 @@ alias green="ssh -q pi@192.168.1.21"
 alias black="ssh -q pi@192.168.1.22"
 alias purple="ssh -q pi@192.168.1.23"
 alias work-pi="ssh -q pi@192.168.8.100 -t zsh"
-alias work-server="ssh -q labadmin@10.192.31.13"
+alias work-server="ssh labadmin@10.192.31.7 -t zsh"
 alias work-db="ssh -q labadmin@10.192.31.13 -t mongo RFIOD"
 
 # Tmux
