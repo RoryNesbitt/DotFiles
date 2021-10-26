@@ -1,4 +1,4 @@
-if [ "$TMUX" = "" ]; then
+if [ "$TMUX" = "" ] && [ -z "$SSH_CLIENT" ]; then
     tmux attach -t main || tmux new -s main
     exit
 fi
