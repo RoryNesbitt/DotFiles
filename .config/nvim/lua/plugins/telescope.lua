@@ -25,7 +25,10 @@ require('telescope').setup {
     }
 }
 
---require('telescope').load_extension('fzy_native')
+if os.getenv('USER') ~= 'pi'
+then
+    require('telescope').load_extension('fzy_native')
+end
 
 local M = {}
 M.search_dotfiles = function()
