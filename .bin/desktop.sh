@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo pacman -Syyu --noconfirm kitty vivaldi discord steam docker pulseaudio pavucontrol tmux neovim nodejs npm wine yarn python-pip dash
+sudo pacman -Syyu --noconfirm kitty vivaldi discord steam docker pulseaudio pavucontrol tmux neovim nodejs npm wine yarn python-pip dash xclip
 yay -S --noconfirm realvnc-vnc-viewer openconnect teams nerd-fonts-fira-code
 
 ### LSP servers
