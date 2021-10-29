@@ -1,7 +1,7 @@
 vim.cmd([[
     augroup packer-updater
         autocmd!
-        autocmd BufWritePost packer.lua source <afile> | PackerSync
+        autocmd BufWritePost packer-init.lua source <afile> | PackerSync
     augroup end
 ]])
 
@@ -48,6 +48,7 @@ return require('packer').startup(function(use)
     use 'liuchengxu/vim-which-key'
     use 'ryanoasis/vim-devicons'
     use 'tpope/vim-fugitive'
+    use 'norcalli/nvim-colorizer.lua'
     --git
     use 'airblade/vim-gitgutter'
     --Functionality

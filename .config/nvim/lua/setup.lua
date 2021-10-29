@@ -1,5 +1,8 @@
 --map leader to space
 vim.g.mapleader = ' '
+vim.o.termguicolors = true
+--vim.o.t_Co = '256'
+--vim.bo.t_Co = '256'
 
 --mark the curent mode by changing the cursor shape
 vim.cmd([[
