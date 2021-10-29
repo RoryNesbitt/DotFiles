@@ -1,5 +1,4 @@
 --VISUAL
---vim.bo.t_Co = '256'                --
 --vim.wo.cursorline = true          -- Highlights the current line
 --vim.wo.cursorcolumn = true        -- Highlights the current column
 vim.cmd([[
@@ -53,7 +52,6 @@ vim.o.errorbells = false        -- Silence
 vim.o.showmatch = true          -- Show matching brackets.
 vim.o.showcmd = true            -- Show (partial) command in status line.
 vim.o.wildmode = 'longest,list,full' -- Enable autocomplete files
-vim.o.whichwrap = '<,>,[,],h,l'--movement keys wrap when reaching the end of the line
 
 --Marks trailing whitespace as an error
 vim.cmd([[
