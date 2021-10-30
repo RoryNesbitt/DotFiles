@@ -17,10 +17,10 @@ return require('packer').startup(function(use)
     --Colours
     use 'morhetz/gruvbox'
     use 'tomasiser/vim-code-dark'
+    use 'norcalli/nvim-colorizer.lua'
     --Lsp
     use 'neovim/nvim-lspconfig'
     use 'alexaandru/nvim-lspupdate'
-    --use 'hrsh7th/nvim-compe'
     use 'glepnir/lspsaga.nvim'
     use 'simrat39/symbols-outline.nvim'
     --nvim-cmp
@@ -48,7 +48,6 @@ return require('packer').startup(function(use)
     use 'liuchengxu/vim-which-key'
     use 'ryanoasis/vim-devicons'
     use 'tpope/vim-fugitive'
-    use 'norcalli/nvim-colorizer.lua'
     --git
     use 'airblade/vim-gitgutter'
     --Functionality
@@ -58,8 +57,12 @@ return require('packer').startup(function(use)
     use 'windwp/nvim-autopairs'
     use 'scrooloose/nerdcommenter'
     use 'tpope/vim-repeat'
-    --Android studio integration
+    --program integration
     use { 'beeender/Comrade', opt = true }
+    use {
+        'glacambre/firenvim',
+        run = function() vim.fn['firenvim#install'](0) end 
+    }
 
     --Autoinstall packer if not yet setup
     if packer_bootstrap then
