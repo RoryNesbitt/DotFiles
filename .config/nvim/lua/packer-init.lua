@@ -51,12 +51,26 @@ return require('packer').startup(function(use)
     use 'scrooloose/nerdcommenter'
     use 'tpope/vim-repeat'
     --program integration
-    use 'christoomey/vim-tmux-navigator'
     use { 'beeender/Comrade', opt = true }
     use {
         'glacambre/firenvim',
         run = function() vim.fn['firenvim#install'](0) end 
     }
+    use({
+        "aserowy/tmux.nvim",
+        config = function()
+            require("tmux").setup({
+                navigation = {
+                    -- enables default keybindings (C-hjkl) for normal mode
+                    enable_default_keybindings = true,
+                },
+                resize = {
+                    -- enables default keybindings (A-hjkl) for normal mode
+                    enable_default_keybindings = true,
+                }
+            })
+        end
+    })
 
     --Autoinstall packer if not yet setup
     if packer_bootstrap then
