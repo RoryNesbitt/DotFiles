@@ -1,10 +1,3 @@
-vim.cmd([[
-    augroup packer-updater
-        autocmd!
-        autocmd BufWritePost packer-init.lua source <afile> | PackerSync
-    augroup end
-]])
-
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -58,6 +51,7 @@ return require('packer').startup(function(use)
     use 'scrooloose/nerdcommenter'
     use 'tpope/vim-repeat'
     --program integration
+    use 'christoomey/vim-tmux-navigator'
     use { 'beeender/Comrade', opt = true }
     use {
         'glacambre/firenvim',

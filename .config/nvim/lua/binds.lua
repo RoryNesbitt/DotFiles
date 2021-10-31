@@ -52,10 +52,10 @@ vim.api.nvim_set_keymap('n', '<C-h>', '<c-w>h', silentOpts)
 vim.api.nvim_set_keymap('n', '<C-j>', '<c-w>j', silentOpts)
 vim.api.nvim_set_keymap('n', '<C-k>', '<c-w>k', silentOpts)
 vim.api.nvim_set_keymap('n', '<C-l>', '<c-w>l', silentOpts)
-vim.api.nvim_set_keymap('n', '<leader>h', ':wincmd h<cr>', silentOpts)
-vim.api.nvim_set_keymap('n', '<leader>j', ':wincmd j<cr>', silentOpts)
-vim.api.nvim_set_keymap('n', '<leader>k', ':wincmd k<cr>', silentOpts)
-vim.api.nvim_set_keymap('n', '<leader>l', ':wincmd l<cr>', silentOpts)
+vim.api.nvim_set_keymap('n', '<C-Left>', '<c-w>h', silentOpts)
+vim.api.nvim_set_keymap('n', '<C-Down>', '<c-w>j', silentOpts)
+vim.api.nvim_set_keymap('n', '<C-Up>', '<c-w>k', silentOpts)
+vim.api.nvim_set_keymap('n', '<C-Right>', '<c-w>l', silentOpts)
 
 -- replace in line
 vim.api.nvim_set_keymap('n', '<leader>s', ':s//gI<Left><Left><Left>', opts)
@@ -65,5 +65,5 @@ vim.api.nvim_set_keymap('n', '<leader>S', ':%s//gI<Left><Left><Left>', opts)
 vim.api.nvim_set_keymap('v', '<leader>S', ':%s//gI<Left><Left><Left>', opts)
 
 -- misc
-vim.api.nvim_set_keymap('n', '""', ':norm zto""""""<CR><Left><Left>i', silentOpts)
+vim.api.nvim_set_keymap('n', '""', 'zto""""""<Escape><Left><Left>i', silentOpts)
 vim.api.nvim_set_keymap('n', 'U', '<C-R>', silentOpts)
