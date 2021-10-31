@@ -16,6 +16,9 @@ vim.g.gitgutter_terminal_reports_focus=0
 vim.api.nvim_set_keymap('n', '<leader>gh', ':GitGutterLineHighlightsToggle<cr>', silentOpts)
 vim.api.nvim_set_keymap('n', '<leader>gc', ':GitGutterEnable<cr>', silentOpts)
 
+--colorizer
+require'colorizer'.setup()
+
 --vim-repeat
 vim.cmd([[
 silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)

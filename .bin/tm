@@ -5,6 +5,8 @@ if [ $# != 0 ]; then
         session='work'
     elif [ $1 = 'ww' ]; then
         session='work2'
+    elif [ $1 = config ]; then
+        session='conf-'$2
 	else
 	session=$1
     fi
@@ -18,6 +20,8 @@ if [ $# != 0 ]; then
             #tmux send-keys -t $session:1 './home.sh' Enter
         elif [ $session = 'scripts' ]; then
             tmux new -s $session -d -c ~/.bin nvim .
+        elif [ $1 = 'config' ]; then
+            tmux new -s $session -d -c ~/.config/$2 nvim .
         else
             tmux new -s $session -d
         fi  # if $session is 'x'

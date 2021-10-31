@@ -1,10 +1,3 @@
-vim.cmd([[
-    augroup packer-updater
-        autocmd!
-        autocmd BufWritePost packer.lua source <afile> | PackerSync
-    augroup end
-]])
-
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -17,10 +10,10 @@ return require('packer').startup(function(use)
     --Colours
     use 'morhetz/gruvbox'
     use 'tomasiser/vim-code-dark'
+    use 'norcalli/nvim-colorizer.lua'
     --Lsp
     use 'neovim/nvim-lspconfig'
     use 'alexaandru/nvim-lspupdate'
-    --use 'hrsh7th/nvim-compe'
     use 'glepnir/lspsaga.nvim'
     use 'simrat39/symbols-outline.nvim'
     --nvim-cmp
@@ -57,8 +50,27 @@ return require('packer').startup(function(use)
     use 'windwp/nvim-autopairs'
     use 'scrooloose/nerdcommenter'
     use 'tpope/vim-repeat'
-    --Android studio integration
+    --program integration
     use { 'beeender/Comrade', opt = true }
+    use {
+        'glacambre/firenvim',
+        run = function() vim.fn['firenvim#install'](0) end 
+    }
+    use({
+        "aserowy/tmux.nvim",
+        config = function()
+            require("tmux").setup({
+                navigation = {
+                    -- enables default keybindings (C-hjkl) for normal mode
+                    enable_default_keybindings = true,
+                },
+                resize = {
+                    -- enables default keybindings (A-hjkl) for normal mode
+                    enable_default_keybindings = true,
+                }
+            })
+        end
+    })
 
     --Autoinstall packer if not yet setup
     if packer_bootstrap then

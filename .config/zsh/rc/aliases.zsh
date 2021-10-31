@@ -10,12 +10,6 @@ alias rl="clear && source $ZDOTDIR/.zshrc"
 #rc files
 alias zrc="$EDITOR $ZDOTDIR/.zshrc"
 alias nrc="$EDITOR ~/.config/nvim/init.lua"
-config() {
-    dir=$(pwd)
-    cd ~/.config/$1
-    $EDITOR .
-    cd $dir
-}
 
 # ls
 alias l='\ls --color=auto -FX'
@@ -105,6 +99,7 @@ alias tmls='tmux list-sessions'
 alias tmk='tmux kill-session -t'
 alias tmkk='tmux kill-session'
 alias scripts='tm scripts'
+alias config='tm config'
 alias work='tm work'
 alias work2='tm work2'
 
