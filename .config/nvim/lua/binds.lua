@@ -24,7 +24,15 @@ end
 vim.api.nvim_set_keymap('n', '{', '{zz', silentOpts)
 vim.api.nvim_set_keymap('n', '}', '}zz', silentOpts)
 vim.api.nvim_set_keymap('n', 'i', 'zzi', silentOpts)
+vim.api.nvim_set_keymap('n', 'I', 'zzI', silentOpts)
 vim.api.nvim_set_keymap('n', 'o', 'zzo', silentOpts)
+vim.api.nvim_set_keymap('n', 'O', 'zzO', silentOpts)
+vim.api.nvim_set_keymap('n', 'a', 'zza', silentOpts)
+vim.api.nvim_set_keymap('n', 'A', 'zzA', silentOpts)
+vim.api.nvim_set_keymap('n', 's', 'zzs', silentOpts)
+vim.api.nvim_set_keymap('n', 'S', 'zzS', silentOpts)
+vim.api.nvim_set_keymap('n', 'c', 'zzc', silentOpts)
+vim.api.nvim_set_keymap('n', 'C', 'zzC', silentOpts)
 
 -- Move line
 vim.api.nvim_set_keymap('v', 'H', '<gv', silentOpts)
