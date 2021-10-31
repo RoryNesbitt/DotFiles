@@ -55,26 +55,6 @@ vim.api.nvim_set_keymap('n', '<leader>l', ':setlocal spell spell! spelllang=en_g
 vim.api.nvim_set_keymap('n', '<leader>o', ':vsp .<cr>', silentOpts)
 vim.api.nvim_set_keymap('n', '<leader><cr>', ':vsp <bar> terminal<cr>', silentOpts)
 
--- split navigation
-vim.api.nvim_set_keymap('n', '<C-h>', '<c-w>h', silentOpts)
-vim.api.nvim_set_keymap('n', '<C-j>', '<c-w>j', silentOpts)
-vim.api.nvim_set_keymap('n', '<C-k>', '<c-w>k', silentOpts)
-vim.api.nvim_set_keymap('n', '<C-l>', '<c-w>l', silentOpts)
-vim.api.nvim_set_keymap('n', '<C-Left>', '<c-w>h', silentOpts)
-vim.api.nvim_set_keymap('n', '<C-Down>', '<c-w>j', silentOpts)
-vim.api.nvim_set_keymap('n', '<C-Up>', '<c-w>k', silentOpts)
-vim.api.nvim_set_keymap('n', '<C-Right>', '<c-w>l', silentOpts)
-
--- split resizing
-vim.api.nvim_set_keymap('n', '<M-h>', '<c-w><', silentOpts)
-vim.api.nvim_set_keymap('n', '<M-j>', '<c-w>+', silentOpts)
-vim.api.nvim_set_keymap('n', '<M-k>', '<c-w>-', silentOpts)
-vim.api.nvim_set_keymap('n', '<M-l>', '<c-w>>', silentOpts)
-vim.api.nvim_set_keymap('n', '<M-Left>', '<c-w><', silentOpts)
-vim.api.nvim_set_keymap('n', '<M-Down>', '<c-w>+', silentOpts)
-vim.api.nvim_set_keymap('n', '<M-Up>', '<c-w>-', silentOpts)
-vim.api.nvim_set_keymap('n', '<M-Right>', '<c-w>>', silentOpts)
-
 -- replace in line
 vim.api.nvim_set_keymap('n', '<leader>s', ':s//gI<Left><Left><Left>', opts)
 vim.api.nvim_set_keymap('v', '<leader>s', ':s//gI<Left><Left><Left>', opts)
