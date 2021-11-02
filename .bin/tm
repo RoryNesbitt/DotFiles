@@ -21,7 +21,6 @@ if [ $# != 0 ]; then
             'scripts')
                 tmux new -s $session -d -c ~/.bin $@ nvim .;;
             'conf-'*)
-                echo $@
                 tmux new -s $session -d -c ~/.config/$1 nvim .;;
             *)
                 tmux new -s $session -d $@;;
