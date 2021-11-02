@@ -40,9 +40,16 @@ return require('packer').startup(function(use)
     }
     use 'liuchengxu/vim-which-key'
     use 'ryanoasis/vim-devicons'
-    use 'tpope/vim-fugitive'
     --git
-    use 'airblade/vim-gitgutter'
+    use 'tpope/vim-fugitive'
+    --use 'airblade/vim-gitgutter'
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim'
+        },
+        -- tag = 'release' -- To use the latest release
+    }
     --Functionality
     use 'terryma/vim-multiple-cursors'
     use 'tpope/vim-surround'
