@@ -2,7 +2,7 @@
 if [ -z "$TMUX" ] && [ -z "$SSH_CLIENT" ]; then
     tmux attach -t main || tmux new -s main
     while true; do
-        tmux attach-session -t main || tmux new -d -s main; exit
+        tmux attach-session -t main || (tmux new -d -s main; exit)
     done
 fi
 
