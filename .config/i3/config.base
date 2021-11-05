@@ -242,9 +242,9 @@ bindsym $mod+p exec /usr/local/bin/switch-audio-port
 ## App shortcuts
 bindsym $mod+w exec /usr/bin/vivaldi-stable
 bindsym $mod+n exec /usr/bin/thunar
-bindsym Print exec "scrot ~/%Y-%m-%d-%T-screenshot.png"
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+bindsym Print exec "scrot ~/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S.png"
+bindsym $mod+Print --release exec --no-startup-id "scrot -u ~/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S.png"
+bindsym $mod+Shift+Print --release exec --no-startup-id "scrot -s ~/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S.png"
 
 ##########################################
 # configuration for workspace behaviour: #
