@@ -104,7 +104,7 @@ alias work='tm work'
 alias work2='tm work2'
 
 # Misc
-alias :q='exit'
+alias noise-cancelling='wget -qO - https://bit.ly/2mBJSJo | sudo bash && pulseaudio -k'
 alias cx='chmod +x'
 alias w='cd ~/Documents/work'
 alias ww='cd ~/Documents/work-website'
@@ -118,28 +118,6 @@ kdir() {
     cd ..
     rm -rf $PD
 }
-
-if [[ "`uname -r`" =~ "icrosoft" ]]; then
-	# shutdown
-	alias shutdown="shutdown.exe /s /t 00"
-	alias reboot="shutdown.exe /r /t 00"
-	alias bios="runas.exe /savecred /user:Administrator 'shutdown.exe /fw /r /t 00'"
-
-    # mount other drives
-    mnt() {
-        sudo mkdir /mnt/$1
-        sudo mount -t drvfs $1\: /mnt/$1
-    }
-
-    umnt() {
-        sudo umount /mnt/$1
-        sudo rmdir /mnt/$1
-    }
-
-    # Browser
-    BROWSER="/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe"
-    
-fi
 
 alias -s com="$BROWSER"
 alias -s uk="$BROWSER"
