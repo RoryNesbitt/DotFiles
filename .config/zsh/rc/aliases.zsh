@@ -101,7 +101,8 @@ alias tmkk='tmux kill-session'
 alias scripts='tm scripts'
 alias config='tm config'
 alias work='tm work'
-alias work2='tm work2'
+alias work2='tm 2work'
+alias 2work='tm 2work'
 
 # Misc
 alias noise-cancelling='wget -qO - https://bit.ly/2mBJSJo | sudo bash && pulseaudio -k'

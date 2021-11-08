@@ -4,7 +4,7 @@ if [ $# != 0 ]; then
     if [ $1 = 'w' ]; then
         session='work'
     elif [ $1 = 'ww' ]; then
-        session='work2'
+        session='2work'
     elif [ $1 = config ]; then
         session='conf-'$2
 	else
@@ -16,7 +16,7 @@ if [ $# != 0 ]; then
         case $session in
             'work')
                 tmux new -s $session -d -c ~/Documents/work $@;;
-            'work2')
+            '2work')
                 tmux new -s $session -d -c ~/Documents/work-website $@;;
             'scripts')
                 tmux new -s $session -d -c ~/.bin $@ nvim .;;
