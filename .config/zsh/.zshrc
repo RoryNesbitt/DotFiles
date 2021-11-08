@@ -1,6 +1,6 @@
 # Always open main tmux if not in a tmux or ssh session
 if [ -z "$TMUX" ] && [ -z "$SSH_CLIENT" ]; then
-    tmux attach -t main 1> /dev/null || tmux new -s main 1> /dev/null
+    tmux attach -t main &> /dev/null || tmux new -s main 1> /dev/null
     echo "Goodbye :)"
     while true; do
         if tmux has-session -t main 2> /dev/null; then
