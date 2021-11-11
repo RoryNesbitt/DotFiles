@@ -52,7 +52,8 @@ vim.api.nvim_set_keymap('n', '<leader>p', '"+p', silentOpts)
 vim.api.nvim_set_keymap('n', '<leader>l', ':setlocal spell spell! spelllang=en_gb<CR>', silentOpts)
 
 -- Open windows
-vim.api.nvim_set_keymap('n', '<leader>o', ':vsp .<cr>', silentOpts)
+vim.api.nvim_set_keymap('n', '<leader>v', ':vsp .<cr>', silentOpts)
+vim.api.nvim_set_keymap('n', '<leader>h', ':sp .<cr>', silentOpts)
 vim.api.nvim_set_keymap('n', '<leader><cr>', ':vsp <bar> terminal<cr>', silentOpts)
 
 -- replace in line
