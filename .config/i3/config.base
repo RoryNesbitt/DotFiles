@@ -23,7 +23,8 @@
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Noto Sans Regular 10
+#font pango:Noto Sans Regular 10
+font FiraCode Nerd Font Regular 10
 
 # set the mod key to the winkey:
 set $mod Mod4
@@ -204,7 +205,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # open new empty workspace
-bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace.sh
+#bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace.sh
 
 ## Multimedia Keys
 
@@ -241,7 +242,9 @@ bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 ## App shortcuts
 bindsym $mod+w exec /usr/bin/vivaldi-stable
+bindsym $mod+Shift+w workspace $ws2; exec /usr/bin/vivaldi-stable
 bindsym $mod+n exec /usr/bin/thunar
+bindsym $mod+Shift+n workspace $ws4; exec /usr/bin/thunar
 bindsym Print exec "scrot ~/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S.png"
 bindsym $mod+Print --release exec --no-startup-id "scrot -u ~/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S.png"
 bindsym $mod+Shift+Print --release exec --no-startup-id "scrot -s ~/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S.png"
