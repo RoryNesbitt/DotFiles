@@ -33,4 +33,6 @@ TitleMode=TERMINAL_TITLE_REPLACE
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
 TextBlinkMode=TERMINAL_TEXT_BLINK_MODE_FOCUSED
 FontName=FiraCode Nerd Font
+RunCustomCommand=TRUE
+CustomCommand=bash
 
