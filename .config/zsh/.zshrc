@@ -6,7 +6,9 @@ if [ -z "$TMUX" ] && [ -z "$SSH_CLIENT" ]; then
         if tmux has-session -t main 2> /dev/null; then
             tmux attach-session -t main 1> /dev/null
         else
-            tmux new -s main -d 1> /dev/null
+            if tmux info &> /dev/null; then
+                tmux new -s main -d 1> /dev/null
+            fi
             exit
         fi
     done
