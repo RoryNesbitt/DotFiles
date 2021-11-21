@@ -4,6 +4,7 @@ sudo pacman -Syyu --noconfirm kitty vivaldi discord steam docker pulseaudio pavu
 yay -S --noconfirm realvnc-vnc-viewer openconnect teams nerd-fonts-fira-code
 
 ### LSP servers
+sudo npm install -g @tailwindcss/language-server
 yarn global add ansible-language-server yaml-language-server vscode-langservers-extracted emmet-ls vim-language-server typescript typescript-language-server
 pip3 install 'python-lsp-server[all]'
 

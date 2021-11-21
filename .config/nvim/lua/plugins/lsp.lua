@@ -37,6 +37,7 @@ local servers = {
 	'html',
 	'jsonls',
 	'pylsp',
+	'tailwindcss',
 	'texlab',
 	'tsserver',
 	'vimls',
