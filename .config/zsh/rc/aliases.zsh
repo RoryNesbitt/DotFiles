@@ -118,12 +118,3 @@ kdir() {
     cd ..
     rm -rf $PD
 }
-
-alias -s com="$BROWSER"
-alias -s uk="$BROWSER"
-alias -s net="$BROWSER"
-
-search() {
-    $BROWSER "https://www.startpage.com/do/dsearch?query=$*"
-}
-
