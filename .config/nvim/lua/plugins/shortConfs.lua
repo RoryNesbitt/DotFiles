@@ -28,3 +28,6 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 
 --gitsigns
 require'gitsigns'.setup()
+
+--markdown-preview
+vim.g.mkdp_auto_start=1

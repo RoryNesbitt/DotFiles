@@ -77,6 +77,7 @@ return require('packer').startup(function(use)
             })
         end
     })
+    use 'iamcco/markdown-preview.nvim'
 
     --Autoinstall packer if not yet setup
     if packer_bootstrap then
