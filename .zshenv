@@ -6,5 +6,5 @@ export NVM_DIR="$HOME/.config/nvm"
 export SHCOLOUR="14"
 export ECHOCOLOUR="1;36"
 if [ -f $ZDOTDIR/device/$(hostname).env ]; then
-    . $ZDOTDIR/$(hostname).env
+    . $ZDOTDIR/device/$(hostname).env
 fi
