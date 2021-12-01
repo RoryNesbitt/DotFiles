@@ -42,7 +42,7 @@ vim.api.nvim_set_keymap('v', 'L', '>gv', silentOpts)
 
 -- Clipboard
 vim.api.nvim_set_keymap('n', '<leader>y', '"+y', silentOpts)
-vim.api.nvim_set_keymap('n', '<leader>Y', '"+y$', silentOpts)
+vim.api.nvim_set_keymap('n', '<leader>Y', '"+Y', silentOpts)
 vim.api.nvim_set_keymap('v', '<leader>y', '"+y', silentOpts)
 vim.api.nvim_set_keymap('n', '<leader>d', '"+d', silentOpts)
 vim.api.nvim_set_keymap('n', '<leader>D', '"+D', silentOpts)
@@ -69,4 +69,3 @@ vim.api.nvim_set_keymap('v', '<leader>S', ':%s//gI<Left><Left><Left>', opts)
 -- misc
 vim.api.nvim_set_keymap('n', '""', 'zto""""""<Escape><Left><Left>i', silentOpts)
 vim.api.nvim_set_keymap('n', 'U', '<C-R>', silentOpts)
-vim.api.nvim_set_keymap('n', 'Y', 'y$', silentOpts)
