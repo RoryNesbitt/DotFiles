@@ -320,6 +320,7 @@ for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enabl
 for_window [class="Pamac-manager"] floating enable
 for_window [title="File Transfer*"] floating enable
 for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [class="Zotero"] floating enable
 
 ######################################
 # color settings for bar and windows #
