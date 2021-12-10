@@ -1,18 +1,18 @@
-# Always open main tmux if not in a tmux or ssh session
-if [ -z "$TMUX" ] && [ -z "$SSH_CLIENT" ]; then
-    tmux attach -t main &> /dev/null || tmux new -s main 1> /dev/null
-    echo "Goodbye :)"
-    while true; do
-        if tmux has-session -t main 2> /dev/null; then
-            tmux attach-session -t main 1> /dev/null
-        else
-            if tmux info &> /dev/null; then
-                tmux new -s main -d 1> /dev/null
-            fi
-            exit
-        fi
-    done
-fi
+## Always open main tmux if not in a tmux or ssh session
+#if [ -z "$TMUX" ] && [ -z "$SSH_CLIENT" ]; then
+    #tmux attach -t main &> /dev/null || tmux new -s main 1> /dev/null
+    #echo "Goodbye :)"
+    #while true; do
+        #if tmux has-session -t main 2> /dev/null; then
+            #tmux attach-session -t main 1> /dev/null
+        #else
+            #if tmux info &> /dev/null; then
+                #tmux new -s main -d 1> /dev/null
+            #fi
+            #exit
+        #fi
+    #done
+#fi
 
 setopt interactivecomments      # allow comments in interactive mode
 setopt magicequalsubst          # enable filename expansion for arguments of the form ‘anything=expression’
