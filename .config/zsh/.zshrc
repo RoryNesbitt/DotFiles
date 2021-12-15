@@ -77,6 +77,6 @@ if [ -z "$SSH_CLIENT" ]; then
     elif [ -f /bin/lolcat ]; then
         ( cat ~/.config/zsh/img && echo -e "`whoami`@`uname -n`" ) | lolcat
     else
-        cat ~/.config/zsh/img && echo -e "\033[${ECHOCOLOUR}m`whoami`\033[1;37m@\033[${ECHOCOLOUR}m`uname -n`\033[1;37m"
+        cat ~/.config/zsh/img && echo -e "\033[${SHCOLOURN}m`whoami`\033[1;37m@\033[${SHCOLOURN}m`uname -n`\033[1;37m"
     fi
 fi
