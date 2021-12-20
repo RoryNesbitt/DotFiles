@@ -19,7 +19,7 @@ if [ $# != 0 ]; then
             '2work')
                 tmux new -s $session -d -c ~/Documents/work-website $@;;
             'scripts')
-                tmux new -s $session -d -c ~/.bin $@ nvim .;;
+                tmux new -s $session -d -c ~/.local/scripts $@ nvim .;;
             'conf-'*)
                 tmux new -s $session -d -c ~/.config/$1 nvim .;;
             *)
