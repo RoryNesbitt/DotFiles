@@ -50,6 +50,7 @@ vim.api.nvim_set_keymap('v', '<leader>d', '"+d', silentOpts)
 vim.api.nvim_set_keymap('n', '<leader>p', '"+p', silentOpts)
 vim.api.nvim_set_keymap('n', '<leader>P', '"+P', silentOpts)
 vim.api.nvim_set_keymap('v', '<leader>p', '"+p', silentOpts)
+vim.api.nvim_set_keymap('v', 'p', '"_dP', silentOpts)
 
 -- set spellcheck
 vim.api.nvim_set_keymap('n', '<leader>l', ':setlocal spell spell! spelllang=en_gb<CR>', silentOpts)
@@ -67,5 +68,6 @@ vim.api.nvim_set_keymap('n', '<leader>S', ':%s//gI<Left><Left><Left>', opts)
 vim.api.nvim_set_keymap('v', '<leader>S', ':%s//gI<Left><Left><Left>', opts)
 
 -- misc
+vim.api.nvim_set_keymap('n', '<leader>e', ':Lex 30<cr>', opts)
 vim.api.nvim_set_keymap('n', '""', 'zto""""""<Escape><Left><Left>i', silentOpts)
 vim.api.nvim_set_keymap('n', 'U', '<C-R>', silentOpts)
