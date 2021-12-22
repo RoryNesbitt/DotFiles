@@ -1,5 +1,5 @@
 --VISUAL
---vim.wo.cursorline = true          -- Highlights the current line
+vim.wo.cursorline = true          -- Highlights the current line
 --vim.wo.cursorcolumn = true        -- Highlights the current column
 vim.cmd([[
 highlight CursorLine ctermbg=black cterm=bold
@@ -14,12 +14,12 @@ vim.wo.sidescrolloff = 4          -- Keeps the cursor away from the sides
 --Tabs
 vim.o.expandtab = true
 vim.bo.expandtab = true
-vim.o.shiftwidth = 4
-vim.bo.shiftwidth = 4
-vim.o.tabstop = 4
-vim.bo.tabstop = 4
-vim.o.softtabstop = 4
-vim.bo.softtabstop = 4
+vim.o.shiftwidth = 2
+vim.bo.shiftwidth = 2
+vim.o.tabstop = 2
+vim.bo.tabstop = 2
+vim.o.softtabstop = 2
+vim.bo.softtabstop = 2
 vim.o.autoindent  = true
 vim.bo.autoindent  = true
 vim.o.smartindent  = true
