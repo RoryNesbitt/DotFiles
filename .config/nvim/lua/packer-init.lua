@@ -13,6 +13,7 @@ return require('packer').startup(function(use)
     use 'norcalli/nvim-colorizer.lua'
     --Lsp
     use 'neovim/nvim-lspconfig'
+    use 'williamboman/nvim-lsp-installer'
     use 'glepnir/lspsaga.nvim'
     use 'simrat39/symbols-outline.nvim'
     --nvim-cmp
