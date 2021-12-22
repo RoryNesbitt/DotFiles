@@ -1,5 +1,10 @@
 -- following options are the default
-require'nvim-tree'.setup {
+local status_ok, nvim_tree = pcall(require, 'nvim-tree')
+if not status_ok then
+  return
+end
+
+nvim_tree.setup {
   -- disables netrw completely
   disable_netrw       = true,
   -- hijack netrw window on startup

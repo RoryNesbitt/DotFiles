@@ -19,7 +19,12 @@ vim.api.nvim_set_keymap('v', '<leader>', ':WhichKeyVisual "<leader>"<cr>', opts)
    ]]
 
 --colorizer
-require'colorizer'.setup()
+local status_ok, colorizer = pcall(require, 'colorizer')
+if not status_ok then
+  return
+end
+
+colorizer.setup()
 
 --vim-repeat
 vim.cmd([[
@@ -27,7 +32,12 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 ]])
 
 --gitsigns
-require'gitsigns'.setup()
+local status_ok, gitsigns = pcall(require, 'gitsigns')
+if not status_ok then
+  return
+end
+
+gitsigns.setup()
 
 --markdown-preview
 vim.g.mkdp_auto_start=1

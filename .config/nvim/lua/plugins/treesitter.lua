@@ -9,7 +9,12 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 	update_in_insert = true,
     }
 )
-require'nvim-treesitter.configs'.setup {
+local status_ok, nvim_treesitter = pcall(require, 'nvim_treesitter')
+if not status_ok then
+  return
+end
+
+nvim_treesitter.configs.setup {
   ensure_installed = 'maintained', -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   --ignore_install = { "javascript" }, -- List of parsers to ignore installing
   highlight = {
