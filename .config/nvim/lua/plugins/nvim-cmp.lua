@@ -1,10 +1,18 @@
 vim.g.completeopt = 'menu,menuone,noselect,noinsert'
 -- Setup nvim-cmp.
-local cmp = require'cmp'
-local lspkind = require('lspkind')
-  cmp.setup({
-    snippet = {
-      expand = function(args)
+local cmp_status_ok, cmp = pcall(require, 'cmp')
+if not cmp_status_ok then
+  return
+end
+
+local status_ok, lspkind = pcall(require, 'lspkind')
+if not status_ok then
+  return
+end
+
+cmp.setup {
+  snippet = {
+    expand = function(args)
       -- For `vsnip` user.
       vim.fn["vsnip#anonymous"](args.body)
       -- For `luasnip` user.
@@ -22,18 +30,17 @@ local lspkind = require('lspkind')
   },
   sources = {
     { name = 'nvim_lsp' },
-    -- For vsnip user.
     { name = 'vsnip' },
-    -- For luasnip user.
-    -- { name = 'luasnip' },
-    -- For ultisnips user.
-    -- { name = 'ultisnips' },
-    {  name = 'buffer' },
+    { name = 'buffer' },
+    { name = 'path' },
   },
   formatting = {
     format = lspkind.cmp_format({with_text = true, maxwidth = 50})
-  }
-})
+  },
+  experimental = {
+    ghost_text = true,
+  },
+}
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
