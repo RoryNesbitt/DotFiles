@@ -79,6 +79,7 @@ return packer.startup(function(use)
   use 'windwp/nvim-autopairs'
   use 'scrooloose/nerdcommenter'
   use 'tpope/vim-repeat'
+  use 'lukas-reineke/indent-blankline.nvim'
   --program integration
   use { 'beeender/Comrade', opt = true }
   use {
