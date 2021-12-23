@@ -53,7 +53,24 @@ vim.api.nvim_set_keymap('v', '<leader>p', '"+p', silentOpts)
 vim.api.nvim_set_keymap('v', 'p', '"_dP', silentOpts)
 
 -- set spellcheck
-vim.api.nvim_set_keymap('n', '<leader>l', ':setlocal spell spell! spelllang=en_gb<CR>', silentOpts)
+--vim.api.nvim_set_keymap('n', '<leader>l', ':setlocal spell spell! spelllang=en_gb<CR>', silentOpts)
+
+--LSP
+vim.api.nvim_set_keymap('n', '<leader>li', ':LspInfo<cr>', silentOpts)
+vim.api.nvim_set_keymap('n', '<leader>lk', '<cmd>lua vim.lsp.buf.signature_help()<cr>', silentOpts)
+vim.api.nvim_set_keymap('n', '<leader>lK', '<cmd>lua vim.lsp.buf.hover()<cr>', silentOpts)
+vim.api.nvim_set_keymap('n', '<leader>lw', '<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>', silentOpts)
+vim.api.nvim_set_keymap('n', '<leader>lW', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>', silentOpts)
+vim.api.nvim_set_keymap('n', '<leader>ll', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>', silentOpts)
+vim.api.nvim_set_keymap('n', '<leader>lt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', silentOpts)
+vim.api.nvim_set_keymap('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<cr>', silentOpts)
+vim.api.nvim_set_keymap('n', '<leader>lD', '<cmd>lua vim.lsp.buf.declaration()<cr>', silentOpts)
+vim.api.nvim_set_keymap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.references()<cr>', silentOpts)
+vim.api.nvim_set_keymap('n', '<leader>lR', '<cmd>lua vim.lsp.buf.rename()<cr>', silentOpts)
+vim.api.nvim_set_keymap('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', silentOpts)
+vim.api.nvim_set_keymap('n', '<leader>le', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>', silentOpts)
+vim.api.nvim_set_keymap('n', '<leader>ln', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', silentOpts)
+vim.api.nvim_set_keymap('n', '<leader>lN', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', silentOpts)
 
 -- Open windows
 vim.api.nvim_set_keymap('n', '<leader>v', ':vsp .<cr>', silentOpts)
