@@ -1,7 +1,0 @@
-require('basic-init')
-require('packer-init')
-require('plugins.closetag')
-require('plugins.shortConfs')
-require('options')
-require('keybindings')
-require('autocmds')
