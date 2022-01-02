@@ -8,6 +8,7 @@ sudo ln /bin/dash /bin/sh
 
 ### Neovim
 git clone git@github.com:rorynesbitt/neovim ~/.config/nvim
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 ### Docker
 sudo groupadd docker
