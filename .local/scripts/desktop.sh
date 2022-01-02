@@ -7,7 +7,7 @@ sudo rm /bin/sh
 sudo ln /bin/dash /bin/sh
 
 ### Neovim
-git clone https://github.com/rorynesbitt/neovim ~/.config/nvim
+git clone git@github.com:rorynesbitt/neovim ~/.config/nvim
 
 ### Docker
 sudo groupadd docker
