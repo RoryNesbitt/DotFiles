@@ -11,6 +11,7 @@ git clone git@github.com:rorynesbitt/neovim ~/.config/nvim
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 ### null-ls formatters
 luarocks install --server=https://luarocks.org/dev luaformatter
+yarn global add prettier
 
 ## Docker
 sudo groupadd docker
