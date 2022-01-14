@@ -19,9 +19,9 @@ if [ $# != 0 ]; then
             '2work')
                 tmux new -s $session -d -c ~/Documents/work-website $@;;
             'scripts')
-                tmux new -s $session -d -c ~/.local/scripts $@ nvim .;;
+                tmux new -s $session -d -c ~/.local/scripts $@ nvim . -c "Telescope find_files";;
             'conf-'*)
-                tmux new -s $session -d -c ~/.config/$1 nvim .;;
+                tmux new -s $session -d -c ~/.config/$1 nvim . -c "Telescope find_files";;
             *)
                 tmux new -s $session -d $@;;
         esac
