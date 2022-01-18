@@ -115,7 +115,8 @@ ndir() {
     cd $1
 }
 kdir() {
-    PD=`pwd`
+    PD=${PWD##*/} 
     cd ..
     rm -rf $PD
+    echo Killed $PD
 }
