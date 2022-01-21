@@ -29,6 +29,7 @@ alias gs="git status"
 alias gd="git diff"
 alias gi="git update-index --skip-worktree"
 alias gr="git reset --soft HEAD~1"
+alias gca="git commit --amend --no-edit"
 gc() {
     if [ "$1" != "" ]
     then
@@ -58,6 +59,7 @@ alias ds="dots status"
 alias ddf="dots diff"
 alias di="dots update-index --skip-worktree"
 alias dr="dots reset --soft HEAD~1"
+alias dca="dots commit --amend --no-edit"
 dc() {
     if [ "$1" != "" ]
     then
