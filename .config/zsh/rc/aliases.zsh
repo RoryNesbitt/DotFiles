@@ -111,13 +111,15 @@ alias noise-cancelling='wget -qO - https://bit.ly/2mBJSJo | sudo bash && pulseau
 alias cx='chmod +x'
 alias w='cd ~/Documents/work'
 alias ww='cd ~/Documents/work-website'
-alias myip='curl icanhazip.com'
+alias gip='curl icanhazip.com'
+alias lip='ip -o route get to 1.1.1.1 | sed -n "s/.*src \([0-9.]\+\).*/\1/p"'
 ndir() {
     mkdir $1
     cd $1
 }
 kdir() {
-    PD=`pwd`
+    PD=${PWD##*/} 
     cd ..
     rm -rf $PD
+    echo Killed $PD
 }
