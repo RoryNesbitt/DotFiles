@@ -32,6 +32,13 @@ bindkey -v                                      # vim key bindings
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line                  # edit command in editor
 
+# Nvim as a man pager
+if [[ "$(command -v nvim)" ]]; then
+  export EDITOR='nvim'
+  export MANPAGER='nvim +Man!'
+  export MANWIDTH=999
+fi
+
 # Completion
 autoload -Uz compinit
 compinit -d $ZDOTDIR/zcompdump
