@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo pacman -Syu --noconfirm kitty vivaldi discord steam docker pulseaudio pavucontrol tmux neovim nodejs npm wine yarn python-pip dash xclip fzf ripgrep cmake ansible
+sudo pacman -Syu --noconfirm kitty vivaldi discord steam docker pulseaudio pavucontrol tmux neovim nodejs npm wine yarn python-pip dash xclip fzf ripgrep cmake ansible flameshot
 yay  --noconfirm realvnc-vnc-viewer openconnect teams nerd-fonts-fira-code
 
 sudo rm /bin/sh
