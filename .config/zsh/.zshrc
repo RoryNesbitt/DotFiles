@@ -76,7 +76,7 @@ PROMPT="%F{$SHCOLOUR}$ %F{def}"
 RPROMPT="%F{white}[%F{$SHCOLOUR}%~%F{white}]"
 
 # Run neofetch/lolcat if installed and not in an ssh session
-if [ -z "$SSH_CLIENT" ]; then
+if [ -z "$SSH_CLIENT" ] || [ "$TMUX" ]; then
     if [ -f /bin/neofetch ] && [ -f /bin/lolcat ]; then
         neofetch --source ~/.config/zsh/img | lolcat
     elif [ -f /bin/neofetch ]; then
