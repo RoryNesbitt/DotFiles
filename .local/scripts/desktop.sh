@@ -1,7 +1,7 @@
 #!/bin/sh
 
 sudo pacman -Syu --noconfirm kitty vivaldi discord steam docker tmux neovim python-pynvim nodejs npm wine yarn python-pip dash xclip fzf ripgrep cmake ansible flameshot
-yay -Syu --noconfirm realvnc-vnc-viewer openconnect teams nerd-fonts-fira-code ferdi
+yay -Syu --noconfirm realvnc-vnc-viewer openconnect teams nerd-fonts-fira-code
 
 sudo rm /bin/sh
 sudo ln /bin/dash /bin/sh
