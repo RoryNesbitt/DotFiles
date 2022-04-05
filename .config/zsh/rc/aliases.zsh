@@ -96,8 +96,8 @@ alias black="ssh -q pi@192.168.1.22"
 alias purple="ssh -q pi@192.168.1.23"
 alias pink="ssh -q pi@192.168.1.24"
 alias work-pi="ssh -q pi@192.168.8.100 -t zsh"
-alias work-server="ssh labadmin@10.192.31.7 -t zsh"
-alias work-db="ssh -q labadmin@10.192.31.13 -t mongo RFIOD"
+alias work-server="ssh labadmin@10.192.31.8"
+alias work-db="ssh -q labadmin@10.192.31.8 -t mongo RFIOD"
 
 # Tmux
 alias tmls='tmux list-sessions'
