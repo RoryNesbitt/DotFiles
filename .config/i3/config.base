@@ -321,6 +321,7 @@ for_window [class="Pamac-manager"] floating enable
 for_window [title="File Transfer*"] floating enable
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Zotero"] floating enable
+for_window [class="flameshot"] floating enable
 
 ######################################
 # color settings for bar and windows #
