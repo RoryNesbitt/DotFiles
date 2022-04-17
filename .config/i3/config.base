@@ -214,7 +214,7 @@ bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && pkill -RTMI
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMute exec amixer sset Master toggle && killall -USR1 i3blocks
 # Global mic mute
-bindsym Ctrl+z exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+# bindsym Ctrl+z exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Pulse Audio controls
 
