@@ -241,6 +241,7 @@ bindsym $mod+p exec /usr/local/bin/switch-audio-port
 bindsym $mod+w workspace $ws2; exec /usr/bin/firefox
 bindsym $mod+Ctrl+w exec /usr/bin/firefox
 bindsym $mod+n exec /usr/bin/thunar
+bindsym $mod+m exec /usr/bin/ferdium
 bindsym Print exec "flameshot gui"
 bindsym $mod+Print exec "flameshot screen"
 bindsym $mod+Shift+Print exec "flameshot full"
