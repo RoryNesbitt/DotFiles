@@ -90,16 +90,7 @@ alias diff='diff --color=auto'
 alias ip='ip --color=auto'
 
 # SSHs
-alias jackdaw="ssh -q root@192.168.1.4"
-alias red="ssh -q pi@192.168.1.3"
-alias blue="ssh -q pi@192.168.1.20"
-alias green="ssh -q pi@192.168.1.21"
-alias black="ssh -q pi@192.168.1.22"
-alias purple="ssh -q pi@192.168.1.23"
-alias pink="ssh -q pi@192.168.1.24"
-alias work-pi="ssh -q pi@192.168.8.100 -t zsh"
-alias work-server="ssh labadmin@10.192.31.8"
-alias work-db="ssh -q labadmin@10.192.31.8 -t mongo RFIOD"
+alias ssh='ssh -q'
 
 # Tmux
 alias tmls='tmux list-sessions'
