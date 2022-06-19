@@ -89,9 +89,6 @@ alias egrep='egrep --color=auto'
 alias diff='diff --color=auto'
 alias ip='ip --color=auto'
 
-# SSHs
-alias ssh='ssh -q'
-
 # Tmux
 alias tmls='tmux list-sessions'
 alias tmk='tmux kill-session -t'
