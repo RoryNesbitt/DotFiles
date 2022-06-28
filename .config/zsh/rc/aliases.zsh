@@ -98,6 +98,10 @@ alias config='tm config'
 alias work='tm work'
 alias 2work='tm 2work'
 
+#Use XDG directories
+alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
+
 # Misc
 alias noise-cancelling='wget -qO - https://bit.ly/2mBJSJo | sudo bash && pulseaudio -k'
 alias cx='chmod +x'
