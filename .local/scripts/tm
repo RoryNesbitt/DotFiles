@@ -1,37 +1,39 @@
 #!/bin/sh
 
 if [ $# != 0 ]; then
-    if [ $1 = 'w' ]; then
-        session='work'
-    elif [ $1 = 'ww' ]; then
-        session='2work'
-    elif [ $1 = config ]; then
-        session='conf-'$2
+  if [ $1 = 'w' ]; then
+      session='work'
+  elif [ $1 = 'ww' ]; then
+      session='2work'
+  elif [ $1 = config ]; then
+      session='conf-'$2
 	else
 	session=$1
-    fi
-    shift
+  fi
+  shift
 
-    if ! tmux has-session -t $session 2> /dev/null; then
-        case $session in
-            'work')
-                tmux new -s $session -d -c ~/Documents/work $@;;
-            '2work')
-                tmux new -s $session -d -c ~/Documents/work-website $@;;
-            'scripts')
-                tmux new -s $session -d -c ~/.local/scripts $@ nvim . -c "Telescope find_files";;
-            'conf-'*)
-                tmux new -s $session -d -c ~/.config/$1 nvim . -c "Telescope find_files";;
-            *)
-                tmux new -s $session -d $@;;
-        esac
-    fi  # has-session work
+  if ! tmux has-session -t $session 2> /dev/null; then
+    case $session in
+      'update')
+        tmux new -s $session -d "yay || ( sudo apt update && sudo apt upgrade -y ); read key <&1";;
+      'work')
+        tmux new -s $session -d -c ~/Documents/work $@;;
+      '2work')
+        tmux new -s $session -d -c ~/Documents/work-website $@;;
+      'scripts')
+        tmux new -s $session -d -c ~/.local/scripts $@ nvim . -c "Telescope find_files";;
+      'conf-'*)
+        tmux new -s $session -d -c ~/.config/$1 nvim . -c "Telescope find_files";;
+      *)
+        tmux new -s $session -d $@;;
+    esac
+  fi  # has-session work
 
-    if [ "$TMUX" = "" ]; then
-        tmux attach-session -t $session
-    else
-        tmux switch-client -t $session
-    fi # if $TMUX
+  if [ "$TMUX" = "" ]; then
+    tmux attach-session -t $session
+  else
+    tmux switch-client -t $session
+  fi # if $TMUX
 else
-    tmux list-sessions
+  tmux list-sessions
 fi # if $#
