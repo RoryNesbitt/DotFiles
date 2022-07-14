@@ -24,7 +24,8 @@ autoload -Uz _zinit
 
 zinit light-mode for \
     hlissner/zsh-autopair \
-    zsh-users/zsh-autosuggestions
+    zsh-users/zsh-autosuggestions \
+    zsh-users/zsh-completions
 
 # [zsh-vi-mode](https://github.com/jeffreytse/zsh-vi-mode)
 zinit ice depth=1
@@ -32,4 +33,4 @@ zinit light jeffreytse/zsh-vi-mode
 
 # Syntax highlighting
 # MUST BE LAST PLUGIN SOURCED
-zinit   light zsh-users/zsh-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
