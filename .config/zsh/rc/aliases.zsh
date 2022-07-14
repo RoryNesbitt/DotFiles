@@ -96,7 +96,7 @@ alias tmkk='tmux kill-session'
 alias update='tm update'
 alias scripts='tm scripts || $EDITOR ~/.local/scripts/'
 config() {
-  tm config || $EDITOR ~/.config/$1
+  tm config $1 || $EDITOR ~/.config/$1
 }
 alias work='tm work'
 alias 2work='tm 2work'
