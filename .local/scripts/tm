@@ -20,6 +20,8 @@ if [ $# != 0 ]; then
         tmux new -s $session -d -c ~/Documents/work $@;;
       '2work')
         tmux new -s $session -d -c ~/Documents/work-website $@;;
+      'notes')
+        tmux new -s $session -d nvim;;
       'scripts')
         tmux new -s $session -d -c ~/.local/scripts $@ nvim . -c "Telescope find_files";;
       'conf-'*)
