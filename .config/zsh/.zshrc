@@ -72,7 +72,7 @@ for FILE ($ZDOTDIR/rc/*.zsh); do
 done
 unset FILE
 
-PROMPT="%F{$SHCOLOUR}$ %F{def}"
+PROMPT="%F{$SHCOLOUR}> %F{def}"
 RPROMPT="%F{white}[%F{$SHCOLOUR}%~%F{white}]"
 
 # Run neofetch/lolcat if installed and not in an ssh session
