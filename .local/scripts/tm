@@ -15,7 +15,7 @@ if [ $# != 0 ]; then
   if ! tmux has-session -t $session 2> /dev/null; then
     case $session in
       'update')
-        tmux new -s $session -d "yay || ( sudo apt update && sudo apt upgrade -y ); read key <&1";;
+        tmux new -s $session -d "yay -Syu --noconfirm || ( sudo apt update && sudo apt upgrade -y ); echo 'Finished upgrade'; read key <&1";;
       'work')
         tmux new -s $session -d -c ~/Documents/work $@;;
       '2work')
