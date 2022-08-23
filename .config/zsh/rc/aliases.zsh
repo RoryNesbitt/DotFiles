@@ -17,6 +17,11 @@ alias ls="l -lh"
 alias la="ls -A"
 alias le="ls -I"
 
+# Ansible
+alias a='ansible'
+alias ap='ansible-playbook'
+alias av='ansible-vault'
+
 # Git
 alias gpl="git pull"
 alias gps="git push"
