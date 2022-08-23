@@ -3,8 +3,6 @@
 if [ $# != 0 ]; then
   if [ $1 = 'w' ]; then
       session='work'
-  elif [ $1 = 'ww' ]; then
-      session='2work'
   elif [ $1 = config ]; then
       session='conf-'$2
 	else
@@ -18,8 +16,6 @@ if [ $# != 0 ]; then
         tmux new -s $session -d "yay -Syu --noconfirm || ( sudo apt update && sudo apt upgrade -y ); echo 'Finished upgrade'; read key <&1";;
       'work')
         tmux new -s $session -d -c ~/Documents/work $@;;
-      '2work')
-        tmux new -s $session -d -c ~/Documents/work-website $@;;
       'notes')
         tmux new -s $session -d nvim;;
       'scripts')

@@ -104,7 +104,6 @@ config() {
   tm config $1 || $EDITOR ~/.config/$1
 }
 alias work='tm work'
-alias 2work='tm 2work'
 
 #Use XDG directories
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
