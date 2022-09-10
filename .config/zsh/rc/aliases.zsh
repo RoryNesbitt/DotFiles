@@ -53,19 +53,19 @@ gg() {
 
 # Dotfiles git
 alias dots="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
-alias dpl="dots pull"
-alias dps="dots push"
-alias da="dots add"
-alias dau="dots add -u"
-alias du="dots restore --staged"
-alias dch="dots checkout"
-alias ds="dots status"
-alias ddf="dots diff"
-alias di="dots update-index --skip-worktree"
-alias dr="dots reset --soft HEAD~1"
-alias dl="dots log"
-alias dca="dots commit --amend --no-edit"
-dc() {
+alias dfpl="dots pull"
+alias dfps="dots push"
+alias dfa="dots add"
+alias dfau="dots add -u"
+alias dfu="dots restore --staged"
+alias dfch="dots checkout"
+alias dfs="dots status"
+alias dfd="dots diff"
+alias dfi="dots update-index --skip-worktree"
+alias dfr="dots reset --soft HEAD~1"
+alias dfl="dots log"
+alias dfca="dots commit --amend --no-edit"
+dfc() {
     if [ "$1" != "" ]
     then
         dots commit -m "$*"
@@ -74,12 +74,12 @@ dc() {
     fi
 }
 dd() {
-    dau
+    dfau
     if [ "$1" != "" ]
     then
-        dc $*
+        dfc $*
     else
-        dc
+        dfc
     fi
 }
 
@@ -91,15 +91,14 @@ alias diff='diff --color=auto'
 alias ip='ip --color=auto'
 
 # Tmux
-alias tmls='tmux list-sessions'
 alias tmk='tmux kill-session -t'
 alias tmkk='tmux kill-session'
 alias update='tm update'
 alias scripts='tm scripts || $EDITOR ~/.local/scripts/'
+alias work='tm work'
 config() {
   tm config $1 || $EDITOR ~/.config/$1
 }
-alias work='tm work'
 
 #Use XDG directories
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
@@ -109,7 +108,6 @@ alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 alias noise-cancelling='wget -qO - https://bit.ly/2mBJSJo | sudo bash && pulseaudio -k'
 alias cx='chmod +x'
 alias w='cd ~/Documents/work'
-alias ww='cd ~/Documents/work-website'
 alias gip='curl icanhazip.com'
 alias lip='ip -o route get to 1.1.1.1 | sed -n "s/.*src \([0-9.]\+\).*/\1/p"'
 ndir() {
@@ -117,7 +115,7 @@ ndir() {
     cd $1
 }
 kdir() {
-    PD=${PWD##*/} 
+    PD=${PWD##*/}
     cd ..
     rm -rf $PD
     echo Killed $PD
