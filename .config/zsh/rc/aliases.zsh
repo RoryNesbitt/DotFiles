@@ -7,10 +7,6 @@
 alias aliases="$EDITOR $ZDOTDIR/rc/aliases.zsh"
 alias rl="clear && source $ZDOTDIR/.zshrc"
 
-#rc files
-alias zrc="$EDITOR $ZDOTDIR/.zshrc"
-alias nrc="$EDITOR ~/.config/nvim/init.lua"
-
 # ls
 alias l='\ls --color=auto -FX'
 alias ls="l -lh"
