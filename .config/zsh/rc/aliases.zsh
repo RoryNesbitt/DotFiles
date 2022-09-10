@@ -33,21 +33,13 @@ alias gi="git update-index --skip-worktree"
 alias gr="git reset --soft HEAD~1"
 alias gl="git log"
 alias gca="git commit --amend --no-edit"
+alias gg="gau; gc"
 gc() {
     if [ "$1" != "" ]
     then
         git commit -m "$*"
     else
         git commit
-    fi
-}
-gg() {
-    gau
-    if [ "$1" != "" ]
-    then
-        gc $*
-    else
-        gc
     fi
 }
 
@@ -65,21 +57,13 @@ alias dfi="dots update-index --skip-worktree"
 alias dfr="dots reset --soft HEAD~1"
 alias dfl="dots log"
 alias dfca="dots commit --amend --no-edit"
+alias dd="dfau; dfc"
 dfc() {
     if [ "$1" != "" ]
     then
         dots commit -m "$*"
     else
         dots commit
-    fi
-}
-dd() {
-    dfau
-    if [ "$1" != "" ]
-    then
-        dfc $*
-    else
-        dfc
     fi
 }
 
