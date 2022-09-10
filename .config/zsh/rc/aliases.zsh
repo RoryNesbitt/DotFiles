@@ -94,6 +94,7 @@ alias cx='chmod +x'
 alias w='cd ~/Documents/work'
 alias gip='curl icanhazip.com'
 alias lip='ip -o route get to 1.1.1.1 | sed -n "s/.*src \([0-9.]\+\).*/\1/p"'
+alias copy='xclip -selection clipboard <'
 ndir() {
     mkdir $1
     cd $1
