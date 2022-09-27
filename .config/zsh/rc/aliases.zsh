@@ -31,7 +31,7 @@ alias gs="git status"
 alias gd="git diff"
 alias gi="git update-index --skip-worktree"
 alias gr="git reset --soft HEAD~1"
-alias gl="git log"
+alias gl="git log --oneline --decorate --graph"
 alias gca="git commit --amend --no-edit"
 alias gg="gau; gc"
 gc() {
