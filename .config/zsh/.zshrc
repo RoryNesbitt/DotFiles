@@ -32,11 +32,16 @@ bindkey -v                                      # vim key bindings
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line                  # edit command in editor
 
-# Nvim as a man pager
+#  Set EDITOR
 if [[ "$(command -v nvim)" ]]; then
   export EDITOR='nvim'
+  # Nvim as a man pager
   export MANPAGER='nvim +Man!'
   export MANWIDTH=999
+elif [[ "$(command -v pvim)" ]]; then
+  export EDITOR='pvim'
+elif [[ "$(command -v vim)" ]]; then
+  export EDITOR='vim'
 fi
 
 # Completion

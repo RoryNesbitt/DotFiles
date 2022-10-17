@@ -6,6 +6,8 @@
 # Get this screen
 alias aliases="$EDITOR $ZDOTDIR/rc/aliases.zsh"
 alias rl="clear && source $ZDOTDIR/.zshrc"
+# EDITOR
+alias vim='$EDITOR'
 
 # ls
 alias l='\ls --color=auto -FX'
