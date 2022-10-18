@@ -33,15 +33,17 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line                  # edit command in editor
 
 #  Set EDITOR
-if [[ "$(command -v nvim)" ]]; then
+if [[ "$(type -aw nvim | grep command)" ]]; then
   export EDITOR='nvim'
   # Nvim as a man pager
   export MANPAGER='nvim +Man!'
   export MANWIDTH=999
-elif [[ "$(command -v pvim)" ]]; then
+elif [[ "$(type -aw pvim | grep command)" ]]; then
   export EDITOR='pvim'
-elif [[ "$(command -v vim)" ]]; then
+elif [[ "$(type -aw vim | grep command)" ]]; then
   export EDITOR='vim'
+elif [[ "$(type -aw vi | grep command)" ]]; then
+  export EDITOR='vi'
 fi
 
 # Completion
