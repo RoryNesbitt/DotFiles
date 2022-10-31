@@ -16,6 +16,8 @@ if [ $# != 0 ]; then
         tmux new -s $session -d "command -v yay &> /dev/null && yay --sudoloop -Syu --noconfirm || ( command -v apt &> /dev/null && sudo apt update && sudo apt upgrade -y ); echo 'Finished upgrade'; read key <&1";;
       'work')
         tmux new -s $session -d -c ~/Documents/work $@;;
+      'papers')
+        tmux new -s $session -d -c ~/Documents/papers $@;;
       'notes')
         tmux new -s $session -d $EDITOR;;
       'scripts')
