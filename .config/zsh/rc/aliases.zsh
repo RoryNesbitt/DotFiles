@@ -4,7 +4,6 @@
 # alias -g global=can go anywhere in command
 #
 # Get this screen
-alias aliases="$EDITOR $ZDOTDIR/rc/aliases.zsh"
 alias rl="clear && source $ZDOTDIR/.zshrc"
 # EDITOR
 alias vim='$EDITOR'
@@ -81,7 +80,6 @@ alias tmk='tmux kill-session -t'
 alias tmkk='tmux kill-session'
 alias update='tm update'
 alias scripts='tm scripts || $EDITOR ~/.local/scripts/'
-alias work='tm work'
 config() {
   tm config $1 || $EDITOR ~/.config/$1
 }
