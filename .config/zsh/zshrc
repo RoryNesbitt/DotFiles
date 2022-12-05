@@ -30,28 +30,28 @@ set splitright                  # Open verticle split to the right
 # Vim control
 bindkey -v                                      # vim key bindings
 autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line                  # edit command in editor
+bindkey "^e" edit-command-line                  # edit command in editor
 
 #  Set EDITOR
 if (( $+commands[nvim] )); then
-  export EDITOR='nvim'
+  export EDITOR="nvim"
   # Nvim as a man pager
-  export MANPAGER='nvim +Man!'
+  export MANPAGER="nvim +Man!"
   export MANWIDTH=999
 elif (( $+commands[pvim] )); then
-  export EDITOR='pvim'
+  export EDITOR="pvim"
 elif (( $+commands[vim] )); then
-  export EDITOR='vim'
+  export EDITOR="vim"
 elif (( $+commands[vi] )); then
-  export EDITOR='vi'
+  export EDITOR="vi"
 fi
 
 # Completion
 autoload -Uz compinit
 compinit -d $ZDOTDIR/zcompdump
 compinit
-zstyle ':completion:*:*:*:*:*' menu select
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # case insensitive tab completion
+zstyle ":completion:*:*:*:*:*" menu select
+zstyle ":completion:*" matcher-list "m:{a-zA-Z}={A-Za-z}" # case insensitive tab completion
 
 # History configurations
 HISTFILE=$ZDOTDIR/zsh_history

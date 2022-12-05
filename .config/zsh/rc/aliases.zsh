@@ -6,18 +6,18 @@
 # Get this screen
 alias rl="clear && source $ZDOTDIR/.zshrc"
 # EDITOR
-alias vim='$EDITOR'
+alias vim="$EDITOR"
 
 # ls
-alias l='\ls --color=auto -FX'
+alias l="\ls --color=auto -FX"
 alias ls="l -lh"
 alias la="ls -A"
 alias le="ls -I"
 
 # Ansible
-alias a='ansible'
-alias ap='ansible-playbook'
-alias av='ansible-vault'
+alias a="ansible"
+alias ap="ansible-playbook"
+alias av="ansible-vault"
 
 # Git
 alias gpl="git pull"
@@ -69,17 +69,17 @@ dfc() {
 }
 
 # Colour
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-alias diff='diff --color=auto'
-alias ip='ip --color=auto'
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
+alias diff="diff --color=auto"
+alias ip="ip --color=auto"
 
 # Tmux
-alias tmk='tmux kill-session -t'
-alias tmkk='tmux kill-session'
-alias update='tm update'
-alias scripts='tm scripts || $EDITOR ~/.local/scripts/'
+alias tmk="tmux kill-session -t"
+alias tmkk="tmux kill-session"
+alias update="tm update"
+alias scripts="tm scripts || $EDITOR ~/.local/scripts/"
 config() {
   tm config $1 || $EDITOR ~/.config/$1
 }
@@ -89,12 +89,12 @@ alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 
 # Misc
-alias noise-cancelling='wget -qO - https://bit.ly/2mBJSJo | sudo bash && pulseaudio -k'
-alias cx='chmod +x'
-alias w='cd ~/Documents/work'
-alias gip='curl icanhazip.com'
-alias lip='ip -o route get to 1.1.1.1 | sed -n "s/.*src \([0-9.]\+\).*/\1/p"'
-alias copy='xclip -selection clipboard <'
+alias noise-cancelling="wget -qO - https://bit.ly/2mBJSJo | sudo bash && pulseaudio -k"
+alias cx="chmod +x"
+alias w="cd ~/Documents/work"
+alias gip="curl icanhazip.com"
+alias lip="ip -o route get to 1.1.1.1 | sed -n 's/.*src \([0-9.]\+\).*/\1/p'"
+alias copy="xclip -selection clipboard <"
 ndir() {
     mkdir $1
     cd $1
