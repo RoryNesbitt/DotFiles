@@ -33,6 +33,8 @@ alias gd="git diff"
 alias gi="git update-index --skip-worktree"
 alias gr="git reset --soft HEAD~1"
 alias gl="git log --oneline --decorate --graph"
+alias gst="git stash"
+alias gsa="git stash apply"
 alias gca="git commit --amend --no-edit"
 alias gg="gau; gc"
 gc() {
