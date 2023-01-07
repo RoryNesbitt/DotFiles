@@ -100,6 +100,7 @@ alias window-class="xprop | grep CLASS"
 alias noise-cancelling="wget -qO - https://bit.ly/2mBJSJo | sudo bash && pulseaudio -k"
 alias cx="chmod +x"
 alias w="cd ~/Documents/work"
+alias nb="newsboat"
 ndir() {
     mkdir $1
     cd $1
