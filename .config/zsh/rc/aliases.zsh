@@ -3,10 +3,9 @@
 # alias -s suffix=tool
 # alias -g global=can go anywhere in command
 #
-# Get this screen
 alias rl="clear && source $ZDOTDIR/.zshrc"
 # EDITOR
-alias vim="\$EDITOR"
+alias vim="$EDITOR"
 
 # ls
 alias l="\ls --color=auto -FX"
@@ -30,7 +29,6 @@ alias gch="git checkout"
 alias gcl="git clone"
 alias gs="git status"
 alias gd="git diff"
-alias gi="git update-index --skip-worktree"
 alias gr="git reset --soft HEAD~1"
 alias gl="git log --oneline --decorate --graph"
 alias gst="git stash"
@@ -96,7 +94,6 @@ alias copy="xclip -selection clipboard <"
 alias window-class="xprop | grep CLASS"
 
 # Misc
-alias noise-cancelling="wget -qO - https://bit.ly/2mBJSJo | sudo bash && pulseaudio -k"
 alias cx="chmod +x"
 alias w="cd ~/Documents/work"
 alias nb="newsboat"

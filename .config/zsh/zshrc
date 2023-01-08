@@ -24,13 +24,11 @@ setopt promptsubst              # enable command substitution in prompt
 # Misc
 export PROMPT_EOL_MARK=""       # hide EOL sign
 setopt autocd                   # change directory just by typing its name
-set splitbelow                  # Open split bellow
-set splitright                  # Open verticle split to the right
 
 # Vim control
 bindkey -v                                      # vim key bindings
 autoload edit-command-line; zle -N edit-command-line
-bindkey "^e" edit-command-line                  # edit command in editor
+bindkey "^E" edit-command-line                  # edit command in editor
 
 #  Set EDITOR
 if (( $+commands[nvim] )); then
@@ -91,6 +89,6 @@ if [ -z "$SSH_CLIENT" ] || [ "$TMUX" ]; then
     elif [ -f /bin/lolcat ]; then
         ( cat ~/.config/zsh/img && echo -e "`whoami`@`uname -n`" ) | lolcat
     else
-        cat ~/.config/zsh/img && echo -e "\033[${SHCOLOURN}m`whoami`\033[1;37m@\033[${SHCOLOURN}m`uname -n`\033[1;37m"
+        cat ~/.config/zsh/img && echo -e "\033[${ECHOCOLOUR}m`whoami`\033[1;37m@\033[${ECHOCOLOUR}m`uname -n`\033[1;37m"
     fi
 fi
