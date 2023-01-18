@@ -4,8 +4,10 @@
 # alias -g global=can go anywhere in command
 #
 alias rl="clear && source $ZDOTDIR/.zshrc"
-# EDITOR
-alias vim="$EDITOR"
+
+# Editor
+alias v="$EDITOR"
+alias v.="v ."
 
 # ls
 alias l="\ls --color=auto -FX"
@@ -95,6 +97,7 @@ alias copy="xclip -selection clipboard <"
 alias window-class="xprop | grep CLASS"
 
 # Misc
+alias r="ranger"
 alias cx="chmod +x"
 alias w="cd ~/Documents/work"
 alias nb="newsboat"
