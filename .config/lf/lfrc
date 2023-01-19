@@ -27,6 +27,22 @@ cmd touch %{{
   fi
 }}
 
+cmd open &{{
+  case $(file --mime-type -Lb $f) in
+    text/*) lf -remote "send $id \$$EDITOR \$fx";;
+    # *) for f in $fx; do
+    #   echo $f
+    #   xdg-open "$f" & #>/dev/null &
+    #   done
+    #   ;;
+    *) xdg-open "$f" ;;
+  esac
+}}
+
+cmd mt %{{
+  echo $(file --mime-type -Lb $f)
+}}
+
 #keymaps
 map n
 map nf touch
@@ -34,3 +50,4 @@ map nd mkdir
 map D delete
 map ZZ quit
 map ZQ quit
+map <enter> open
