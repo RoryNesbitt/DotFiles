@@ -32,3 +32,5 @@ map n
 map nf touch
 map nd mkdir
 map D delete
+map ZZ quit
+map ZQ quit
