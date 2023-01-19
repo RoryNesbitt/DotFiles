@@ -1,0 +1,34 @@
+#Basic settings
+set ignorecase true
+set icons true
+
+# uberzug integration
+# set previewer ~/.config/lf/previewer.sh
+# set cleaner ~/.config/lf/clear_img.sh
+
+#Custom commands
+cmd mkdir %{{
+  if [ $# = 0 ]; then
+    printf "Directory Name: "
+    read ans
+    mkdir $ans
+  else
+    mkdir $@
+  fi
+}}
+
+cmd touch %{{
+  if [ $# = 0 ]; then
+    printf "File Name: "
+    read ans
+    touch $ans
+  else
+    touch $@
+  fi
+}}
+
+#keymaps
+map n
+map nf touch
+map nd mkdir
+map D delete
