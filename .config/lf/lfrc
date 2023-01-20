@@ -3,8 +3,8 @@ set ignorecase true
 set icons true
 
 # uberzug integration
-# set previewer ~/.config/lf/previewer.sh
-# set cleaner ~/.config/lf/clear_img.sh
+set previewer ~/.config/lf/previewer.sh
+set cleaner ~/.config/lf/cleaner.sh
 
 #Custom commands
 cmd mkdir %{{
@@ -43,11 +43,20 @@ cmd mt %{{
   echo $(file --mime-type -Lb $f)
 }}
 
+cmd cleanQuit %{{
+  ~/.config/lf/cleaner.sh
+	kill "$UEBERZUGPID" &>/dev/null
+	pkill -f "tail -f $LF_UEBERZUG_TEMPDIR/fifo" &>/dev/null
+	rm -rf "$LF_UEBERZUG_TEMPDIR" &>/dev/null
+  lf -remote "send quit"
+}}
+
 #keymaps
 map n
 map nf touch
 map nd mkdir
 map D delete
-map ZZ quit
-map ZQ quit
+map ZZ cleanQuit
+map ZQ cleanQuit
+map q cleanQuit
 map <enter> open

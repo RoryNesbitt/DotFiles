@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+# Set up temporary directory.
+export LF_UEBERZUG_TEMPDIR="$(mktemp -d -t lf-ueberzug-XXXXXX)"
+
+# Launch ueberzug.
+mkfifo "$LF_UEBERZUG_TEMPDIR/fifo"
+tail -f "$LF_UEBERZUG_TEMPDIR/fifo" | ueberzug layer --silent &
+UEBERZUGPID=$!
+
+exec lf "$@"

@@ -97,7 +97,7 @@ alias copy="xclip -selection clipboard <"
 alias window-class="xprop | grep CLASS"
 
 # Misc
-alias r="ranger"
+alias lf="lf-img"
 alias cx="chmod +x"
 alias w="cd ~/Documents/work"
 alias nb="newsboat"
