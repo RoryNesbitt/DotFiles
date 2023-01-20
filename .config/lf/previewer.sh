@@ -38,6 +38,14 @@ case "$(basename "$file" | tr '[:upper:]' '[:lower:]')" in
 	gm convert "$file[0]" "$thumbnail"
 	preview "$thumbnail" "$@"
 	;;
-*) cat "$file" ;;
+*) 
+  if command -v nvim &>/dev/null; then
+    nvim -c "so ~/.config/lf/nvim.lua" "$file"
+  elif command -v bat; then
+    bat -pf "$file"
+  else
+    cat "$file"
+  fi
+  ;;
 esac
 return 127 # nonzero retcode required for lf previews to reload
