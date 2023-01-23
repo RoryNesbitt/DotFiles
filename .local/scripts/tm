@@ -23,6 +23,9 @@ else
 		'papers')
 			tmux new -s $session -d -c ~/Documents/papers $@
 			;;
+		'projects')
+			tmux new -s $session -d -c ~/Documents/projects $@
+			;;
 		'notes')
 			tmux new -s $session -d $EDITOR
 			;;
