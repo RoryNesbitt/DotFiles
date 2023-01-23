@@ -1,0 +1,43 @@
+#!/usr/bin/env sh
+#Based on bashbunnis pomodoro timer
+#Added custom duration setting and looping
+
+pomodoro() {
+  getTime "$1"
+  clear
+  echo "$1" | lolcat
+  if command -v timer 1>/dev/null 2>1; then
+    timer $duration || exit 0
+  else
+    sleep $duration || exit 0
+  fi
+  notify-send "$1 complete"
+}
+
+getTime() {
+  if [ -z $duration ]; then
+    case $1 in
+      "work")
+        duration="50m" ;;
+      "break")
+        duration="10m" ;;
+      *)
+        echo $1 not in list, please give a duration
+        exit 1 ;;
+    esac
+  fi
+}
+
+name=$1
+duration=$2
+
+if [ $name = "loop" ]; then
+  while true; do
+    duration=$2
+    pomodoro "work"
+    duration=$3
+    pomodoro "break"
+  done
+else
+  pomodoro $name
+fi
