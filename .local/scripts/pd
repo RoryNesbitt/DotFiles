@@ -6,12 +6,12 @@ pomodoro() {
   getTime "$1"
   clear
   echo "$1" | lolcat
-  if command -v timer 1>/dev/null 2>1; then
+  if command -v timer > /dev/null 2>&1; then
     timer $duration || exit 0
   else
     sleep $duration || exit 0
   fi
-  notify-send "$1 complete"
+  notify-send "Pomodoro" "$1 complete"
 }
 
 getTime() {
