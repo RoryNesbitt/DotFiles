@@ -1,0 +1,31 @@
+#!/usr/bin/env sh
+
+set -e # Exit on any error
+exitMsg() {
+  if [ $? -eq 0 ];then
+    msg="Finished upgrade"
+  else
+    msg="Something went wrong"
+  fi
+  echo "$msg"
+  notify-send Update "$msg"
+}
+trap exitMsg EXIT
+
+exists() {
+  command -v $1 1>/dev/null 2>1
+}
+
+if exists yay; then
+  yay --sudoloop -Syu --noconfirm
+elif exists pacman; then
+  sudo pacman -Syu --noconfirm
+elif exists apt; then
+  sudo apt update
+  sudo apt upgrade -y
+fi
+
+if exists brew; then
+  brew update
+  brew upgrade
+fi

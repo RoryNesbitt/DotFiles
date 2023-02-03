@@ -79,7 +79,7 @@ alias ip="ip --color=auto"
 
 # Tmux
 alias tmk="tmux kill-session -t"
-alias update="tm update"
+alias update="tm update || fullUpdate"
 alias scripts="tm scripts || $EDITOR ~/.local/scripts/"
 alias papers="tm papers || $EDITOR ~/Documents/papers/"
 config() {
