@@ -7,7 +7,6 @@ export ECHOCOLOUR="1;36"
 dirs=("$HOME/.local/bin"
   "$HOME/.local/scripts"
   "/snap/bin"
-  "$(yarn global bin 2>/dev/null)"
   "/home/linuxbrew/.linuxbrew/bin"
   "/home/linuxbrew/.linuxbrew/sbin"
 )
