@@ -43,12 +43,21 @@ cmd mt %{{
   echo $(file --mime-type -Lb $f)
 }}
 
+cmd cdTrigger %{{
+  echo "1" > "$LF_SHELLCD_TEMPDIR/changecwd"
+}}
+
+cmd cdq ${{
+  lf -remote "send $id cdTrigger"
+  lf -remote "send $id cleanQuit"
+}}
+
 cmd cleanQuit %{{
   ~/.config/lf/cleaner.sh
 	kill "$UEBERZUGPID" &>/dev/null
 	pkill -f "tail -f $LF_UEBERZUG_TEMPDIR/fifo" &>/dev/null
 	rm -rf "$LF_UEBERZUG_TEMPDIR" &>/dev/null
-  lf -remote "send quit"
+  lf -remote "send $id quit"
 }}
 
 #keymaps
@@ -59,4 +68,5 @@ map D delete
 map ZZ cleanQuit
 map ZQ cleanQuit
 map q cleanQuit
+map w cdq
 map <enter> open

@@ -96,8 +96,20 @@ alias lip="ip -o route get to 1.1.1.1 | sed -n 's/.*src \([0-9.]\+\).*/\1/p'"
 alias copy="xclip -selection clipboard <"
 alias window-class="xprop | grep CLASS"
 
+#lf
+lf() {
+	LF_SHELLCD_TEMPDIR="$(mktemp -d -t lf-shellcd-XXXXXX)"
+	export LF_SHELLCD_TEMPDIR
+	lf-img -last-dir-path "$LF_SHELLCD_TEMPDIR/lastdir" $@
+	if [ -e "$LF_SHELLCD_TEMPDIR/changecwd" ] && \
+		dir="$(cat "$LF_SHELLCD_TEMPDIR/lastdir")" 2>/dev/null; then
+		cd "$dir"
+	fi
+	rm -rf "$LF_SHELLCD_TEMPDIR"
+	unset LF_SHELLCD_TEMPDIR
+}
+
 # Misc
-alias lf="lf-img"
 alias cx="chmod +x"
 alias w="cd ~/Documents/work"
 alias nb="newsboat"
