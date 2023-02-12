@@ -123,3 +123,8 @@ kdir() {
     rm -rf $PD
     echo Killed $PD
 }
+uz() {                                                                             [~/Documents/projects/3D-prints/dnd]
+  if unzip $@; then
+    rm $@
+  fi
+}
