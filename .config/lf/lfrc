@@ -47,7 +47,7 @@ cmd cdTrigger %{{
   echo "1" > "$LF_SHELLCD_TEMPDIR/changecwd"
 }}
 
-cmd cdq ${{
+cmd cdq &{{
   lf -remote "send $id cdTrigger"
   lf -remote "send $id cleanQuit"
 }}
