@@ -6,6 +6,7 @@ export ECHOCOLOUR="1;36"
 
 dirs=("$HOME/.local/bin"
   "$HOME/.local/scripts"
+  "$HOME/.local/pvim"
   "/snap/bin"
   "/home/linuxbrew/.linuxbrew/bin"
   "/home/linuxbrew/.linuxbrew/sbin"
