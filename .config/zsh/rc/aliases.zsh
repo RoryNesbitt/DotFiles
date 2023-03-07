@@ -14,7 +14,7 @@ alias l="\ls --color=auto -FX"
 alias ls="l -lh"
 alias la="ls -A"
 alias ld="ls -t"
-alias le="ls -I"
+alias lad="ls -At"
 
 # Ansible
 alias a="ansible"
