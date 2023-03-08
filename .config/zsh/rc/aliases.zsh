@@ -59,7 +59,7 @@ alias dfs="dots status"
 alias dfd="dots diff"
 alias dfi="dots update-index --skip-worktree"
 alias dfr="dots reset --soft HEAD~1"
-alias dfl="dots log"
+alias dfl="dots log --oneline --decorate --graph"
 alias dfca="dots commit --amend --no-edit"
 alias dd="dfau; dfc"
 dfc() {
