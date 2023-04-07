@@ -73,6 +73,14 @@ dfc() {
     fi
 }
 
+# Docker
+alias d="docker"
+alias ds="docker ps"
+alias dsa="docker ps -a"
+alias dsq="docker ps -q"
+alias dcu="docker compose up -d"
+alias dcd="docker compose down"
+
 # Colour
 alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
