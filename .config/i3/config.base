@@ -156,8 +156,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+F1 exec xed ~/.config/i3/keybindings
 
 # Backlight control
-bindsym XF86MonBrightnessUp exec xbacklight +10
-bindsym XF86MonBrightnessDown exec xbacklight -10
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
 # change focus
 bindsym $mod+h focus left
@@ -250,6 +250,7 @@ bindsym $mod+Shift+b exec grep "^$(xclip -o)$" $HOME/Documents/files/bookmarks |
 bindsym $mod+b exec xdotool type \
     "$(cat $HOME/Documents/files/bookmarks | \
     rofi -dmenu -config ~/.config/rofi/rofidmenu.rasi)"
+bindsym XF86Launch1 exec steam
 
 ##########################################
 # configuration for workspace behaviour: #
