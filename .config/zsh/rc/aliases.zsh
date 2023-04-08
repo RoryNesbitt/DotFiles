@@ -35,7 +35,7 @@ alias gd="git diff"
 alias gr="git reset --soft HEAD~1"
 alias gl="git log --oneline --decorate --graph"
 alias gst="git stash"
-alias gsa="git stash apply"
+alias gsp="git stash pop"
 alias gca="git commit --amend --no-edit"
 alias gg="gau; gc"
 gc() {
@@ -60,6 +60,8 @@ alias dfd="dots diff"
 alias dfi="dots update-index --skip-worktree"
 alias dfr="dots reset --soft HEAD~1"
 alias dfl="dots log --oneline --decorate --graph"
+alias dfst="dots stash"
+alias dfsp="dots stash pop"
 alias dfca="dots commit --amend --no-edit"
 alias dd="dfau; dfc"
 dfc() {
@@ -70,6 +72,14 @@ dfc() {
         dots commit
     fi
 }
+
+# Docker
+alias d="docker"
+alias ds="docker ps"
+alias dsa="docker ps -a"
+alias dsq="docker ps -q"
+alias dcu="docker compose up -d"
+alias dcd="docker compose down"
 
 # Colour
 alias grep="grep --color=auto"
