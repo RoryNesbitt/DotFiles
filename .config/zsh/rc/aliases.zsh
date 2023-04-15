@@ -76,6 +76,7 @@ dfc() {
 # Docker
 alias d="docker"
 alias ds="docker ps"
+alias dl="docker logs"
 alias dsa="docker ps -a"
 alias dsq="docker ps -q"
 alias dcu="docker compose up -d"
