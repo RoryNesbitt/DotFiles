@@ -75,6 +75,8 @@ dfc() {
 
 # Docker
 alias d="docker"
+alias db="docker build"
+alias dr="docker restart"
 alias ds="docker ps"
 alias dsa="docker ps -a"
 alias dsq="docker ps -q"
