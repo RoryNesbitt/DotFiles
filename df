@@ -1,0 +1,39 @@
+#!/usr/bin/env sh
+
+absolute_path() {
+  echo "$(dirname "$(readlink -e -- "$1")")"
+}
+
+# Get the path to the dotfile repo
+repo_location=$(absolute_path "$0")
+
+# variables that don't exist are considered true
+# I don't know, it's dumb
+while getopts ':fdh' opts; do
+  case $opts in
+    f)
+      skip_existing=false
+      ;;
+    d)
+      echo "$repo_location"
+      ;;
+    h)
+      help=false
+      ;;
+    --)
+      break
+      ;;
+  esac
+done
+shift $((OPTIND-1))
+
+if ! $help; then
+  echo "Usage:
+  df [options]
+
+Options:
+  --                    Treat everything after this as a filename
+
+  -f                    overwrite the existing files if they exist"
+  exit
+fi
