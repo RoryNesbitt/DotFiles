@@ -7,18 +7,16 @@ absolute_path() {
 # Get the path to the dotfile repo
 repo_location=$(absolute_path "$0")
 
-# variables that don't exist are considered true
-# I don't know, it's dumb
 while getopts ':fdh' opts; do
   case $opts in
     f)
-      skip_existing=false
+      force=true
       ;;
     d)
       echo "$repo_location"
       ;;
     h)
-      help=false
+      help=true
       ;;
     --)
       break
@@ -27,7 +25,7 @@ while getopts ':fdh' opts; do
 done
 shift $((OPTIND-1))
 
-if ! $help; then
+if [ "$help" = true ]; then
   echo "Usage:
   df [options]
 
