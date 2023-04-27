@@ -1,14 +1,31 @@
 #!/usr/bin/env sh
 
-print_help() {
+help() {
   echo "Usage:
   df add                Add a file to the dots repo
   df remove             Remove a file from the dots repo
   df link               symlink the files
   df unlink             remove the symlink
+  df help               Print this page then exit
 
 Options:
-  -h                    Print this page then exit"
+  -h                    Print the help. Can be used after an above option"
+}
+
+add() {
+  echo add
+}
+
+remove(){
+  echo remove
+}
+
+link() {
+  echo link
+}
+
+unlink() {
+  echo unlink
 }
 
 absolute_path() {
@@ -35,3 +52,9 @@ while getopts ':dh' opts; do
   esac
 done
 shift $((OPTIND-1))
+
+cmd="$1"
+if command -V "$cmd" 2> /dev/null | grep -qwi function; then
+  shift
+  $cmd "$@"
+fi
