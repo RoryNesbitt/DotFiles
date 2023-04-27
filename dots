@@ -41,7 +41,7 @@ while getopts ':dh' opts; do
       echo "$repo_location"
       ;;
     h)
-      print_help
+      help
       exit
       ;;
     *)
