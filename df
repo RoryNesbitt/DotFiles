@@ -12,7 +12,7 @@ Options:
 }
 
 absolute_path() {
-  echo "$(dirname "$(readlink -e -- "$1")")"
+  dirname "$(readlink -e -- "$1")"
 }
 
 # Get the path to the dotfile repo
@@ -35,5 +35,3 @@ while getopts ':dh' opts; do
   esac
 done
 shift $((OPTIND-1))
-
-echo "$@"
