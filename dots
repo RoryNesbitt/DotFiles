@@ -2,11 +2,11 @@
 
 help() {
   echo "Usage:
-  df add                Add a file to the dots repo
-  df remove             Remove a file from the dots repo
-  df link               symlink the files
-  df unlink             remove the symlink
-  df help               Print this page then exit
+  dots add              Add a file to the dots repo
+  dots remove           Remove a file from the dots repo
+  dots link             Symlink the files
+  dots unlink           Remove the symlink
+  dots help             Print this page then exit
 
 Options:
   -h                    Print the help. Can be used after an above option"
