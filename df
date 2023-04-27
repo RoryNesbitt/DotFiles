@@ -1,5 +1,16 @@
 #!/usr/bin/env sh
 
+print_help() {
+  echo "Usage:
+  df add                Add a file to the dots repo
+  df remove             Remove a file from the dots repo
+  df link               symlink the files
+  df unlink             remove the symlink
+
+Options:
+  -h                    Print this page then exit"
+}
+
 absolute_path() {
   echo "$(dirname "$(readlink -e -- "$1")")"
 }
@@ -7,19 +18,14 @@ absolute_path() {
 # Get the path to the dotfile repo
 repo_location=$(absolute_path "$0")
 
-while getopts ':fdh' opts; do
+while getopts ':dh' opts; do
   case $opts in
-    f)
-      force=true
-      ;;
     d)
       echo "$repo_location"
       ;;
     h)
-      help=true
-      ;;
-    --)
-      break
+      print_help
+      exit
       ;;
     *)
       echo "Invalid option provided"
@@ -30,13 +36,4 @@ while getopts ':fdh' opts; do
 done
 shift $((OPTIND-1))
 
-if [ "$help" = true ]; then
-  echo "Usage:
-  df [options]
-
-Options:
-  --                    Treat everything after this as a filename
-
-  -f                    overwrite the existing files if they exist"
-  exit
-fi
+echo "$@"
