@@ -46,6 +46,28 @@ path_from_home() {
 
 }
 
+force() {
+  echo "Force will disable all saftey checks."
+  echo "It is not recommended unless completely necessary."
+  echo "Are you sure? [yN]"
+  read -r yn
+  case $yn in
+    [Yy] | [Yy][Ee][Ss] )
+      force=true
+      ;;
+    *)
+      echo "Good choice :)"
+      exit
+      ;;
+  esac
+  run_cmd "$@" # to let the function be called by name, e.g. dots force add ..
+}
+
+verbose() {
+  get_wordy=true
+  run_cmd "$@"
+}
+
 # Get the path to the dotfile repo
 repo_location=$(directory_path "$0")
 
@@ -72,28 +94,6 @@ while getopts ':dfvh' opts; do
   esac
 done
 shift $((OPTIND-1))
-
-force() {
-  echo "Force will disable all saftey checks."
-  echo "It is not recommended unless completely necessary."
-  echo "Are you sure? [yN]"
-  read -r yn
-  case $yn in
-    [Yy] | [Yy][Ee][Ss] )
-      force=true
-      ;;
-    *)
-      echo "Good choice :)"
-      exit
-      ;;
-  esac
-  run_cmd "$@" # to let the function be called by name, e.g. dots force add ..
-}
-
-verbose() {
-  get_wordy=true
-  run_cmd "$@"
-}
 
 run_cmd() {
   cmd="$1"
