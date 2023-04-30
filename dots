@@ -53,8 +53,12 @@ while getopts ':dh' opts; do
 done
 shift $((OPTIND-1))
 
-cmd="$1"
-if command -V "$cmd" 2> /dev/null | grep -qwi function; then
-  shift
-  $cmd "$@"
-fi
+run_cmd() {
+  cmd="$1"
+  if command -V "$cmd" 2> /dev/null | grep -qwi function; then
+    shift 1
+    $cmd "$@"
+  fi
+}
+
+run_cmd "$@"
