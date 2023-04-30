@@ -29,12 +29,12 @@ unlink() {
   echo unlink
 }
 
-absolute_path() {
+directory_path() {
   dirname "$(readlink -e -- "$1")"
 }
 
 # Get the path to the dotfile repo
-repo_location=$(absolute_path "$0")
+repo_location=$(directory_path "$0")
 
 while getopts ':dfh' opts; do
   case $opts in
