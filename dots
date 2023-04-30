@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 help() {
+  #TODO: help for each command
   echo "Usage:
   dots add              Add a file to the dots repo
   dots remove           Remove a file from the dots repo
