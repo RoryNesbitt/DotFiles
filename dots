@@ -35,10 +35,13 @@ absolute_path() {
 # Get the path to the dotfile repo
 repo_location=$(absolute_path "$0")
 
-while getopts ':dh' opts; do
+while getopts ':dfh' opts; do
   case $opts in
     d)
       echo "$repo_location"
+      ;;
+    f)
+      force ""
       ;;
     h)
       help
@@ -52,6 +55,23 @@ while getopts ':dh' opts; do
   esac
 done
 shift $((OPTIND-1))
+
+force() {
+  echo "Force will disable all saftey checks."
+  echo "It is not recommended unless completely necessary."
+  echo "Are you sure? [yN]"
+  read -r yn
+  case $yn in
+    [Yy] | [Yy][Ee][Ss] )
+      force=true
+      ;;
+    *)
+      echo "Good choice :)"
+      exit
+      ;;
+  esac
+  run_cmd "$@" # to let the function be called by name, e.g. dots force add ..
+}
 
 run_cmd() {
   cmd="$1"
