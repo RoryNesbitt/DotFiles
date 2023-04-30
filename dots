@@ -33,6 +33,19 @@ directory_path() {
   dirname "$(readlink -e -- "$1")"
 }
 
+path_from_home() {
+  absolute="$(readlink -e -- "$1")"
+  case $absolute in
+    "$HOME"*)
+      echo "${absolute#"$HOME"}"
+      ;;
+    *)
+      echo false
+      ;;
+  esac
+
+}
+
 # Get the path to the dotfile repo
 repo_location=$(directory_path "$0")
 
