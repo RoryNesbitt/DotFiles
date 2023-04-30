@@ -49,13 +49,16 @@ path_from_home() {
 # Get the path to the dotfile repo
 repo_location=$(directory_path "$0")
 
-while getopts ':dfh' opts; do
+while getopts ':dfvh' opts; do
   case $opts in
     d)
       echo "$repo_location"
       ;;
     f)
       force ""
+      ;;
+    v)
+      verbose ""
       ;;
     h)
       help
@@ -85,6 +88,11 @@ force() {
       ;;
   esac
   run_cmd "$@" # to let the function be called by name, e.g. dots force add ..
+}
+
+verbose() {
+  get_wordy=true
+  run_cmd "$@"
 }
 
 run_cmd() {
