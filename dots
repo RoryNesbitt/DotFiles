@@ -14,7 +14,76 @@ Options:
 }
 
 add() {
-  echo add
+  while getopts ':hDf' opts; do
+    case $opts in
+      h)
+        help add
+        exit
+        ;;
+      D)
+        dryrun=true
+        ;;
+      f)
+        force ""
+        ;;
+      --)
+        break
+        ;;
+      *)
+        echo "Invalid option provided"
+        echo "Exiting"
+        exit 1
+        ;;
+    esac
+  done
+  shift $((OPTIND-1))
+
+
+  for file in "$@"
+  do
+    if [ ! -e "$file" ]; then # doesn't exists
+      echo "$file not found"
+      continue
+    fi
+    path=$(path_from_home "$file")
+    if [ "$path" = false ]; then
+      echo "$file is outwith \$HOME"
+      continue
+    fi
+    stored_location="$repo_location$path"
+    if [ "$force" = true ] && [ -e "$stored_location" ]; then
+      rm -rf "$stored_location"
+    elif [ "$force" = false ]; then
+      if [ -d "$file" ]; then # directory
+        # check if directory already exists
+        # check if directory is symlinked or if files within are symlinked
+        # if file within are linked move to tmp
+        echo "$file is a directory"
+      elif [ -f "$file" ]; then # file
+        # check if file is already added
+        echo "$file is a file"
+      fi
+    fi
+
+    if [ "$dryrun" = true ]; then
+      echo "Dry run:"
+    else
+      mkdir -p "$(directory_path "$stored_location")"
+      #TODO: Check this doesn't fail if $file is a directory
+      mv "$file" "$stored_location"
+      ln -s "$stored_location" "$file"
+      if [ -e "$repo_location/tmp" ];then
+        if [ "$get_wordy" = true ]; then
+          echo "Moving previous files out of tmp"
+        fi
+        #TODO: Remove the old symlinks from then now moved directory so this won't fail
+        mv "$repo_location/tmp"/* "$repo_location/"
+        rm -d "$repo_location/tmp"
+      fi
+    fi
+    echo "Added \$HOME$path"
+  done
+
 }
 
 remove(){
@@ -46,28 +115,6 @@ path_from_home() {
 
 }
 
-force() {
-  echo "Force will disable all saftey checks."
-  echo "It is not recommended unless completely necessary."
-  echo "Are you sure? [yN]"
-  read -r yn
-  case $yn in
-    [Yy] | [Yy][Ee][Ss] )
-      force=true
-      ;;
-    *)
-      echo "Good choice :)"
-      exit
-      ;;
-  esac
-  run_cmd "$@" # to let the function be called by name, e.g. dots force add ..
-}
-
-verbose() {
-  get_wordy=true
-  run_cmd "$@"
-}
-
 # Get the path to the dotfile repo
 repo_location=$(directory_path "$0")
 
@@ -94,6 +141,28 @@ while getopts ':dfvh' opts; do
   esac
 done
 shift $((OPTIND-1))
+
+force() {
+  echo "Force will disable all saftey checks."
+  echo "It is not recommended unless completely necessary."
+  echo "Are you sure? [yN]"
+  read -r yn
+  case $yn in
+    [Yy] | [Yy][Ee][Ss] )
+      force=true
+      ;;
+    *)
+      echo "Good choice :)"
+      exit
+      ;;
+  esac
+  run_cmd "$@" # to let the function be called by name, e.g. dots force add ..
+}
+
+verbose() {
+  get_wordy=true
+  run_cmd "$@"
+}
 
 run_cmd() {
   cmd="$1"
