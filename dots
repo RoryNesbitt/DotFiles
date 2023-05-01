@@ -172,4 +172,28 @@ run_cmd() {
   fi
 }
 
+while getopts ':dfvh' opts; do
+  case $opts in
+    d)
+      echo "$repo_location"
+      ;;
+    f)
+      force ""
+      ;;
+    v)
+      verbose ""
+      ;;
+    h)
+      help
+      exit
+      ;;
+    *)
+      echo "Invalid option provided"
+      echo "Exiting"
+      exit 1
+      ;;
+  esac
+done
+shift $((OPTIND-1))
+
 run_cmd "$@"
