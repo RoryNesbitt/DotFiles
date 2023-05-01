@@ -50,39 +50,32 @@ add() {
       echo "$file is outwith \$HOME"
       continue
     fi
-    stored_location="$repo_location$path"
-    if [ "$force" = true ] && [ -e "$stored_location" ]; then
-      rm -rf "$stored_location"
-    elif [ ! "$force" = true ]; then
-      if [ -d "$file" ]; then # directory
-        # check if directory already exists
-        # check if directory is symlinked or if files within are symlinked
-        # if file within are linked move to tmp
-        echo "$file is a directory, this is not yet supported"
-        continue
-      elif [ -f "$file" ] && [ -e "$stored_location" ]; then # file
-        echo "$path has already been stored. Overwrite it with -f or replace local with link -f"
-        continue
-      fi
+    if [ -d "$file" ]; then # directory
+      file=$(walk_dir "$file")
     fi
 
-    if [ "$dryrun" = true ]; then
-      echo "Dry run:"
-    else
-      mkdir -p "$(directory_path "$stored_location")"
-      #TODO: Check this doesn't fail if $file is a directory
-      mv "$file" "$stored_location"
-      ln -s "$stored_location" "$file"
-      if [ -e "$repo_location/tmp" ];then
-        if [ "$get_wordy" = true ]; then
-          echo "Moving previous files out of tmp"
+    for f in $file; do
+      path=$(path_from_home "$f")
+
+      if [ "$force" = true ] && [ -e "$repo_location$path" ]; then
+        rm "$repo_location$path"
+      elif [ ! "$force" = true ]; then
+        if [ -f "$f" ] && [ -e "$repo_location$path" ]; then # file
+          echo "$path has already been stored. Overwrite it with -f or replace local with link -f"
+          continue
         fi
-        #TODO: Remove the old symlinks from then now moved directory so this won't fail
-        mv "$repo_location/tmp"/* "$repo_location/"
-        rm -d "$repo_location/tmp"
       fi
-    fi
-    echo "Added \$HOME$path"
+
+      if [ "$dryrun" = true ]; then
+        echo "Dry run:"
+      else
+        mkdir -p "$repo_location$path"
+        rm -d "$repo_location$path" #HACK: mkdir should be given the dir path not the file path
+        mv "$f" "$repo_location$path"
+        ln -s "$repo_location$path" "$f"
+      fi
+      echo "Added \$HOME$path"
+    done
   done
 }
 
@@ -295,6 +288,18 @@ unlink() {
 
 directory_path() {
   dirname "$(readlink -e -- "$1")"
+}
+
+walk_dir() {
+  for pathname in "$1"/*; do
+    if [ "$pathname" = "$1/*" ]; then
+      continue # Directory is emtpy, skip it
+    elif [ -d "$pathname" ]; then
+      walk_dir "$pathname"
+    else
+      printf "$pathname "
+    fi
+  done
 }
 
 path_from_home() {
