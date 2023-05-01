@@ -118,30 +118,6 @@ path_from_home() {
 # Get the path to the dotfile repo
 repo_location=$(directory_path "$0")
 
-while getopts ':dfvh' opts; do
-  case $opts in
-    d)
-      echo "$repo_location"
-      ;;
-    f)
-      force ""
-      ;;
-    v)
-      verbose ""
-      ;;
-    h)
-      help
-      exit
-      ;;
-    *)
-      echo "Invalid option provided"
-      echo "Exiting"
-      exit 1
-      ;;
-  esac
-done
-shift $((OPTIND-1))
-
 force() {
   echo "Force will disable all saftey checks."
   echo "It is not recommended unless completely necessary."
@@ -151,10 +127,13 @@ force() {
     [Yy] | [Yy][Ee][Ss] )
       force=true
       ;;
-    *)
+    "" | [Nn] | [Nn][Oo] )
       echo "Good choice :)"
       exit
       ;;
+    *)
+      echo "Option not recognised"
+      exit
   esac
   run_cmd "$@" # to let the function be called by name, e.g. dots force add ..
 }
