@@ -53,15 +53,16 @@ add() {
     stored_location="$repo_location$path"
     if [ "$force" = true ] && [ -e "$stored_location" ]; then
       rm -rf "$stored_location"
-    elif [ "$force" = false ]; then
+    elif [ ! "$force" = true ]
       if [ -d "$file" ]; then # directory
         # check if directory already exists
         # check if directory is symlinked or if files within are symlinked
         # if file within are linked move to tmp
-        echo "$file is a directory"
-      elif [ -f "$file" ]; then # file
-        # check if file is already added
-        echo "$file is a file"
+        echo "$file is a directory, this is not yet supported"
+        continue
+      elif [ -f "$file" ] && [ -e "$stored_location" ]; then # file
+        echo "$path has already been stored. Overwrite it with -f or replace local with link -f"
+        continue
       fi
     fi
 
