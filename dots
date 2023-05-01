@@ -41,7 +41,7 @@ add() {
 
   for file in "$@"
   do
-    if [ ! -e "$file" ]; then # doesn't exists
+    if [ ! -e "$file" ] && [ ! -L "$file" ]; then # doesn't exists
       echo "$file not found"
       continue
     fi
@@ -136,7 +136,7 @@ remove(){
 
   for file in "$@"
   do
-    if [ ! -e "$file" ]; then # doesn't exists
+    if [ ! -e "$file" ] && [ ! -L "$file" ]; then # doesn't exists
       echo "$file not found"
       continue
     fi
@@ -197,7 +197,7 @@ link() {
 
   for file in "$@"
   do
-    if [ ! -e "$file" ]; then # doesn't exists
+    if [ ! -e "$file" ] && [ ! -L "$file" ]; then # doesn't exists
       echo "$file not found"
       continue
     fi
@@ -259,7 +259,7 @@ unlink() {
 
   for file in "$@"
   do
-    if [ ! -e "$file" ]; then # doesn't exists
+    if [ ! -e "$file" ] && [ ! -L "$file" ]; then # doesn't exists
       echo "$file not found"
       continue
     fi
