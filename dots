@@ -299,6 +299,7 @@ directory_path() {
 
 path_from_home() {
   absolute="$(readlink -e -- "$1")"
+  [ "$absolute" = "" ] && absolute="$1"
   case $absolute in
     "$repo_location"*)
       echo "${absolute#"$repo_location"}"
