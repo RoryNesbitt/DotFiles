@@ -90,7 +90,7 @@ remove(){
   while getopts ':hDfyn' opts; do
     case $opts in
       h)
-        help add
+        help remove
         exit
         ;;
       D)
