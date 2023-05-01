@@ -174,7 +174,64 @@ link() {
 }
 
 unlink() {
-  echo unlink
+  while getopts ':hDf' opts; do
+    case $opts in
+      h)
+        help unlink
+        exit
+        ;;
+      D)
+        dryrun=true
+        ;;
+      f)
+        force ""
+        ;;
+      --)
+        break
+        ;;
+      *)
+        echo "Invalid option provided"
+        echo "Exiting"
+        exit 1
+        ;;
+    esac
+  done
+  shift $((OPTIND-1))
+
+  for file in "$@"
+  do
+    if [ ! -e "$file" ]; then # doesn't exists
+      echo "$file not found"
+      continue
+    fi
+    path=$(path_from_home "$file")
+    stored_location="$repo_location$path"
+    if [ "$path" = false ]; then
+      echo "$file is outwith \$HOME"
+      continue
+    elif [ ! -e "$HOME$path" ]; then
+      echo "$file is not in your \$HOME"
+      continue
+    elif [ ! -e "$stored_location" ]; then
+      echo "$file is not in the dots repo"
+      continue
+    elif [ -d "$file" ]; then
+      echo "$file is a directory, this is not yet supported"
+      continue
+    fi
+    if [ "$force" = true ] || [ -L "$HOME$path" ]; then
+      [ ! "$dryrun" = true ] && rm "$HOME$path"
+    else
+      echo "$HOME$path is not a symlink. Overwrite local with -f"
+      continue
+    fi
+    if [ "$dryrun" = true ]; then
+      echo "Dry run:"
+    else
+      cp "$stored_location" "$HOME$path"
+    fi
+    echo "Unlinked $path"
+  done
 }
 
 directory_path() {
