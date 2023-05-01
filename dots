@@ -53,7 +53,7 @@ add() {
     stored_location="$repo_location$path"
     if [ "$force" = true ] && [ -e "$stored_location" ]; then
       rm -rf "$stored_location"
-    elif [ ! "$force" = true ]
+    elif [ ! "$force" = true ]; then
       if [ -d "$file" ]; then # directory
         # check if directory already exists
         # check if directory is symlinked or if files within are symlinked
@@ -153,16 +153,19 @@ remove(){
       continue
     fi
     if [ "$keep_local" = true ] && [ "$force" = true ] || [ -L "$HOME$path" ]; then
-      rm "$HOME$path"
+      [ ! "$dryrun" = true ] && rm "$HOME$path"
     elif [ "$keep_local" = true ]; then
       echo "$HOME$path is not a symlink. Remove repo copy with -n or overwrite local with -f"
       continue
     fi
-    if [ "$keep_local" = true ];then
+    if [ "$dryrun" = true ]; then
+      echo "Dry run:"
+    elif [ "$keep_local" = true ];then
       mv "$stored_location" "$HOME$path"
     else
       rm "$stored_location"
     fi
+    echo "Removed $path"
   done
 }
 
