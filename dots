@@ -83,11 +83,86 @@ add() {
     fi
     echo "Added \$HOME$path"
   done
-
 }
 
 remove(){
-  echo remove
+  while getopts ':hDfyn' opts; do
+    case $opts in
+      h)
+        help add
+        exit
+        ;;
+      D)
+        dryrun=true
+        ;;
+      f)
+        force ""
+        ;;
+      y)
+        keep_local=true
+        ;;
+      n)
+        keep_local=false
+        ;;
+      --)
+        break
+        ;;
+      *)
+        echo "Invalid option provided"
+        echo "Exiting"
+        exit 1
+        ;;
+    esac
+  done
+  shift $((OPTIND-1))
+
+  if [ "$keep_local" = "" ]; then
+    echo "Do you want to keep the local file? [Yn]"
+    read -r yn
+    case $yn in
+      "" | [Yy] | [Yy][Ee][Ss] )
+        keep_local=true
+        ;;
+      [Nn] | [Nn][Oo] )
+        keep_local=false
+        ;;
+      *)
+        echo "Option not recognised"
+        exit
+        ;;
+    esac
+  fi
+
+  for file in "$@"
+  do
+    if [ ! -e "$file" ]; then # doesn't exists
+      echo "$file not found"
+      continue
+    fi
+    path=$(path_from_home "$file")
+    stored_location="$repo_location$path"
+    if [ "$path" = false ]; then
+      echo "$file is outwith \$HOME"
+      continue
+    elif [ ! -e "$HOME$path" ]; then
+      echo "$file is not in your \$HOME"
+      continue
+    elif [ ! -e "$stored_location" ]; then
+      echo "$file is not in the dots repo"
+      continue
+    fi
+    if [ "$keep_local" = true ] && [ "$force" = true ] || [ -L "$HOME$path" ]; then
+      rm "$HOME$path"
+    elif [ "$keep_local" = true ]; then
+      echo "$HOME$path is not a symlink. Remove repo copy with -n or overwrite local with -f"
+      continue
+    fi
+    if [ "$keep_local" = true ];then
+      mv "$stored_location" "$HOME$path"
+    else
+      rm "$stored_location"
+    fi
+  done
 }
 
 link() {
