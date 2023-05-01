@@ -195,33 +195,38 @@ link() {
       continue
     fi
     path=$(path_from_home "$file")
-    stored_location="$repo_location$path"
-    if [ ! -e "$stored_location" ]; then
-      echo "$file is not in the dots repo"
+    if [ "$path" = false ]; then
+      echo "$file is outwith \$HOME"
       continue
-    elif [ "$force" = true ] && [ -e "$HOME$path" ]; then
-      rm -rf "$HOME$path"
-    elif [ ! "$force" = true ]; then
-      if [ -d "$file" ]; then # directory
-        # check if directory already exists
-        # check if directory is symlinked or if files within are symlinked
-        # if file within are linked move to tmp
-        echo "$file is a directory, this is not yet supported"
-        continue
-      elif [ -f "$file" ] && [ -e "$HOME$path" ]; then # file
-        echo "$path already exists. Overwrite it with -f or replace stored copy with add -f"
-        continue
-      fi
+    fi
+    if [ -d "$file" ]; then # directory
+      file=$(walk_dir "$file")
     fi
 
-    if [ "$dryrun" = true ]; then
-      echo "Dry run:"
-    else
-      mkdir -p "$(directory_path "$HOME$path")"
-      #TODO: Check this doesn't fail if $file is a directory
-      ln -s "$file" "$HOME$path"
-    fi
-    echo "Linked \$HOME$path"
+    for f in $file; do
+      path=$(path_from_home "$f")
+
+      if [ ! -e "$repo_location$path" ]; then
+        echo "$f is not in the dots repo"
+        continue
+      elif [ "$force" = true ] && [ -e "$HOME$path" ]; then
+        rm "$HOME$path"
+      elif [ ! "$force" = true ]; then
+        if [ -f "$f" ] && [ -e "$HOME$path" ]; then # file
+          echo "$path already exists. Overwrite it with -f or replace stored copy with add -f"
+          continue
+        fi
+      fi
+
+      if [ "$dryrun" = true ]; then
+        echo "Dry run:"
+      else
+        mkdir -p "$HOME$path"
+        rm -d "$HOME$path" #HACK: mkdir should be given the dir path not the file path
+        ln -s "$f" "$HOME$path"
+      fi
+      echo "Linked \$HOME$path"
+    done
   done
 }
 
