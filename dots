@@ -170,7 +170,66 @@ remove(){
 }
 
 link() {
-  echo link
+  while getopts ':hDf' opts; do
+    case $opts in
+      h)
+        help link
+        exit
+        ;;
+      D)
+        dryrun=true
+        ;;
+      f)
+        force ""
+        ;;
+      --)
+        break
+        ;;
+      *)
+        echo "Invalid option provided"
+        echo "Exiting"
+        exit 1
+        ;;
+    esac
+  done
+  shift $((OPTIND-1))
+
+
+  for file in "$@"
+  do
+    if [ ! -e "$file" ]; then # doesn't exists
+      echo "$file not found"
+      continue
+    fi
+    path=$(path_from_home "$file")
+    stored_location="$repo_location$path"
+    if [ ! -e "$stored_location" ]; then
+      echo "$file is not in the dots repo"
+      continue
+    elif [ "$force" = true ] && [ -e "$HOME$path" ]; then
+      rm -rf "$HOME$path"
+    elif [ ! "$force" = true ]; then
+      if [ -d "$file" ]; then # directory
+        # check if directory already exists
+        # check if directory is symlinked or if files within are symlinked
+        # if file within are linked move to tmp
+        echo "$file is a directory, this is not yet supported"
+        continue
+      elif [ -f "$file" ] && [ -e "$HOME$path" ]; then # file
+        echo "$path already exists. Overwrite it with -f or replace stored copy with add -f"
+        continue
+      fi
+    fi
+
+    if [ "$dryrun" = true ]; then
+      echo "Dry run:"
+    else
+      mkdir -p "$(directory_path "$HOME$path")"
+      #TODO: Check this doesn't fail if $file is a directory
+      ln -s "$file" "$HOME$path"
+    fi
+    echo "Linked \$HOME$path"
+  done
 }
 
 unlink() {
