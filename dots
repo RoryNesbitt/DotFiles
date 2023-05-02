@@ -219,8 +219,11 @@ link() {
       if [ ! -e "$repo_location$path" ]; then
         echo "$f is not in the dots repo"
         continue
-      elif [ "$force" = true ] && [ -e "$HOME$path" ]; then
-        rm "$HOME$path"
+      elif [ "$force" = true ]; then
+        rm -f "$HOME$path"
+      elif [ -L "$HOME$path" ]; then
+        echo "$f is already linked"
+        continue
       elif [ ! "$force" = true ]; then
         if [ -f "$f" ] && [ -e "$HOME$path" ]; then # file
           echo "$path already exists. Overwrite it with -f or replace stored copy with add -f"
