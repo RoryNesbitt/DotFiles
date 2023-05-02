@@ -309,7 +309,7 @@ is_ignored() {
   found=false
   for i in $ignoreList; do
     case "$1" in
-      *"." | *".." | *"*" | "$repo_location$i" | "$repo_location/$i" | "$repo_location/./$i")
+      *"." | *".." | *"*" | "$repo_location/$script_name" | "$repo_location$i" | "$repo_location/$i")
         found=true
         break
         ;;
@@ -352,6 +352,7 @@ path_from_home() {
 
 # Get the path to the dotfile repo
 repo_location=$(directory_path "$0")
+script_name=$(basename "$0")
 
 # Build the ignore list
 ignoreList=".git .gitignore .dotignore .dotsignore README LICENSE"
