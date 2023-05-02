@@ -38,7 +38,6 @@ add() {
   done
   shift $((OPTIND-1))
 
-
   for file in "$@"
   do
     if [ ! -e "$file" ] && [ ! -L "$file" ]; then # doesn't exists
@@ -133,32 +132,44 @@ remove(){
       echo "$file not found"
       continue
     fi
-    path=$(path_from_home "$file")
-    stored_location="$repo_location$path"
-    if [ "$path" = false ]; then
-      echo "$file is outwith \$HOME"
-      continue
-    elif [ ! -e "$HOME$path" ]; then
-      echo "$file is not in your \$HOME"
-      continue
-    elif [ ! -e "$stored_location" ]; then
-      echo "$file is not in the dots repo"
-      continue
+    if [ -d "$file" ]; then # directory
+      dir="$file"
+      file=$(walk_dir "$file")
     fi
-    if [ "$keep_local" = true ] && [ "$force" = true ] || [ -L "$HOME$path" ]; then
-      [ ! "$dryrun" = true ] && rm "$HOME$path"
-    elif [ "$keep_local" = true ]; then
-      echo "$HOME$path is not a symlink. Remove repo copy with -n or overwrite local with -f"
-      continue
+
+    for f in $file; do
+      path=$(path_from_home "$f")
+      if [ "$path" = false ]; then
+        echo "$f is outwith \$HOME"
+        continue
+      elif [ ! -e "$HOME$path" ]; then
+        echo "$f is not in your \$HOME"
+        continue
+      elif [ ! -e "$repo_location$path" ]; then
+        echo "$f is not in the dots repo"
+        continue
+      fi
+      if [ "$keep_local" = true ] && [ "$force" = true ] || [ -L "$HOME$path" ]; then
+        [ ! "$dryrun" = true ] && rm "$HOME$path"
+      elif [ "$keep_local" = true ]; then
+        echo "$HOME$path is not a symlink. Remove repo copy with -n or overwrite local with -f"
+        continue
+      fi
+      if [ "$dryrun" = true ]; then
+        echo "Dry run:"
+      elif [ "$keep_local" = true ];then
+        mv "$repo_location$path" "$HOME$path"
+      else
+        rm "$repo_location$path"
+      fi
+      echo "Removed $path"
+    done
+    if [ ! "$dryrun" = true ] && [ "$repo_location" != "" ] && [ "$dir" != "" ]; then
+      [ -d "$repo_location/$dir" ] && rm -rf "$repo_location/$dir"
+      if [ ! "$keep_local" = true ] && [ -d "$HOME/$dir" ]; then
+        rm -rf "$HOME/$dir"
+      fi
     fi
-    if [ "$dryrun" = true ]; then
-      echo "Dry run:"
-    elif [ "$keep_local" = true ];then
-      mv "$stored_location" "$HOME$path"
-    else
-      rm "$stored_location"
-    fi
-    echo "Removed $path"
   done
 }
 
@@ -186,7 +197,6 @@ link() {
     esac
   done
   shift $((OPTIND-1))
-
 
   for file in "$@"
   do
@@ -261,33 +271,33 @@ unlink() {
       echo "$file not found"
       continue
     fi
-    path=$(path_from_home "$file")
-    stored_location="$repo_location$path"
-    if [ "$path" = false ]; then
-      echo "$file is outwith \$HOME"
-      continue
-    elif [ ! -e "$HOME$path" ]; then
-      echo "$file is not in your \$HOME"
-      continue
-    elif [ ! -e "$stored_location" ]; then
-      echo "$file is not in the dots repo"
-      continue
-    elif [ -d "$file" ]; then
-      echo "$file is a directory, this is not yet supported"
-      continue
+    if [ -d "$file" ]; then # directory
+      dir="$file"
+      file=$(walk_dir "$file")
     fi
-    if [ "$force" = true ] || [ -L "$HOME$path" ]; then
-      [ ! "$dryrun" = true ] && rm "$HOME$path"
-    else
-      echo "$HOME$path is not a symlink. Overwrite local with -f"
-      continue
-    fi
-    if [ "$dryrun" = true ]; then
-      echo "Dry run:"
-    else
-      cp "$stored_location" "$HOME$path"
-    fi
-    echo "Unlinked $path"
+
+    for f in $file; do
+      path=$(path_from_home "$f")
+      if [ "$path" = false ]; then
+        echo "$f is outwith \$HOME"
+        continue
+      elif [ ! -e "$repo_location$path" ]; then
+        echo "$f is not in the dots repo"
+        continue
+      fi
+      if [ "$force" = true ] || [ -L "$HOME$path" ]; then
+        [ ! "$dryrun" = true ] && rm "$HOME$path"
+      else
+        echo "$HOME$path is not a symlink. Overwrite local with -f"
+        continue
+      fi
+      if [ "$dryrun" = true ]; then
+        echo "Dry run:"
+      else
+        cp "$repo_location$path" "$HOME$path"
+      fi
+      echo "Unlinked $path"
+    done
   done
 }
 
@@ -347,7 +357,6 @@ repo_location=$(directory_path "$0")
 ignoreList=".git .gitignore .dotignore .dotsignore README LICENSE"
 [ -f "$repo_location/.dotignore" ] && ignoreList="$ignoreList "$(tr '\n' ' ' < "$repo_location/.dotignore")
 [ -f "$repo_location/.dotsignore" ] && ignoreList="$ignoreList "$(tr '\n' ' ' < "$repo_location/.dotsignore")
-
 
 force() {
   echo "Force will disable all saftey checks."
