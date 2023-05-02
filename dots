@@ -322,8 +322,9 @@ is_ignored() {
 }
 
 walk_dir() {
+  absolute="$(readlink -e -- "$1")"
   for g in "/.*" "/*"; do
-    for pathname in "$1"$g; do
+    for pathname in "$absolute"$g; do
       if is_ignored "$pathname"; then
         continue # skip these directories
       elif [ -d "$pathname" ]; then
