@@ -295,15 +295,32 @@ directory_path() {
   dirname "$(readlink -e -- "$1")"
 }
 
+is_ignored() {
+  ignoreList=".git .gitignore .dotignore .dotsignore"
+  found=false
+  for i in $ignoreList; do
+    case "$1" in
+      *"." | *".." | *"*" | "$repo_location$i" | "$repo_location/$i" | "$repo_location/./$i")
+        found=true
+        break
+        ;;
+    esac
+  done
+  $found
+}
+
 walk_dir() {
-  for pathname in "$1"/*; do
-    if [ "$pathname" = "$1/*" ]; then
-      continue # Directory is emtpy, skip it
-    elif [ -d "$pathname" ]; then
-      walk_dir "$pathname"
-    else
-      printf "$pathname "
-    fi
+  for g in "/.*" "/*"; do
+    for pathname in "$1"$g; do
+      if is_ignored "$pathname"; then
+        continue # skip these directories
+      elif [ -d "$pathname" ]; then
+        walk_dir "$pathname"
+      else
+        printf '%s ' "$pathname"
+        # echo "$pathname"
+      fi
+    done
   done
 }
 
