@@ -296,7 +296,6 @@ directory_path() {
 }
 
 is_ignored() {
-  ignoreList=".git .gitignore .dotignore .dotsignore"
   found=false
   for i in $ignoreList; do
     case "$1" in
@@ -343,6 +342,12 @@ path_from_home() {
 
 # Get the path to the dotfile repo
 repo_location=$(directory_path "$0")
+
+# Build the ignore list
+ignoreList=".git .gitignore .dotignore .dotsignore README LICENSE"
+[ -f "$repo_location/.dotignore" ] && ignoreList="$ignoreList "$(tr '\n' ' ' < "$repo_location/.dotignore")
+[ -f "$repo_location/.dotsignore" ] && ignoreList="$ignoreList "$(tr '\n' ' ' < "$repo_location/.dotsignore")
+
 
 force() {
   echo "Force will disable all saftey checks."
