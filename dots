@@ -2,15 +2,79 @@
 
 help() {
   #TODO: help for each command
-  echo "Usage:
-  dots add              Add a file to the dots repo
-  dots remove           Remove a file from the dots repo
-  dots link             Symlink the files
-  dots unlink           Remove the symlink
+  case $1 in
+    "add")
+      echo "Usage:
+  dots add [files]      Add files to the dots repo
+                        This will take a file, or all files
+                        under a directory, from anywhere under
+                        \$HOME and move it to the dots repo,
+                        leaving a symlink in it's place.
+
+Options:
+  -h                    Help: Print this page and exit
+  -D                    Dryrun: Don't actually change anything
+  -f                    Force: Overwrite existing files
+  "
+      ;;
+    "remove")
+      echo "Usage:
+  dots remove [files]   Remove files from the dots repo
+                        This will delete files, or directories,
+                        from the repo with the option to either
+                        also delete the symlinks or to replace
+                        them with the original file
+
+Options:
+  -y                    Keep local files, replacing the symlinks
+  -n                    Remove the symlink, not keeping any copy of the file
+  -h                    Help: Print this page and exit
+  -D                    Dryrun: Don't actually change anything
+  -f                    Force: Overwrite existing files
+                        (Force is only useful when keeping local files)
+  "
+      ;;
+    "link")
+      echo "Usage:
+  dots link [files]     Symlink files that are in the repo
+                        Create symlinks under \$HOME for each
+                        of the files specified from the repo
+
+Options:
+  -h                    Help: Print this page and exit
+  -D                    Dryrun: Don't actually change anything
+  -f                    Force: Overwrite existing files
+  "
+      ;;
+    "unlink")
+      echo "Usage:
+  dots unlink [files]   Remove the symlink to the files
+                        Removes the symlink but doesn't touch
+                        the repo copy of the file
+
+Options:
+  -h                    Help: Print this page and exit
+  -D                    Dryrun: Don't actually change anything
+  -f                    Force: Don't check it's actually a symlink, just remove it
+  "
+      ;;
+    "help")
+      echo "I need help too"
+      ;;
+    *)
+      echo "Usage:
+  dots add              Add files to the dots repo
+  dots remove           Remove files from the dots repo
+  dots link             Symlink files that are in the repo
+  dots unlink           Remove the symlink to the files
   dots help             Print this page then exit
 
 Options:
-  -h                    Print the help. Can be used after an above option"
+  -h                    Print the help. Can be used after an above option
+  -D                    Dryrun. Don't actually change anything
+  "
+      ;;
+  esac
 }
 
 add() {
