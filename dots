@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-#
 #  ______   _______ _________ _______ 
 # (  __  \ (  ___  )\__   __/(  ____ \
 # | (  \  )| (   ) |   ) (   | (    \/
@@ -8,7 +7,6 @@
 # | |   ) || |   | |   | |         ) |
 # | (__/  )| (___) |   | |   /\____) |
 # (______/ (_______)   )_(   \_______)
-#
 #
 # Original file created by Rory Nesbitt
 # https://github.com/RoryNesbitt/DotFiles/blob/master/dots
@@ -434,7 +432,7 @@ repo_location=$(dirname "$(realpath "$0")")
 script_name=$(basename "$0")
 
 # Build the ignore list
-ignoreList=".git .gitignore .dotignore .dotsignore README LICENSE"
+ignoreList=".git .gitignore .dotignore .dotsignore README.md LICENSE"
 [ -f "$repo_location/.dotignore" ] && ignoreList="$ignoreList "$(tr '\n' ' ' < "$repo_location/.dotignore")
 [ -f "$repo_location/.dotsignore" ] && ignoreList="$ignoreList "$(tr '\n' ' ' < "$repo_location/.dotsignore")
 
