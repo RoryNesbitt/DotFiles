@@ -1,4 +1,19 @@
 #!/usr/bin/env sh
+#
+#  ______   _______ _________ _______ 
+# (  __  \ (  ___  )\__   __/(  ____ \
+# | (  \  )| (   ) |   ) (   | (    \/
+# | |   ) || |   | |   | |   | (_____ 
+# | |   | || |   | |   | |   (_____  )
+# | |   ) || |   | |   | |         ) |
+# | (__/  )| (___) |   | |   /\____) |
+# (______/ (_______)   )_(   \_______)
+#
+#
+# Original file created by Rory Nesbitt
+# https://github.com/RoryNesbitt/DotFiles/blob/master/dots
+# Steal this and put it in your dot repo
+
 
 help() {
   #TODO: help for each command
