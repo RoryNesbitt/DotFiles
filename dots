@@ -71,7 +71,7 @@ add() {
         mkdir -p "$repo_location$path"
         rm -d "$repo_location$path" #HACK: mkdir should be given the dir path not the file path
         mv "$f" "$repo_location$path"
-        ln -s "$repo_location$path" "$f"
+        ln -s "$repo_location$path" "$HOME$path"
       fi
       echo "Added \$HOME$path"
     done
@@ -236,7 +236,7 @@ link() {
       else
         mkdir -p "$HOME$path"
         rm -d "$HOME$path" #HACK: mkdir should be given the dir path not the file path
-        ln -s "$f" "$HOME$path"
+        ln -s "$repo_location$path" "$HOME$path"
       fi
       echo "Linked \$HOME$path"
     done
