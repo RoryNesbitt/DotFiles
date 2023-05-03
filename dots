@@ -305,7 +305,7 @@ unlink() {
 }
 
 directory_path() {
-  dirname "$(readlink -e -- "$1")"
+  dirname "$(realpath -s "$1")"
 }
 
 is_ignored() {
@@ -322,7 +322,7 @@ is_ignored() {
 }
 
 walk_dir() {
-  absolute="$(readlink -e -- "$1")"
+  absolute="$(realpath -s "$1")"
   for g in "/.*" "/*"; do
     for pathname in "$absolute"$g; do
       if is_ignored "$pathname"; then
@@ -338,7 +338,7 @@ walk_dir() {
 }
 
 path_from_home() {
-  absolute="$(readlink -e -- "$1")"
+  absolute="$(realpath -s "$1")"
   [ "$absolute" = "" ] && absolute="$1"
   case $absolute in
     "$repo_location"*)
