@@ -480,7 +480,8 @@ while getopts ':dfvh' opts; do
       verbose ""
       ;;
     h)
-      help
+      shift
+      help "$@"
       exit
       ;;
     *)
