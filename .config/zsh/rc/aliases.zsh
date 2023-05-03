@@ -48,28 +48,28 @@ gc() {
 }
 
 # Dotfiles git
-alias dots="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
-alias dfpl="dots pull"
-alias dfps="dots push"
-alias dfa="dots add"
-alias dfau="dots add -u"
-alias dfu="dots restore --staged"
-alias dfch="dots checkout"
-alias dfs="dots status"
-alias dfd="dots diff"
-alias dfi="dots update-index --skip-worktree"
-alias dfr="dots reset --soft HEAD~1"
-alias dfl="dots log --oneline --decorate --graph"
-alias dfst="dots stash"
-alias dfsp="dots stash pop"
-alias dfca="dots commit --amend --no-edit"
+alias df="git -C $HOME/.config/dotfiles"
+alias dfpl="df pull"
+alias dfps="df push"
+alias dfa="df add"
+alias dfau="df add -u"
+alias dfu="df restore --staged"
+alias dfch="df checkout"
+alias dfs="df status"
+alias dfd="df diff"
+alias dfi="df update-index --skip-worktree"
+alias dfr="df reset --soft HEAD~1"
+alias dfl="df log --oneline --decorate --graph"
+alias dfst="df stash"
+alias dfsp="df stash pop"
+alias dfca="df commit --amend --no-edit"
 alias dd="dfau; dfc"
 dfc() {
     if [ "$1" != "" ]
     then
-        dots commit -m "$*"
+        df commit -m "$*"
     else
-        dots commit
+        df commit
     fi
 }
 
