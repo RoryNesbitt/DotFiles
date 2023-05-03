@@ -304,10 +304,6 @@ unlink() {
   done
 }
 
-directory_path() {
-  dirname "$(realpath -s "$1")"
-}
-
 is_ignored() {
   found=false
   for i in $ignoreList; do
@@ -355,7 +351,7 @@ path_from_home() {
 }
 
 # Get the path to the dotfile repo
-repo_location=$(directory_path "$0")
+repo_location=$(dirname "$(realpath "$0")")
 script_name=$(basename "$0")
 
 # Build the ignore list
