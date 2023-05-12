@@ -44,7 +44,7 @@ cmd mt %{{
 }}
 
 cmd cdTrigger %{{
-  echo "1" > "$LF_SHELLCD_TEMPDIR/changecwd"
+  echo "1" > "$LF_TEMPDIR/changecwd"
 }}
 
 cmd cdq &{{
@@ -54,9 +54,6 @@ cmd cdq &{{
 
 cmd cleanQuit %{{
   ~/.config/lf/cleaner.sh
-	kill "$UEBERZUGPID" &>/dev/null
-	pkill -f "tail -f $LF_UEBERZUG_TEMPDIR/fifo" &>/dev/null
-	rm -rf "$LF_UEBERZUG_TEMPDIR" &>/dev/null
   lf -remote "send $id quit"
 }}
 

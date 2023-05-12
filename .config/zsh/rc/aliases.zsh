@@ -111,16 +111,22 @@ alias copy="xclip -selection clipboard <"
 alias window-class="xprop | grep CLASS"
 
 #lf
-lf() {
-	LF_SHELLCD_TEMPDIR="$(mktemp -d -t lf-shellcd-XXXXXX)"
-	export LF_SHELLCD_TEMPDIR
-	lf-img -last-dir-path "$LF_SHELLCD_TEMPDIR/lastdir" $@
-	if [ -e "$LF_SHELLCD_TEMPDIR/changecwd" ] && \
-		dir="$(cat "$LF_SHELLCD_TEMPDIR/lastdir")" 2>/dev/null; then
+alias lf="lf-img"
+lf-img() {
+	LF_TEMPDIR="$(mktemp -d -t lf-shellcd-XXXXXX)"
+	export LF_TEMPDIR
+  mkfifo "$LF_TEMPDIR/fifo"
+  ( tail -f "$LF_TEMPDIR/fifo" | ueberzug layer --silent &>/dev/null & ) >/dev/null
+  UEBERZUGPID=$!
+	\lf -last-dir-path "$LF_TEMPDIR/lastdir" $@
+	if [ -e "$LF_TEMPDIR/changecwd" ] && \
+		dir="$(cat "$LF_TEMPDIR/lastdir")" 2>/dev/null; then
 		cd "$dir"
 	fi
-	rm -rf "$LF_SHELLCD_TEMPDIR"
-	unset LF_SHELLCD_TEMPDIR
+  kill "$UEBERZUGPID"
+	pkill -f "tail -f $LF_TEMPDIR/fifo" &>/dev/null
+	rm -rf "$LF_TEMPDIR"
+	unset LF_TEMPDIR
 }
 
 # Misc
