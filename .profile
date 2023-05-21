@@ -1,30 +1,13 @@
-ZDOTDIR=$HOME/.config/zsh
-export EDITOR="vi"
-export NVM_DIR="$HOME/.config/nvm"
+export ZDOTDIR=$HOME/.config/zsh
 export SHCOLOUR="14"
 export ECHOCOLOUR="1;36"
-
-dirs=("$HOME/.local/bin"
-  "$HOME/.local/scripts"
-  "$HOME/.local/pvim"
-  "/snap/bin"
-  "/home/linuxbrew/.linuxbrew/bin"
-  "/home/linuxbrew/.linuxbrew/sbin"
-)
-for dir in $dirs; do
-  if [ -d $dir ]; then
-    export PATH="$dir:$PATH"
-  fi
-done
+export EDITOR="vi"
 
 if [ -f $ZDOTDIR/device/$(hostname).env ]; then
     . $ZDOTDIR/device/$(hostname).env
 fi
 
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_STATE_HOME="$HOME/.local/state"
-export XDG_CACHE_HOME="$HOME/.cache"
+export RGB_SHCOLOUR="$($HOME/.local/scripts/colours $SHCOLOUR)"
 
 #clearing up $HOME
 export ANDROID_HOME="$XDG_DATA_HOME"/android
@@ -39,4 +22,4 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
 export PYLINTHOME="${XDG_CACHE_HOME}/pylint"
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
 export WINEPREFIX="$XDG_DATA_HOME/wine"
-
+export NVM_DIR="$HOME/.config/nvm"
