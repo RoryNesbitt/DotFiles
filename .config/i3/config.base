@@ -63,6 +63,10 @@ smart_borders on
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# switch/iterate between workspaces
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
 # switch to workspace
 bindsym $mod+1    workspace  $ws1
 bindsym $mod+2    workspace  $ws2
@@ -251,6 +255,8 @@ bindsym $mod+b exec xdotool type \
     "$(cat $HOME/Documents/files/bookmarks | \
     rofi -dmenu -config ~/.config/rofi/rofidmenu.rasi)"
 bindsym XF86Launch1 exec steam
+# Power Profiles menu switcher (rofi)
+bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 
 ##########################################
 # configuration for workspace behaviour: #
