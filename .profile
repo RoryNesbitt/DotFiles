@@ -10,6 +10,10 @@ fi
 export RGB_SHCOLOUR="$($HOME/.local/scripts/colours $SHCOLOUR)"
 
 #clearing up $HOME
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
 export ANDROID_HOME="$XDG_DATA_HOME"/android
 export ANSIBLE_HOME="$XDG_DATA_HOME/ansible"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
