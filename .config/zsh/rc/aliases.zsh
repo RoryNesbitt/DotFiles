@@ -129,6 +129,11 @@ lf-img() {
 	unset LF_TEMPDIR
 }
 
+# Arduino
+arduino-upload() {
+  arduino-cli compile --fqbn arduino:avr:leonardo $1; arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:leonardo $1
+}
+
 # Misc
 alias cx="chmod +x"
 alias w="cd ~/Documents/work"
