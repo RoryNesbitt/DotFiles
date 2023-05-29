@@ -13,9 +13,3 @@ if [ -z "$TMUX" ] && [ -z "$SSH_CLIENT" ] && [ -f "/usr/bin/tmux" ]; then
         fi
     done
 fi
-
-# Load files
-for FILE ($ZDOTDIR/rc/*.zsh); do
-  source $FILE
-done
-unset FILE
