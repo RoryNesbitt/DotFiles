@@ -1,5 +1,5 @@
 ## Always open main tmux if not in a tmux or ssh session
-if [ -z "$TMUX" ] && [ -z "$SSH_CLIENT" ] && [ -f "/usr/bin/tmux" ]; then
+if [ -z "$TMUX" ] && [ -z "$SSH_CLIENT" ] && [ $(command -v tmux) ]; then
     tmux attach -t main &> /dev/null || tmux new -s main 1> /dev/null
     echo "Goodbye :)"
     while true; do
