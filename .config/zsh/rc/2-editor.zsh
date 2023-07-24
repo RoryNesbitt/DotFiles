@@ -5,6 +5,7 @@ if (( $+commands[nvim] )); then
   export MANWIDTH=999
 elif (( $+commands[pvim] )); then
   export EDITOR="pvim"
+  export MANPAGER="pvim +Man!"
 elif (( $+commands[vim] )); then
   export EDITOR="vim"
 elif (( $+commands[vi] )); then
