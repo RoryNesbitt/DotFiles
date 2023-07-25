@@ -57,6 +57,10 @@ cmd cleanQuit %{{
   lf -remote "send $id quit"
 }}
 
+cmd drag &{{
+  ripdrag -d $f
+}}
+
 #keymaps
 map n
 map nf touch
@@ -67,3 +71,4 @@ map ZQ cleanQuit
 map q cleanQuit
 map w cdq
 map <enter> open
+map r drag
