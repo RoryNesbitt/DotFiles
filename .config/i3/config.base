@@ -211,6 +211,10 @@ bindsym $mod+a focus parent
 # open new empty workspace
 bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace.sh
 
+# scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
 ## Multimedia Keys
 
 # volume
