@@ -212,7 +212,7 @@ bindsym $mod+a focus parent
 bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace.sh
 
 # scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+Shift+minus floating enable; resize set 1400 750, move position center, move scratchpad
 bindsym $mod+minus scratchpad show
 
 ## Multimedia Keys
