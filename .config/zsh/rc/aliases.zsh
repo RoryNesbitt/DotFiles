@@ -97,9 +97,6 @@ alias tmk="tmux kill-session -t"
 alias update="tm update || fullUpdate"
 alias scripts="tm scripts || $EDITOR ~/.local/scripts/"
 alias papers="tm papers || $EDITOR ~/Documents/papers/"
-config() {
-  tm config $1 || $EDITOR ~/.config/$1
-}
 
 #Use XDG directories
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
