@@ -39,9 +39,9 @@ case "$(basename "$file" | tr '[:upper:]' '[:lower:]')" in
     preview "$thumbnail" "$@"
     ;;
   *)
-    if command -v nvim > /dev/null 2>&1; then
-        nvim -c "so ~/.config/lf/nvim.lua" "$file"
-    elif command -v bat > /dev/null 2>&1; then
+    # if command -v nvim > /dev/null 2>&1; then
+    #     nvim -c "so ~/.config/lf/nvim.lua" "$file"
+    if command -v bat > /dev/null 2>&1; then
         bat -pf "$file"
     else
         cat "$file"
