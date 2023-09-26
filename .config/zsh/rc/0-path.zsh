@@ -4,6 +4,7 @@ dirs=("$HOME/.local/bin"
   "/snap/bin"
   "/home/linuxbrew/.linuxbrew/bin"
   "/home/linuxbrew/.linuxbrew/sbin"
+  "$HOME/Documents/projects/dotfyle-cli"
 )
 for dir in $dirs; do
   if [ -d $dir ]; then
