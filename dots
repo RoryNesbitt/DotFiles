@@ -384,7 +384,7 @@ is_ignored() {
   found=false
   for i in $ignoreList; do
     case "$1" in
-      *"." | *".." | *"*" | "$repo_location/$script_name" | "$repo_location$i" | "$repo_location/$i")
+      *"/." | *"/.." | *"/*" | "$repo_location/$script_name" | "$repo_location$i" | "$repo_location/$i")
         found=true
         break
         ;;
