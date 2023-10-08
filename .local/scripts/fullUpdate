@@ -2,7 +2,7 @@
 
 set -e # Exit on any error
 exitMsg() {
-  if [ $? -eq 0 ];then
+  if [ $? -eq 0 ]; then
     msg="Finished upgrade"
   else
     msg="Something went wrong"
@@ -13,7 +13,7 @@ exitMsg() {
 trap exitMsg EXIT
 
 exists() {
-  command -v $1 1>/dev/null 2>&1
+  command -v "$1" 1>/dev/null 2>&1
 }
 
 if exists yay; then

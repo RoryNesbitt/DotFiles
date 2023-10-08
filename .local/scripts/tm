@@ -1,52 +1,53 @@
 #!/bin/sh
 
 if [ $# = 0 ]; then
-	tmux list-sessions
+  tmux list-sessions
 else
-	if [ "$1" = 'w' ]; then
-		session='work'
-	elif [ "$1" = config ]; then
-		session='conf-'$2
-	else
-		session=$1
-	fi
-	shift
+  if [ "$1" = 'w' ]; then
+    session='work'
+  elif [ "$1" = config ]; then
+    session='conf-'$2
+  else
+    session=$1
+  fi
+  shift
 
-	if ! tmux has-session -t "$session" 2>/dev/null; then
-		case "$session" in
-		'update')
-			tmux new -s "$session" -d "fullUpdate; read key <&1"
-			;;
-		'work')
-			tmux new -s "$session" -d -c ~/Documents/work "$@"
-			;;
-		'uni')
-			tmux new -s "$session" -d -c ~/Documents/uni "$@"
-			;;
-		'papers')
-			tmux new -s "$session" -d -c ~/Documents/papers "$@"
-			;;
-		'projects')
-			tmux new -s "$session" -d -c ~/Documents/projects "$@"
-			;;
-		'notes')
-			tmux new -s "$session" -d "$EDITOR"
-			;;
-		'scripts')
-			tmux new -s "$session" -d -c ~/.local/scripts "$EDITOR" . -c "Telescope find_files"
-			;;
-		'conf-'*)
-			tmux new -s "$session" -d -c ~/.config/$1 "$EDITOR" . -c "Telescope find_files"
-			;;
-		*)
-			tmux new -s "$session" -d "$@"
-			;;
-		esac
-	fi # has-session
+  if ! tmux has-session -t "$session" 2>/dev/null; then
+    case "$session" in
+    'update')
+      tmux new -s "$session" -d "fullUpdate; read key <&1"
+      ;;
+    'work')
+      tmux new -s "$session" -d -c ~/Documents/work "$@"
+      ;;
+    'uni')
+      tmux new -s "$session" -d -c ~/Documents/uni "$@"
+      ;;
+    'papers')
+      tmux new -s "$session" -d -c ~/Documents/papers "$@"
+      ;;
+    'projects')
+      tmux new -s "$session" -d -c ~/Documents/projects "$@"
+      ;;
+    'notes')
+      tmux new -s "$session" -d "$EDITOR"
+      ;;
+    'scripts')
+      tmux new -s "$session" -d -c ~/.local/scripts "$EDITOR" . -c "Telescope find_files"
+      ;;
+    'conf-'*)
+      tmux new -s "$session" -d -c ~/.config/"$1" "$EDITOR" . -c "Telescope find_files"
+      ;;
+    *)
+      tmux new -s "$session" -d "$@"
+      ;;
+    esac
+  fi # has-session
 
-	if [ -z "$TMUX" ]; then
-		tmux attach-session -t "$session"
-	else
-		tmux switch-client -t "$session"
-	fi # if $TMUX
-fi # if $#
+  if [ -z "$TMUX" ]; then
+    tmux attach-session -t "$session"
+  else
+    tmux switch-client -t "$session"
+  fi # if $TMUX
+fi  # if $#
+

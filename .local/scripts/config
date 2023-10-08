@@ -1,19 +1,22 @@
 #!/usr/bin/env sh
 
 dir=$1
-if [ $(command -v fzf) ] && \
-  ( \
-    [ -z "$dir" ] || \
-    [ ! -d "$HOME/.config/$dir" ] && [ ! -f "$HOME/.config/$dir" ] \
-  ); then
-  dir=$(\ls -1 $HOME/.config/ | fzf --preview="ls -lh --color=always $HOME/.config/{}" --preview-window=right:70%:wrap --bind=ctrl-f:page-down,ctrl-b:page-up --height=100% --border --prompt="Config: ")
+if command -v fzf >/dev/null &&
+  {
+    [ -z "$dir" ] || [ ! -d "$HOME/.config/$dir" ] && [ ! -f "$HOME/.config/$dir" ] \
+      ;
+  } then
+  dir=$(ls -1 "$HOME/.config/" |
+    fzf --preview="ls -lh --color=always $HOME/.config/{}" \
+      --preview-window=right:70%:wrap --bind=ctrl-f:page-down,ctrl-b:page-up \
+      --height=100% --border --prompt="Config: ")
   if [ -z "$dir" ]; then
     exit 1
   fi
 fi
 
-if [ $(command -v tmux) ]; then
-  tm config $dir
+if command -v tmux >/dev/null; then
+  tm config "$dir"
 else
-  $EDITOR $HOME/.config/$dir
+  $EDITOR "$HOME/.config/$dir"
 fi
