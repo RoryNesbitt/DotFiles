@@ -4,7 +4,7 @@ export ECHOCOLOUR="1;36"
 export EDITOR="vi"
 
 if [ -f $ZDOTDIR/device/$(hostname).env ]; then
-    . $ZDOTDIR/device/$(hostname).env
+  source $ZDOTDIR/device/$(hostname).env
 fi
 
 export RGB_SHCOLOUR="$($HOME/.local/scripts/colours $SHCOLOUR)"

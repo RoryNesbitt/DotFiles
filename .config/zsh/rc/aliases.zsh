@@ -22,6 +22,7 @@ alias ap="ansible-playbook"
 alias av="ansible-vault"
 
 # Git
+alias g="git"
 alias gpl="git pull"
 alias gps="git push"
 alias ga="git add"
@@ -39,12 +40,11 @@ alias gsp="git stash pop"
 alias gca="git commit --amend --no-edit"
 alias gg="gau; gc"
 gc() {
-    if [ "$1" != "" ]
-    then
-        git commit -m "$*"
-    else
-        git commit
-    fi
+  if [ "$1" != "" ]; then
+    git commit -m "$*"
+  else
+    git commit
+  fi
 }
 
 # Dotfiles git
@@ -58,7 +58,6 @@ alias dfu="df restore --staged"
 alias dfch="df checkout"
 alias dfs="df status"
 alias dfd="df diff"
-alias dfi="df update-index --skip-worktree"
 alias dfr="df reset --soft HEAD~1"
 alias dfl="df log --oneline --decorate --graph"
 alias dfst="df stash"
@@ -66,12 +65,11 @@ alias dfsp="df stash pop"
 alias dfca="df commit --amend --no-edit"
 alias dd="dfau; dfc"
 dfc() {
-    if [ "$1" != "" ]
-    then
-        df commit -m "$*"
-    else
-        df commit
-    fi
+  if [ "$1" != "" ]; then
+    df commit -m "$*"
+  else
+    df commit
+  fi
 }
 
 # Docker
@@ -111,42 +109,42 @@ alias window-class="xprop | grep CLASS"
 #lf
 alias lf="lf-img"
 lf-img() {
-	LF_TEMPDIR="$(mktemp -d -t lf-shellcd-XXXXXX)"
-	export LF_TEMPDIR
+  LF_TEMPDIR="$(mktemp -d -t lf-shellcd-XXXXXX)"
+  export LF_TEMPDIR
   mkfifo "$LF_TEMPDIR/fifo"
-  ( tail -f "$LF_TEMPDIR/fifo" | ueberzug layer --silent &>/dev/null & ) >/dev/null
+  (tail -f "$LF_TEMPDIR/fifo" | ueberzug layer --silent &>/dev/null &) >/dev/null
   UEBERZUGPID=$!
-	\lf -last-dir-path "$LF_TEMPDIR/lastdir" $@
-	if [ -e "$LF_TEMPDIR/changecwd" ] && \
-		dir="$(cat "$LF_TEMPDIR/lastdir")" 2>/dev/null; then
-		cd "$dir"
-	fi
+  \lf -last-dir-path "$LF_TEMPDIR/lastdir" $@
+  if [ -e "$LF_TEMPDIR/changecwd" ] &&
+    dir="$(cat "$LF_TEMPDIR/lastdir")" 2>/dev/null; then
+    cd "$dir"
+  fi
   kill "$UEBERZUGPID"
-	pkill -f "tail -f $LF_TEMPDIR/fifo" &>/dev/null
-	rm -rf "$LF_TEMPDIR"
-	unset LF_TEMPDIR
+  pkill -f "tail -f $LF_TEMPDIR/fifo" &>/dev/null
+  rm -rf "$LF_TEMPDIR"
+  unset LF_TEMPDIR
 }
 
 # Arduino
 arduino-upload() {
-  arduino-cli compile --fqbn arduino:avr:leonardo $1; arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:leonardo $1
+  arduino-cli compile --fqbn arduino:avr:leonardo $1
+  arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:leonardo $1
 }
 
 # Misc
 alias cx="chmod +x"
-alias w="cd ~/Documents/work"
 alias nb="newsboat"
 ndir() {
-    mkdir $1
-    cd $1
+  mkdir $1
+  cd $1
 }
 kdir() {
-    PD=${PWD##*/}
-    cd ..
-    rm -rf $PD
-    echo Killed $PD
+  PD=${PWD##*/}
+  cd ..
+  rm -rf $PD
+  echo Killed $PD
 }
-uz() {                                                                             [~/Documents/projects/3D-prints/dnd]
+uz() {
   if unzip $@; then
     rm $@
   fi

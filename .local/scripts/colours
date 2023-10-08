@@ -1,3 +1,4 @@
+#!/usr/bin/env sh
 case "$1" in
   # Primary 3-bit (8 colors). Unique representation!
   '0' | '00') echo  '000000' ;;
