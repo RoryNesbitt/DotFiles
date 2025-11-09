@@ -33,10 +33,10 @@ else
       tmux new -s "$session" -d "$EDITOR"
       ;;
     'scripts')
-      tmux new -s "$session" -d -c ~/.local/scripts "$EDITOR" . -c "Telescope find_files"
+      tmux new -s "$session" -d -c ~/.local/scripts "$EDITOR" .
       ;;
     'conf-'*)
-      tmux new -s "$session" -d -c ~/.config/"$1" "$EDITOR" . -c "Telescope find_files"
+      tmux new -s "$session" -d -c ~/.config/"$1" "$EDITOR"
       ;;
     *)
       tmux new -s "$session" -d "$@"
