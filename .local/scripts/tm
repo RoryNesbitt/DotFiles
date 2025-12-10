@@ -33,7 +33,7 @@ else
       tmux new -s "$session" -d "$EDITOR"
       ;;
     'scripts')
-      tmux new -s "$session" -d -c ~/.local/scripts "$EDITOR" .
+      tmux new -s "$session" -d -c ~/.local/scripts "$EDITOR $@"
       ;;
     'conf-'*)
       tmux new -s "$session" -d -c ~/.config/"$1" "$EDITOR"
