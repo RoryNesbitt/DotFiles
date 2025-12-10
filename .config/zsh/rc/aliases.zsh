@@ -93,8 +93,9 @@ alias ip="ip --color=auto"
 # Tmux
 alias tmk="tmux kill-session -t"
 alias update="tm update || fullUpdate"
-alias scripts="tm scripts || $EDITOR ~/.local/scripts/"
 alias papers="tm papers || $EDITOR ~/Documents/papers/"
+config() { tm config "$@" || "$EDITOR" "$HOME/.config/$@" }
+scripts() { tm scripts "$@" || "$EDITOR" "$HOME/.local/scripts/$@" }
 
 #Use XDG directories
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
