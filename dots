@@ -12,6 +12,8 @@
 # https://github.com/RoryNesbitt/DotFiles/blob/master/dots
 # Steal this and put it in your dot repo
 
+IFS=":"
+
 
 help() {
   case $1 in
@@ -402,7 +404,7 @@ walk_dir() {
       elif [ -d "$pathname" ]; then
         walk_dir "$pathname"
       else
-        printf '%s ' "$pathname"
+        printf '%s:' "$pathname"
         # echo "$pathname"
       fi
     done
