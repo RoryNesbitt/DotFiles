@@ -104,8 +104,11 @@ alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 #Get data
 alias gip="curl icanhazip.com"
 alias lip="ip -o route get to 1.1.1.1 | sed -n 's/.*src \([0-9.]\+\).*/\1/p'"
-alias copy="xclip -selection clipboard <"
 alias window-class="xprop | grep CLASS"
+copy() {
+  [ $(command -v xclip) ] && xclip -selection clipboard < $@
+  [ $(command -v wl-copy) ] && wl-copy < $@
+}
 
 #lf
 alias lf="lf-img"
