@@ -21,7 +21,7 @@ case $chosen in
     systemctl reboot
     ;;
   $lock)
-    #TODO: Add the lock stuff
+    hyprlock
     ;;
   $suspend)
     systemctl suspend
