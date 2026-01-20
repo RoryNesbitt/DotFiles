@@ -10,22 +10,17 @@
       "hyprland/workspaces"
     ],
     "modules-center": [
-      "hyprland/window",
       "hyprland/mode",
       "hyprland/scratchpad"
     ],
     "modules-right": [
       "mpd",
-      // "idle_inhibitor",
       "pulseaudio",
-      "network",
       "power-profiles-daemon",
       "cpu",
       "memory",
       "temperature",
       "backlight",
-      "keyboard-state",
-      "hyprland/language",
       "battery",
       "battery#bat2",
       "clock",
