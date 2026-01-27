@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+monitor=$(xrandr --listactivemonitors | grep 'DP-1' | awk {'print $4'}) #DP-1 or eDP-1
+new_wall=$(find $HOME/Pictures/wallpapers/* -type f | shuf -n 1)
+hyprctl hyprpaper wallpaper $monitor, "$new_wall", fill
