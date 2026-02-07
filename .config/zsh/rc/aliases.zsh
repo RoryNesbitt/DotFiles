@@ -21,67 +21,8 @@ alias a="ansible"
 alias ap="ansible-playbook"
 alias av="ansible-vault"
 
-# Git
-alias g="git"
-alias gpl="git pull"
-alias gps="git push"
-alias ga="git add"
-alias gau="git add -u"
-alias gaa="git add --all"
-alias gu="git restore --staged"
-alias gch="git checkout"
-alias gcl="git clone"
-alias gs="git status"
-alias gd="git diff"
-alias gr="git reset --soft HEAD~1"
-alias gl="git log --oneline --decorate --graph"
-alias gst="git stash"
-alias gsp="git stash pop"
-alias gca="git commit --amend --no-edit"
-alias gg="gau; gc"
-gc() {
-  if [ "$1" != "" ]; then
-    git commit -m "$*"
-  else
-    git commit
-  fi
-}
-
 # Dotfiles git
 alias df="git -C $HOME/.config/dotfiles"
-alias dfpl="df pull"
-alias dfps="df push"
-alias dfa="df add"
-alias dfaa="df add --all"
-alias dfau="df add -u"
-alias dfu="df restore --staged"
-alias dfch="df checkout"
-alias dfs="df status"
-alias dfd="df diff"
-alias dfr="df reset --soft HEAD~1"
-alias dfl="df log --oneline --decorate --graph"
-alias dfst="df stash"
-alias dfsp="df stash pop"
-alias dfca="df commit --amend --no-edit"
-alias dd="dfau; dfc"
-dfc() {
-  if [ "$1" != "" ]; then
-    df commit -m "$*"
-  else
-    df commit
-  fi
-}
-
-# Docker
-alias d="docker"
-alias db="docker build"
-alias dr="docker restart"
-alias ds="docker ps"
-alias dl="docker logs"
-alias dsa="docker ps -a"
-alias dsq="docker ps -q"
-alias dcu="docker compose up -d"
-alias dcd="docker compose down"
 
 # Colour
 alias grep="grep --color=auto"
@@ -136,7 +77,6 @@ arduino-upload() {
 }
 
 # Misc
-alias cx="chmod +x"
 alias nb="newsboat"
 ndir() {
   mkdir $1
