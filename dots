@@ -138,7 +138,7 @@ add() {
         rm "$repo_location$path"
       elif [ ! "$force" = true ]; then
         if [ -f "$f" ] && [ -e "$repo_location$path" ]; then # file
-          echo "$path has already been stored. Overwrite it with -f or replace local with link -f"
+          # echo "$path has already been stored. Overwrite it with -f or replace local with link -f"
           continue
         fi
       fi
@@ -300,7 +300,7 @@ link() {
       elif [ "$force" = true ]; then
         rm -f "$HOME$path"
       elif [ -L "$HOME$path" ]; then
-        echo "$f is already linked"
+        # echo "$f is already linked"
         continue
       elif [ ! "$force" = true ]; then
         if [ -f "$f" ] && [ -e "$HOME$path" ]; then # file
