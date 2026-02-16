@@ -28,6 +28,7 @@ RPROMPT="%F{white}[%F{$SHCOLOUR}%~%F{white}]"
 
 # Vim control
 bindkey -v # vim key bindings
-autoload edit-command-line
+autoload -z edit-command-line
 zle -N edit-command-line
-bindkey "^E" edit-command-line # edit command in editor
+bindkey "^X^E" edit-command-line
+bindkey -M vicmd 'vv' edit-command-line
