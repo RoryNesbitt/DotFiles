@@ -17,9 +17,9 @@ IFS=":"
 
 help() {
   case $1 in
-    "add")
+    "store")
       echo "Usage:
-  dots add [files]      Add files to the dots repo
+  dots store [files]    Store files in the dots repo
                         This will take a file, or all files
                         under a directory, from anywhere under
                         \$HOME and move it to the dots repo,
@@ -77,7 +77,7 @@ Options:
       ;;
     *)
       echo "Usage:
-  dots add              Add files to the dots repo
+  dots store            Store files in the dots repo
   dots remove           Remove files from the dots repo
   dots link             Symlink files that are in the repo
   dots unlink           Remove the symlink to the files
@@ -91,11 +91,11 @@ Options:
   esac
 }
 
-add() {
+store() {
   while getopts ':hDf' opts; do
     case $opts in
       h)
-        help add
+        help store
         exit
         ;;
       D)
@@ -151,7 +151,7 @@ add() {
         mv "$f" "$repo_location$path"
         ln -s "$repo_location$path" "$HOME$path"
       fi
-      echo "Added \$HOME$path"
+      echo "stored \$HOME$path"
     done
   done
 }
@@ -304,7 +304,7 @@ link() {
         continue
       elif [ ! "$force" = true ]; then
         if [ -f "$f" ] && [ -e "$HOME$path" ]; then # file
-          echo "$path already exists. Overwrite it with -f or replace stored copy with add -f"
+          echo "$path already exists. Overwrite it with -f or replace stored copy with store -f"
           continue
         fi
       fi
@@ -454,7 +454,7 @@ force() {
       echo "Option not recognised"
       exit
   esac
-  run_cmd "$@" # to let the function be called by name, e.g. dots force add ..
+  run_cmd "$@" # to let the function be called by name, e.g. dots force store ..
 }
 
 verbose() {
