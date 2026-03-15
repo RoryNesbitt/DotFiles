@@ -16,7 +16,9 @@ exists() {
   command -v "$1" 1>/dev/null 2>&1
 }
 
-if exists yay; then
+if exists paru; then
+  paru --sudoloop -Syu --noconfirm
+elif exists yay; then
   yay --sudoloop -Syu --noconfirm
 elif exists pacman; then
   sudo pacman -Syu --noconfirm
