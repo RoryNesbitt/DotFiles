@@ -146,8 +146,7 @@ store() {
       if [ "$dryrun" = true ]; then
         echo "Dry run:"
       else
-        mkdir -p "$repo_location$path"
-        rm -d "$repo_location$path" #HACK: mkdir should be given the dir path not the file path
+        mkdir -p "$(dirname "$repo_location$path")"
         mv "$f" "$repo_location$path"
         ln -s "$repo_location$path" "$HOME$path"
       fi
@@ -312,8 +311,7 @@ link() {
       if [ "$dryrun" = true ]; then
         echo "Dry run:"
       else
-        mkdir -p "$HOME$path"
-        rm -d "$HOME$path" #HACK: mkdir should be given the dir path not the file path
+        mkdir -p "$(dirname "$HOME$path")"
         ln -s "$repo_location$path" "$HOME$path"
       fi
       echo "Linked \$HOME$path"
