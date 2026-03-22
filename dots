@@ -14,7 +14,7 @@
 
 IFS=":"
 
-log() {
+v_echo() {
   [ "$get_wordy" = true ] && echo "$@"
 }
 
@@ -140,17 +140,17 @@ store() {
       if [ "$force" = true ] && [ -e "$repo_location$path" ]; then
         rm "$repo_location$path"
       elif [ -f "$f" ] && [ -e "$repo_location$path" ]; then # file
-        log "$path has already been stored. Overwrite it with -f or replace local with link"
+        v_echo "$path has already been stored. Overwrite it with -f or replace local with link"
         continue
       fi
 
       if [ "$dryrun" = true ]; then
-        log "Dry run: would store \$HOME$path"
+        v_echo "Dry run: would store \$HOME$path"
       else
         mkdir -p "$(dirname "$repo_location$path")"
         mv "$f" "$repo_location$path"
         ln -s "$repo_location$path" "$HOME$path"
-        log "Stored \$HOME$path"
+        v_echo "Stored \$HOME$path"
       fi
     done
   done
@@ -231,13 +231,13 @@ remove(){
         continue
       fi
       if [ "$dryrun" = true ]; then
-        log "Dry run: would remove $path"
+        v_echo "Dry run: would remove $path"
       elif [ "$keep_local" = true ]; then
         mv "$repo_location$path" "$HOME$path"
-        log "Removed $path"
+        v_echo "Removed $path"
       else
         rm "$repo_location$path"
-        log "Removed $path"
+        v_echo "Removed $path"
       fi
     done
     if [ ! "$dryrun" = true ] && [ "$repo_location" != "" ] && [ "$dir" != "" ]; then
@@ -295,7 +295,7 @@ link() {
       elif [ "$force" = true ]; then
         rm -f "$HOME$path"
       elif [ -L "$HOME$path" ]; then
-        log "$f is already linked"
+        v_echo "$f is already linked"
         continue
       elif [ -f "$f" ] && [ -e "$HOME$path" ]; then
         err "$path already exists. Overwrite it with -f or replace stored copy with store -f"
@@ -303,11 +303,11 @@ link() {
       fi
 
       if [ "$dryrun" = true ]; then
-        log "Dry run: would link \$HOME$path"
+        v_echo "Dry run: would link \$HOME$path"
       else
         mkdir -p "$(dirname "$HOME$path")"
         ln -s "$repo_location$path" "$HOME$path"
-        log "Linked \$HOME$path"
+        v_echo "Linked \$HOME$path"
       fi
     done
   done
@@ -362,10 +362,10 @@ unlink() {
         continue
       fi
       if [ "$dryrun" = true ]; then
-        log "Dry run: would unlink $path"
+        v_echo "Dry run: would unlink $path"
       else
         cp "$repo_location$path" "$HOME$path"
-        log "Unlinked $path"
+        v_echo "Unlinked $path"
       fi
     done
   done
@@ -423,10 +423,10 @@ pull() {
     symlink="$HOME/$f"
     if [ -L "$symlink" ]; then
       if [ "$dryrun" = true ]; then
-        log "Dry run: would remove dead symlink $symlink"
+        v_echo "Dry run: would remove dead symlink $symlink"
       else
         rm "$symlink"
-        log "Removed dead symlink $symlink"
+        v_echo "Removed dead symlink $symlink"
       fi
     fi
   done < "$tmp"
