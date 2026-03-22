@@ -111,9 +111,6 @@ store() {
       f)
         force ""
         ;;
-      --)
-        break
-        ;;
       *)
         err "Invalid option provided"
         exit 1
@@ -177,9 +174,6 @@ remove(){
         ;;
       n)
         keep_local=false
-        ;;
-      --)
-        break
         ;;
       *)
         err "Invalid option provided"
@@ -268,9 +262,6 @@ link() {
       f)
         force ""
         ;;
-      --)
-        break
-        ;;
       *)
         err "Invalid option provided"
         exit 1
@@ -334,9 +325,6 @@ unlink() {
         ;;
       f)
         force ""
-        ;;
-      --)
-        break
         ;;
       *)
         err "Invalid option provided"
