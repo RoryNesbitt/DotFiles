@@ -498,6 +498,7 @@ while getopts ':dDfvh' opts; do
   case $opts in
     d)
       echo "$repo_location"
+      exit
       ;;
     D)
       dryrun=true
