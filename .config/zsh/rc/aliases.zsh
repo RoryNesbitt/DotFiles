@@ -35,7 +35,6 @@ alias ip="ip --color=auto"
 alias tmk="tmux kill-session -t"
 alias update="tm update || fullUpdate"
 alias papers="tm papers || $EDITOR ~/Documents/papers/"
-config() { tm config "$@" || "$EDITOR" "$HOME/.config/$@" }
 scripts() { tm scripts "$@" || "$EDITOR" "$HOME/.local/scripts/$@" }
 
 #Use XDG directories
