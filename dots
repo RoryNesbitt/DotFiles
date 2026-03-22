@@ -20,7 +20,7 @@ help() {
   case $1 in
     "store")
       echo "Usage:
-  dots store [files]    Store files in the dots repo
+  dots store <files>    Store files in the dots repo
                         This will take a file, or all files
                         under a directory, from anywhere under
                         \$HOME and move it to the dots repo,
@@ -34,7 +34,7 @@ Options:
       ;;
     "remove")
       echo "Usage:
-  dots remove [files]   Remove files from the dots repo
+  dots remove <files>   Remove files from the dots repo
                         This will delete files, or directories,
                         from the repo with the option to either
                         also delete the symlinks or to replace
@@ -51,7 +51,7 @@ Options:
       ;;
     "link")
       echo "Usage:
-  dots link [files]     Symlink files that are in the repo
+  dots link <files>     Symlink files that are in the repo
                         Create symlinks under \$HOME for each
                         of the files specified from the repo
 
@@ -63,7 +63,7 @@ Options:
       ;;
     "unlink")
       echo "Usage:
-  dots unlink [files]   Remove the symlink to the files
+  dots unlink <files>   Remove the symlink to the files
                         Removes the symlink but doesn't touch
                         the repo copy of the file
 
@@ -76,6 +76,21 @@ Options:
     "help" | "-h")
       echo "I need help too"
       ;;
+    "pull")
+      echo "Usage:
+  dots pull <args>      Update the dots repo and clean dead symlinks
+                        Fetches changes, removes any symlinks that point
+                        deleted files, then runs git pull
+
+Options:
+  -D                    Dryrun: Show which symlinks would be removed
+                        without pulling or deleting anything
+  <args>                All arguments are passed to git pull only.
+                        Note: fetch always runs without arguments first,
+                        so complex pulls should use git directly to
+                        avoid removing the wrong links.
+  "
+      ;;
     *)
       echo "Usage:
   dots store            Store files in the dots repo
@@ -84,9 +99,15 @@ Options:
   dots unlink           Remove the symlink to the files
   dots help             Print this page then exit
 
+Git Wrappers
+  dots <cmd>            Runs git command on dotfile repo
+  dots pull             Also removes dead symlinks
+
 Options:
-  -h                    Print the help. Can be used after an above option
-  -D                    Dryrun. Don't actually change anything
+  -h                    Print the help for a command
+                        use <cmd> -h for more options
+  -v                    Show verbose output
+  -D                    Dryrun only
   "
       ;;
   esac
