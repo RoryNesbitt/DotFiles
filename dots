@@ -283,13 +283,14 @@ link() {
 
   for file in "$@"
   do
-    if [ ! -e "$file" ] && [ ! -L "$file" ]; then # doesn't exist
-      err "$file not found"
-      continue
-    fi
     path=$(path_from_home "$file")
     if [ "$path" = false ]; then
       err "$file is outwith \$HOME"
+      continue
+    fi
+    file="$repo_location$path"
+    if [ ! -e "$file" ] && [ ! -L "$file" ]; then # doesn't exist
+      err "$file not found"
       continue
     fi
     if [ -d "$file" ]; then # directory
