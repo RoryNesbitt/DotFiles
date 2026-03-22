@@ -430,6 +430,26 @@ path_from_home() {
   esac
 }
 
+pull() {
+  git -C "$repo_location" fetch "$@"
+  tmp=$(mktemp)
+  git -C "$repo_location" diff --name-only --diff-filter=D HEAD FETCH_HEAD > "$tmp"
+  while IFS= read -r f; do # 'IFS= ' don't split, 'read -r f' read each line without escaping as $f
+    symlink="$HOME/$f"
+    if [ -L "$symlink" ]; then
+      if [ "$dryrun" = true ]; then
+        log "Dry run: would remove dead symlink $symlink"
+      else
+        rm "$symlink"
+        log "Removed dead symlink $symlink"
+      fi
+    fi
+  done < "$tmp"
+  rm "$tmp"
+
+  [ ! "$dryrun" = true ] && git -C "$repo_location" pull "$@"
+}
+
 # Get the path to the dotfile repo
 repo_location=$(dirname "$(realpath "$0")")
 script_name=$(basename "$0")
