@@ -408,7 +408,7 @@ unlink() {
 ####### Git Wrapper Functions #########
 
 pull() {
-  git -C "$repo_location" fetch "$@"
+  git -C "$repo_location" fetch
   tmp=$(mktemp)
   git -C "$repo_location" diff --name-only --diff-filter=D HEAD FETCH_HEAD > "$tmp"
   while IFS= read -r f; do # 'IFS= ' don't split, 'read -r f' read each line without escaping as $f
