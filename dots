@@ -142,11 +142,9 @@ store() {
 
       if [ "$force" = true ] && [ -e "$repo_location$path" ]; then
         rm "$repo_location$path"
-      elif [ ! "$force" = true ]; then
-        if [ -f "$f" ] && [ -e "$repo_location$path" ]; then # file
-          log "$path has already been stored. Overwrite it with -f or replace local with link"
-          continue
-        fi
+      elif [ -f "$f" ] && [ -e "$repo_location$path" ]; then # file
+        log "$path has already been stored. Overwrite it with -f or replace local with link"
+        continue
       fi
 
       if [ "$dryrun" = true ]; then
@@ -308,11 +306,9 @@ link() {
       elif [ -L "$HOME$path" ]; then
         log "$f is already linked"
         continue
-      elif [ ! "$force" = true ]; then
-        if [ -f "$f" ] && [ -e "$HOME$path" ]; then
-          err "$path already exists. Overwrite it with -f or replace stored copy with store -f"
-          continue
-        fi
+      elif [ -f "$f" ] && [ -e "$HOME$path" ]; then
+        err "$path already exists. Overwrite it with -f or replace stored copy with store -f"
+        continue
       fi
 
       if [ "$dryrun" = true ]; then
