@@ -112,7 +112,7 @@ store() {
         get_wordy=true
         ;;
       f)
-        force ""
+        force
         ;;
       *)
         err "Invalid option provided"
@@ -173,7 +173,7 @@ remove(){
         get_wordy=true
         ;;
       f)
-        force ""
+        force
         ;;
       y)
         keep_local=true
@@ -269,7 +269,7 @@ link() {
         get_wordy=true
         ;;
       f)
-        force ""
+        force
         ;;
       *)
         err "Invalid option provided"
@@ -336,7 +336,7 @@ unlink() {
         get_wordy=true
         ;;
       f)
-        force ""
+        force
         ;;
       *)
         err "Invalid option provided"
@@ -473,7 +473,7 @@ force() {
       err "Option not recognised"
       exit
   esac
-  run_cmd "$@"
+  [ "$@" ] && run_cmd "$@"
 }
 
 # Called by `dots verbose cmd` - equivelent to -v flag
@@ -504,7 +504,7 @@ while getopts ':dDfvh' opts; do
       dryrun=true
       ;;
     f)
-      force ""
+      force
       ;;
     v)
       get_wordy=true
