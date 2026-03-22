@@ -170,7 +170,7 @@ store() {
       fi
 
       if [ "$dryrun" = true ]; then
-        v_echo "Dry run: would store \$HOME$path"
+        echo "Dry run: would store \$HOME$path"
       else
         mkdir -p "$(dirname "$repo_location$path")"
         mv "$f" "$repo_location$path"
@@ -259,7 +259,7 @@ remove(){
         continue
       fi
       if [ "$dryrun" = true ]; then
-        v_echo "Dry run: would remove $path"
+        echo "Dry run: would remove $path"
       elif [ "$keep_local" = true ]; then
         mv "$repo_location$path" "$HOME$path"
         v_echo "Removed $path"
@@ -334,7 +334,7 @@ link() {
       fi
 
       if [ "$dryrun" = true ]; then
-        v_echo "Dry run: would link \$HOME$path"
+        echo "Dry run: would link \$HOME$path"
       else
         mkdir -p "$(dirname "$HOME$path")"
         ln -s "$repo_location$path" "$HOME$path"
@@ -396,7 +396,7 @@ unlink() {
         continue
       fi
       if [ "$dryrun" = true ]; then
-        v_echo "Dry run: would unlink $path"
+        echo "Dry run: would unlink $path"
       else
         cp "$repo_location$path" "$HOME$path"
         v_echo "Unlinked $path"
@@ -415,7 +415,7 @@ pull() {
     symlink="$HOME/$f"
     if [ -L "$symlink" ]; then
       if [ "$dryrun" = true ]; then
-        v_echo "Dry run: would remove dead symlink $symlink"
+        echo "Dry run: would remove dead symlink $symlink"
       else
         rm "$symlink"
         v_echo "Removed dead symlink $symlink"
