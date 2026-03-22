@@ -487,8 +487,10 @@ run_cmd() {
   if command -V "$cmd" 2> /dev/null | grep -qwi function; then
     shift 1
     $cmd "$@"
-  else
+  elif [ "$cmd" ]; then
     git -C "$repo_location" "$@"
+  else
+    help
   fi
 }
 
