@@ -99,7 +99,7 @@ Options:
 }
 
 store() {
-  while getopts ':hDf' opts; do
+  while getopts ':hDvf' opts; do
     case $opts in
       h)
         help store
@@ -107,6 +107,9 @@ store() {
         ;;
       D)
         dryrun=true
+        ;;
+      v)
+        get_wordy=true
         ;;
       f)
         force ""
@@ -157,7 +160,7 @@ store() {
 }
 
 remove(){
-  while getopts ':hDfyn' opts; do
+  while getopts ':hDvfyn' opts; do
     case $opts in
       h)
         help remove
@@ -165,6 +168,9 @@ remove(){
         ;;
       D)
         dryrun=true
+        ;;
+      v)
+        get_wordy=true
         ;;
       f)
         force ""
@@ -250,7 +256,7 @@ remove(){
 }
 
 link() {
-  while getopts ':hDf' opts; do
+  while getopts ':hDvf' opts; do
     case $opts in
       h)
         help link
@@ -258,6 +264,9 @@ link() {
         ;;
       D)
         dryrun=true
+        ;;
+      v)
+        get_wordy=true
         ;;
       f)
         force ""
@@ -314,7 +323,7 @@ link() {
 }
 
 unlink() {
-  while getopts ':hDf' opts; do
+  while getopts ':hDvf' opts; do
     case $opts in
       h)
         help unlink
@@ -322,6 +331,9 @@ unlink() {
         ;;
       D)
         dryrun=true
+        ;;
+      v)
+        get_wordy=true
         ;;
       f)
         force ""
@@ -464,6 +476,7 @@ force() {
   run_cmd "$@"
 }
 
+# Called by `dots verbose cmd` - equivelent to -v flag
 verbose() {
   get_wordy=true
   run_cmd "$@"
@@ -492,7 +505,7 @@ while getopts ':dDfvh' opts; do
       force ""
       ;;
     v)
-      verbose ""
+      get_wordy=true
       ;;
     h)
       shift
