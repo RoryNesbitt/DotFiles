@@ -474,10 +474,13 @@ run_cmd() {
   fi
 }
 
-while getopts ':dfvh' opts; do
+while getopts ':dDfvh' opts; do
   case $opts in
     d)
       echo "$repo_location"
+      ;;
+    D)
+      dryrun=true
       ;;
     f)
       force ""
