@@ -360,6 +360,32 @@ unlink() {
   done
 }
 
+clean() {
+  while getopts ':hDv' opts; do
+    case $opts in
+      h) help clean; exit ;;
+      D) dryrun=true ;;
+      v) get_wordy=true ;;
+      *) err "Invalid option provided"; exit 1 ;;
+    esac
+  done
+
+  find "$HOME" -type l | while read -r symlink; do
+    case $(readlink "$symlink") in
+      "$repo_location"*)
+        if [ ! -e "$symlink" ]; then
+          if [ "$dryrun" = true ]; then
+            echo "Dry run: would remove dead link ~$(path_from_home $symlink)"
+          else
+            rm "$symlink"
+            v_echo "Removed dead link ~$(path_from_home $symlink)"
+          fi
+        fi
+        ;;
+    esac
+  done
+}
+
 ####### Git Wrapper Functions #########
 
 pull() {
