@@ -389,6 +389,7 @@ clean() {
 ####### Git Wrapper Functions #########
 
 pull() {
+  [ "$1" = "-D" ] &&  dryrun=true && shift 1 
   if [ "$dryrun" = true ]; then
     echo "Dry Run: fetching remote changes"
     git -C "$repo_location" fetch
