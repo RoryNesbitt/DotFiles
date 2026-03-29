@@ -73,22 +73,33 @@ Options:
   -f                    Force: Don't check it's actually a symlink, just remove it
   "
       ;;
+    "clean")
+      echo "Usage:
+  dots clean            Checks \$HOME for dead symlinks to the dots repo
+                        Removes any symlinks under \$HOME that point
+                        into the repo but whose target no longer exists
+
+Options:
+  -h                    Help: Print this page and exit
+  -D                    Dryrun: Don't actually remove anything
+  -v                    Verbose: Show the links that are being removed
+  "
+  ;;
     "help" | "-h")
       echo "I need help too"
       ;;
     "pull")
       echo "Usage:
   dots pull <args>      Update the dots repo and clean dead symlinks
-                        Fetches changes, removes any symlinks that point
-                        deleted files, then runs git pull
+                        Runs git pull on the dots repo, then cleans
+                        any dead symlinks.
+                        (equivelent to git -C \$repo_location; dots clean)
 
 Options:
   -D                    Dryrun: Show which symlinks would be removed
                         without pulling or deleting anything
+                        Uses git fetch
   <args>                All arguments are passed to git pull only.
-                        Note: fetch always runs without arguments first,
-                        so complex pulls should use git directly to
-                        avoid removing the wrong links.
   "
       ;;
     *)
@@ -97,6 +108,7 @@ Options:
   dots remove           Remove files from the dots repo
   dots link             Symlink files that are in the repo
   dots unlink           Remove the symlink to the files
+  dots clean            Remove deal symlinks
   dots help             Print this page then exit
 
 Git Wrappers
