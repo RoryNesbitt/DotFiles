@@ -384,7 +384,7 @@ clean() {
   done
 
   find "$HOME" -type l | while read -r symlink; do
-    case $(readlink "$symlink") in
+    case $(realpath "$symlink") in
       "$repo_location"*)
         if [ ! -e "$symlink" ]; then
           if [ "$dryrun" = true ]; then
@@ -467,7 +467,7 @@ walk_dir() {
 }
 
 path_from_home() {
-  absolute="$(realpath -s "$1")"
+  absolute="$(realpath "$1")"
   [ "$absolute" = "" ] && absolute="$1"
   case $absolute in
     "$repo_location"*) echo "${absolute#"$repo_location"}" ;;
