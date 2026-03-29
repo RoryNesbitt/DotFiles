@@ -38,7 +38,7 @@ alias papers="tm papers || $EDITOR ~/Documents/papers/"
 scripts() { tm scripts "$@" || "$EDITOR" "$HOME/.local/scripts/$@" }
 
 #Use XDG directories
-alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 
 #Get data
