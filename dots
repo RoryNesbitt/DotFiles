@@ -389,23 +389,23 @@ clean() {
 ####### Git Wrapper Functions #########
 
 pull() {
-  git -C "$repo_location" fetch
-  tmp=$(mktemp)
-  git -C "$repo_location" diff --name-only --diff-filter=D HEAD FETCH_HEAD > "$tmp"
-  while IFS= read -r f; do # 'IFS= ' don't split, 'read -r f' read each line without escaping as $f
-    symlink="$HOME/$f"
-    if [ -L "$symlink" ]; then
-      if [ "$dryrun" = true ]; then
+  if [ "$dryrun" = true ]; then
+    echo "Dry Run: fetching remote changes"
+    git -C "$repo_location" fetch
+    tmp=$(mktemp)
+    git -C "$repo_location" diff --name-only --diff-filter=D HEAD FETCH_HEAD > "$tmp"
+    while IFS= read -r f; do # 'IFS= ' don't split, 'read -r f' read each line without escaping as $f
+      symlink="$HOME/$f"
+      if [ -L "$symlink" ]; then
         echo "Dry run: would remove dead symlink $symlink"
-      else
-        rm "$symlink"
-        v_echo "Removed dead symlink $symlink"
       fi
-    fi
-  done < "$tmp"
-  rm "$tmp"
+    done < "$tmp"
+    rm "$tmp"
+  else
+    git -C "$repo_location" pull "$@"
+    clean
+  fi
 
-  [ ! "$dryrun" = true ] && git -C "$repo_location" pull "$@"
 }
 
 ####### Helper Functions #########
