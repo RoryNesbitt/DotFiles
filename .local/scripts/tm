@@ -17,17 +17,8 @@ else
     'update')
       tmux new -s "$session" -d "fullUpdate; read key <&1"
       ;;
-    'work')
-      tmux new -s "$session" -d -c ~/Documents/work "$@"
-      ;;
-    'uni')
-      tmux new -s "$session" -d -c ~/Documents/uni "$@"
-      ;;
-    'papers')
-      tmux new -s "$session" -d -c ~/Documents/papers "$@"
-      ;;
-    'projects')
-      tmux new -s "$session" -d -c ~/Documents/projects "$@"
+    'work' | 'uni' | 'papers' | 'projects')
+      tmux new -s "$session" -d -c ~/Documents/"$session" "$@"
       ;;
     'notes')
       tmux new -s "$session" -d "$EDITOR"
