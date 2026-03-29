@@ -373,11 +373,12 @@ unlink() {
 }
 
 clean() {
-  while getopts ':hDv' opts; do
+  while getopts ':hDvq' opts; do
     case $opts in
       h) help clean; exit ;;
       D) dryrun=true ;;
       v) get_wordy=true ;;
+      q) be_quiet=true ;;
       *) err "Invalid option provided"; exit 1 ;;
     esac
   done
@@ -390,7 +391,7 @@ clean() {
             echo "Dry run: would remove dead link ~$(path_from_home $symlink)"
           else
             rm "$symlink"
-            v_echo "Removed dead link ~$(path_from_home $symlink)"
+            q_echo "Removed dead link ~$(path_from_home $symlink)"
           fi
         fi
         ;;
@@ -416,7 +417,7 @@ pull() {
     rm "$tmp"
   else
     git -C "$repo_location" pull "$@"
-    clean
+    clean -q
   fi
 
 }
@@ -425,6 +426,12 @@ pull() {
 
 v_echo() {
   [ "$get_wordy" = true ] && echo "$@"
+}
+
+q_echo() {
+  if [ ! "$be_quiet" = true ] || [ "$get_wordy" = true ]; then
+    echo "$@"
+  fi
 }
 
 err() {
