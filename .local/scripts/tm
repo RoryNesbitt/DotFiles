@@ -30,7 +30,13 @@ else
       tmux new -s "$session" -d -c ~/.config/"$1" "$EDITOR"
       ;;
     *)
-      tmux new -s "$session" -d "$@"
+      ssh_hosts=$(awk '/^Host /{print $2}' "$HOME/.ssh/config")
+      if echo "$ssh_hosts" | grep -qx "$session"; then
+        tmux new -s "ssh-$session" -d "ssh $session || read key <&1"
+        session="ssh-$session"
+      else
+        tmux new -s "$session" -d "$@"
+      fi
       ;;
     esac
   fi # has-session
