@@ -119,16 +119,9 @@ force() {
   echo "Are you sure? [yN]"
   read -r yn
   case $yn in
-    [Yy] | [Yy][Ee][Ss] )
-      force=true
-      ;;
-    "" | [Nn] | [Nn][Oo] )
-      echo "Good choice :)"
-      exit
-      ;;
-    *)
-      err "Option not recognised"
-      exit
+    [Yy] | [Yy][Ee][Ss] ) force=true ;;
+    "" | [Nn] | [Nn][Oo]) echo "Good choice :)"; exit ;;
+    *                   ) err "Option not recognised"; exit 1 ;;
   esac
   [ "$@" ] && run_cmd "$@"
 }
@@ -144,23 +137,11 @@ verbose() {
 store() {
   while getopts ':hDvf' opts; do
     case $opts in
-      h)
-        help store
-        exit
-        ;;
-      D)
-        dryrun=true
-        ;;
-      v)
-        get_wordy=true
-        ;;
-      f)
-        force
-        ;;
-      *)
-        err "Invalid option provided"
-        exit 1
-        ;;
+      h) help store; exit ;;
+      D) dryrun=true ;;
+      v) get_wordy=true ;;
+      f) force ;;
+      *) err "Invalid option provided"; exit 1 ;;
     esac
   done
   shift $((OPTIND-1))
@@ -205,29 +186,13 @@ store() {
 remove(){
   while getopts ':hDvfyn' opts; do
     case $opts in
-      h)
-        help remove
-        exit
-        ;;
-      D)
-        dryrun=true
-        ;;
-      v)
-        get_wordy=true
-        ;;
-      f)
-        force
-        ;;
-      y)
-        keep_local=true
-        ;;
-      n)
-        keep_local=false
-        ;;
-      *)
-        err "Invalid option provided"
-        exit 1
-        ;;
+      h) help remove; exit ;;
+      D) dryrun=true ;;
+      v) get_wordy=true ;;
+      f) force ;;
+      y) keep_local=true ;;
+      n) keep_local=false ;;
+      *) err "Invalid option provided"; exit 1 ;;
     esac
   done
   shift $((OPTIND-1))
@@ -236,16 +201,9 @@ remove(){
     echo "Do you want to keep the local file? [Yn]"
     read -r yn
     case $yn in
-      "" | [Yy] | [Yy][Ee][Ss] )
-        keep_local=true
-        ;;
-      [Nn] | [Nn][Oo] )
-        keep_local=false
-        ;;
-      *)
-        err "Option not recognised"
-        exit
-        ;;
+      "" | [Yy] | [Yy][Ee][Ss]) keep_local=true ;;
+      [Nn] | [Nn][Oo]         ) keep_local=false ;;
+      *                       ) err "Option not recognised"; exit 1 ;;
     esac
   fi
 
@@ -301,23 +259,11 @@ remove(){
 link() {
   while getopts ':hDvf' opts; do
     case $opts in
-      h)
-        help link
-        exit
-        ;;
-      D)
-        dryrun=true
-        ;;
-      v)
-        get_wordy=true
-        ;;
-      f)
-        force
-        ;;
-      *)
-        err "Invalid option provided"
-        exit 1
-        ;;
+      h) help link; exit ;;
+      D) dryrun=true ;;
+      v) get_wordy=true ;;
+      f) force ;;
+      *) err "Invalid option provided"; exit 1 ;;
     esac
   done
   shift $((OPTIND-1))
@@ -368,23 +314,11 @@ link() {
 unlink() {
   while getopts ':hDvf' opts; do
     case $opts in
-      h)
-        help unlink
-        exit
-        ;;
-      D)
-        dryrun=true
-        ;;
-      v)
-        get_wordy=true
-        ;;
-      f)
-        force
-        ;;
-      *)
-        err "Invalid option provided"
-        exit 1
-        ;;
+      h) help unlink; exit ;;
+      D) dryrun=true ;;
+      v) get_wordy=true ;;
+      f) force ;;
+      *) err "Invalid option provided"; exit 1 ;;
     esac
   done
   shift $((OPTIND-1))
@@ -490,15 +424,9 @@ path_from_home() {
   absolute="$(realpath -s "$1")"
   [ "$absolute" = "" ] && absolute="$1"
   case $absolute in
-    "$repo_location"*)
-      echo "${absolute#"$repo_location"}"
-      ;;
-    "$HOME"*)
-      echo "${absolute#"$HOME"}"
-      ;;
-    *)
-      echo false
-      ;;
+    "$repo_location"*) echo "${absolute#"$repo_location"}" ;;
+    "$HOME"*         ) echo "${absolute#"$HOME"}" ;;
+    *                ) echo false ;;
   esac
 }
 
@@ -527,28 +455,12 @@ ignoreList=".git:.gitignore:.dotignore:.dotsignore:README.md:LICENSE"
 
 while getopts ':dDfvh' opts; do
   case $opts in
-    d)
-      echo "$repo_location"
-      exit
-      ;;
-    D)
-      dryrun=true
-      ;;
-    f)
-      force
-      ;;
-    v)
-      get_wordy=true
-      ;;
-    h)
-      shift
-      help "$@"
-      exit
-      ;;
-    *)
-      err "Invalid option provided"
-      exit 1
-      ;;
+    d) echo "$repo_location"; exit ;;
+    D) dryrun=true ;;
+    f) force ;;
+    v) get_wordy=true ;;
+    h) shift; help "$@"; exit ;;
+    *) err "Invalid option provided"; exit 1 ;;
   esac
 done
 shift $((OPTIND-1))
