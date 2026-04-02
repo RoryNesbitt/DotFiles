@@ -153,17 +153,8 @@ Options:
   esac
 }
 
-# shellcheck disable=SC2120
 force() {
-  echo "Force will disable all saftey checks."
-  echo "It is not recommended unless completely necessary."
-  echo "Are you sure? [yN]"
-  read -r yn
-  case $yn in
-    [Yy] | [Yy][Ee][Ss] ) force=true ;;
-    "" | [Nn] | [Nn][Oo]) echo "Good choice :)"; exit ;;
-    *                   ) err "Option not recognised"; exit 1 ;;
-  esac
+  force=true
   [ "$@" ] && run_cmd "$@"
 }
 
@@ -181,7 +172,7 @@ store() {
       h) help store; exit ;;
       D) dryrun=true ;;
       v) get_wordy=true ;;
-      f) force ;;
+      f) force=true ;;
       *) err "Invalid option provided"; exit 1 ;;
     esac
   done
@@ -230,7 +221,7 @@ remove(){
       h) help remove; exit ;;
       D) dryrun=true ;;
       v) get_wordy=true ;;
-      f) force ;;
+      f) force=true ;;
       y) keep_local=true ;;
       n) keep_local=false ;;
       *) err "Invalid option provided"; exit 1 ;;
@@ -305,7 +296,7 @@ link() {
       h) help link; exit ;;
       D) dryrun=true ;;
       v) get_wordy=true ;;
-      f) force ;;
+      f) force=true ;;
       *) err "Invalid option provided"; exit 1 ;;
     esac
   done
@@ -360,7 +351,7 @@ unlink() {
       h) help unlink; exit ;;
       D) dryrun=true ;;
       v) get_wordy=true ;;
-      f) force ;;
+      f) force=true ;;
       *) err "Invalid option provided"; exit 1 ;;
     esac
   done
@@ -562,7 +553,7 @@ while getopts ':dDfvh' opts; do
   case $opts in
     d) echo "$repo_location"; exit ;;
     D) dryrun=true ;;
-    f) force ;;
+    f) force=true ;;
     v) get_wordy=true ;;
     h) shift; help "$@"; exit ;;
     *) err "Invalid option provided"; exit 1 ;;
