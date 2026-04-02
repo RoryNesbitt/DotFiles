@@ -383,19 +383,15 @@ clean() {
     esac
   done
 
-  find "$HOME" -type l | while read -r symlink; do
-    case $(realpath "$symlink") in
-      "$repo_location"*)
-        if [ ! -e "$symlink" ]; then
-          if [ "$dryrun" = true ]; then
-            echo "Dry run: would remove dead link ~$(path_from_home $symlink)"
-          else
-            rm "$symlink"
-            q_echo "Removed dead link ~$(path_from_home $symlink)"
-          fi
-        fi
-        ;;
-    esac
+  find "$HOME" -type l -lname "$repo_location*" 2>/dev/null | while IFS= read -r symlink; do
+    if [ ! -e "$symlink" ]; then
+      if [ "$dryrun" = true ]; then
+        echo "Dry run: would remove dead link ~${symlink#"$HOME"}"
+      else
+        rm "$symlink"
+        q_echo "Removed dead link ~${symlink#"$HOME"}"
+      fi
+    fi
   done
 }
 
