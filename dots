@@ -177,7 +177,7 @@ store() {
       path=$(path_from_home "$f")
 
       if [ "$force" = true ] && [ -e "$repo_location$path" ]; then
-        rm "$repo_location$path"
+        [ ! "$dryrun" = true ] && rm "$repo_location$path"
       elif [ -f "$f" ] && [ -e "$repo_location$path" ]; then # file
         v_echo "$path has already been stored. Overwrite it with -f or replace local with link"
         continue
@@ -303,7 +303,7 @@ link() {
         err "$f is not in the dots repo"
         continue
       elif [ "$force" = true ]; then
-        rm -f "$HOME$path"
+        [ ! "$dryrun" = true ] && rm -f "$HOME$path"
       elif [ -L "$HOME$path" ]; then
         v_echo "$f is already linked"
         continue
