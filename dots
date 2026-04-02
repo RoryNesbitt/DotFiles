@@ -184,7 +184,7 @@ store() {
       fi
 
       if [ "$dryrun" = true ]; then
-        echo "Dry run: would store \$HOME$path"
+        q_echo "Dryrun: would store \$HOME$path"
       else
         mkdir -p "$(dirname "$repo_location$path")"
         mv "$f" "$repo_location$path"
@@ -250,7 +250,7 @@ remove(){
         continue
       fi
       if [ "$dryrun" = true ]; then
-        echo "Dry run: would remove $path"
+        q_echo "Dryrun: would remove $path"
       elif [ "$keep_local" = true ]; then
         mv "$repo_location$path" "$HOME$path"
         v_echo "Removed $path"
@@ -313,7 +313,7 @@ link() {
       fi
 
       if [ "$dryrun" = true ]; then
-        echo "Dry run: would link \$HOME$path"
+        q_echo "Dryrun: would link \$HOME$path"
       else
         mkdir -p "$(dirname "$HOME$path")"
         ln -s "$repo_location$path" "$HOME$path"
@@ -363,7 +363,7 @@ unlink() {
         continue
       fi
       if [ "$dryrun" = true ]; then
-        echo "Dry run: would unlink $path"
+        q_echo "Dryrun: would unlink $path"
       else
         cp "$repo_location$path" "$HOME$path"
         v_echo "Unlinked $path"
@@ -386,7 +386,7 @@ clean() {
   find "$HOME" -type l -lname "$repo_location*" 2>/dev/null | while IFS= read -r symlink; do
     if [ ! -e "$symlink" ]; then
       if [ "$dryrun" = true ]; then
-        echo "Dry run: would remove dead link ~${symlink#"$HOME"}"
+        q_echo "Dryrun: would remove dead link ~${symlink#"$HOME"}"
       else
         rm "$symlink"
         q_echo "Removed dead link ~${symlink#"$HOME"}"
@@ -417,7 +417,7 @@ fix() {
     case $absolute in
       "$repo_location"/*)
         if [ "$dryrun" = true ]; then
-          echo "Dry run: would fix ~${symlink#$HOME}: $target -> $absolute"
+          q_echo "Dryrun: would fix ~${symlink#$HOME}: $target -> $absolute"
         else
           rm "$symlink"
           ln -s "$absolute" "$symlink"
@@ -433,14 +433,14 @@ fix() {
 pull() {
   [ "$1" = "-D" ] &&  dryrun=true && shift 1 
   if [ "$dryrun" = true ]; then
-    echo "Dry Run: fetching remote changes"
+    q_echo "Dryrun: fetching remote changes"
     git -C "$repo_location" fetch
     tmp=$(mktemp)
     git -C "$repo_location" diff --name-only --diff-filter=D HEAD FETCH_HEAD > "$tmp"
     while IFS= read -r f; do # 'IFS= ' don't split, 'read -r f' read each line without escaping as $f
       symlink="$HOME/$f"
       if [ -L "$symlink" ]; then
-        echo "Dry run: would remove dead symlink $symlink"
+        q_echo "Dryrun: would remove dead symlink $symlink"
       fi
     done < "$tmp"
     rm "$tmp"
