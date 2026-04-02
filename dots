@@ -467,7 +467,7 @@ walk_dir() {
 }
 
 path_from_home() {
-  absolute="$(realpath "$1")"
+  absolute="$(realpath -s "$1")"
   [ "$absolute" = "" ] && absolute="$1"
   case $absolute in
     "$repo_location"*) echo "${absolute#"$repo_location"}" ;;
