@@ -395,6 +395,39 @@ clean() {
   done
 }
 
+fix() {
+  while getopts ':hDvq' opts; do
+    case $opts in
+      h) help fix; exit ;;
+      D) dryrun=true ;;
+      v) get_wordy=true ;;
+      q) be_quiet=true ;;
+      *) err "Invalid option provided"; exit 1 ;;
+    esac
+  done
+
+  find "$HOME" -path "$repo_location" -prune -o -type l 2>/dev/null | while IFS= read -r symlink; do
+    target=$(readlink "$symlink")
+    case $target in
+      /*) continue ;; # already absolute
+    esac
+
+    # resolve relative target to absolute
+    absolute="$(readlink -f "$symlink")"
+    case $absolute in
+      "$repo_location"/*)
+        if [ "$dryrun" = true ]; then
+          echo "Dry run: would fix ~${symlink#$HOME}: $target -> $absolute"
+        else
+          rm "$symlink"
+          ln -s "$absolute" "$symlink"
+          q_echo "Fixed ~${symlink#$HOME}: $target -> $absolute"
+        fi
+        ;;
+    esac
+  done
+}
+
 ####### Git Wrapper Functions #########
 
 pull() {
