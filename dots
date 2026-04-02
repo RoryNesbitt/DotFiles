@@ -170,7 +170,7 @@ store() {
       continue
     fi
     if [ -d "$file" ]; then # directory
-      file=$(walk_dir "$file")
+      file=$(walk_dir "$(realpath -s "$file")")
     fi
 
     for f in $file; do
@@ -228,7 +228,7 @@ remove(){
     fi
     if [ -d "$file" ]; then # directory
       dir="$file"
-      file=$(walk_dir "$file")
+      file=$(walk_dir "$(realpath -s "$file")")
     fi
 
     for f in $file; do
@@ -293,7 +293,7 @@ link() {
       continue
     fi
     if [ -d "$file" ]; then # directory
-      file=$(walk_dir "$file")
+      file=$(walk_dir "$file") # safe, already absolute
     fi
 
     for f in $file; do
@@ -344,7 +344,7 @@ unlink() {
     fi
     if [ -d "$file" ]; then # directory
       dir="$file"
-      file=$(walk_dir "$file")
+      file=$(walk_dir "$(realpath -s "$file")")
     fi
 
     for f in $file; do
@@ -481,9 +481,8 @@ is_ignored() {
 }
 
 walk_dir() {
-  absolute="$(realpath -s "$1")"
   for g in "/.*" "/*"; do
-    for pathname in "$absolute"$g; do
+    for pathname in "$1"$g; do
       if is_ignored "$pathname"; then
         continue
       elif [ -d "$pathname" ]; then
