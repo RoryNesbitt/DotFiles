@@ -30,8 +30,19 @@ else
       tmux new -s "$session" -d -c ~/.config/"$1" "$EDITOR"
       ;;
     *)
-      ssh_hosts=$(awk '/^Host /{print $2}' "$HOME/.ssh/config")
-      if echo "$ssh_hosts" | grep -qx "$session"; then
+      in_list() {
+        printf '%s\n' "$2" | grep -qx "$1"
+      }
+      if in_list "$session" "$(
+        for d in "$HOME"/Documents/*/; do
+          [ -d "$d" ] && basename "$d"
+        done
+      )"; then # session is a directory in Documents
+        tmux new -s "$session" -d -c "$HOME/Documents/$session" "$@"
+
+      elif in_list "$session" "$(
+        awk '/^Host /{print $2}' "$HOME/.ssh/config"
+      )"; then # session is an SSH host
         tmux new -s "ssh-$session" -d "ssh $session || read key <&1"
         session="ssh-$session"
       else
