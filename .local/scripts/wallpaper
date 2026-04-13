@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 
 monitor=$(hyprctl monitors -j | jq -r '.[] | select(.focused) | .name')
-new_wall=$(find $HOME/Pictures/wallpapers/* -type f | shuf -n 1)
+new_wall=$(find $HOME/Documents/wallpapers/* -type f | shuf -n 1)
 hyprctl hyprpaper wallpaper $monitor, "$new_wall", fill
