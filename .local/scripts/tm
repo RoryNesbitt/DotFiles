@@ -24,7 +24,7 @@ else
       tmux new -s "$session" -d "$EDITOR"
       ;;
     'scripts')
-      tmux new -s "$session" -d -c ~/.local/scripts "$EDITOR $@"
+      tmux new -s "$session" -d -c ~/.local/scripts "$EDITOR $*"
       ;;
     'conf-'*)
       tmux new -s "$session" -d -c ~/.config/"$1" "$EDITOR"
@@ -43,7 +43,7 @@ else
       elif in_list "$session" "$(
         awk '/^Host /{print $2}' "$HOME/.ssh/config"
       )"; then # session is an SSH host
-        tmux new -s "ssh-$session" -d "ssh $session || read key <&1"
+        tmux new -s "ssh-$session" -d "ssh $session $* || read key <&1"
         session="ssh-$session"
       else
         tmux new -s "$session" -d "$@"
