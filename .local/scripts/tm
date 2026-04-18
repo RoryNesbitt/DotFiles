@@ -3,9 +3,7 @@
 if [ $# = 0 ]; then
   tmux list-sessions
 else
-  if [ "$1" = 'w' ]; then
-    session='work'
-  elif [ "$1" = config ]; then
+  if [ "$1" = config ]; then
     session='conf-'$2
   else
     session=$1
