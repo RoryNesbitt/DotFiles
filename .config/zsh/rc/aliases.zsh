@@ -21,9 +21,6 @@ alias a="ansible"
 alias ap="ansible-playbook"
 alias av="ansible-vault"
 
-# Dotfiles git
-alias df="git -C $HOME/.config/dotfiles"
-
 # Colour
 alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
