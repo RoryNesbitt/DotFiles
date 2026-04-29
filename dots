@@ -405,6 +405,7 @@ clean() {
     esac
   done
 
+  v_echo "Cleaning old links"
   find "$HOME" -type l -lname "$repo_location*" 2>/dev/null | while IFS= read -r symlink; do
     if [ ! -e "$symlink" ]; then
       if [ "$dryrun" = true ]; then
@@ -467,10 +468,14 @@ pull() {
     done < "$tmp"
     rm "$tmp"
   else
+    before=$(git -C "$repo_location" rev-parse HEAD)
     git -C "$repo_location" pull "$@"
-    clean -q
+    if [ "$(git -C "$repo_location" rev-parse HEAD)" != "$before" ]; then
+      clean -q
+    else
+      v_echo "Skipped cleaning"
+    fi
   fi
-
 }
 
 ####### Helper Functions #########
