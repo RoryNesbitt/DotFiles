@@ -41,8 +41,7 @@ else
       elif in_list "$session" "$(
         awk '/^Host /{print $2}' "$HOME/.ssh/config"
       )"; then # session is an SSH host
-        tmux new -s "ssh-$session" -d "ssh $session $* || read key <&1"
-        session="ssh-$session"
+        tmux new -s "$session" -d "ssh $session $* || read key <&1"
       else
         tmux new -s "$session" -d "$@"
       fi
