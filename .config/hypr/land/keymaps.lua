@@ -56,10 +56,8 @@ hl.bind("SUPER + SHIFT + J", hl.dsp.window.move({ direction = "d" }))
 for i = 1, 9 do
   -- Switch workspaces with mainMod + [0-9]
   hl.bind("SUPER + " .. i, hl.dsp.focus({ workspace = i }))
-  -- Move active window to workspace with mainMod + SHIFT + [0-9]
   hl.bind("SUPER + SHIFT + " .. i, hl.dsp.window.move({ workspace = i }))
-  -- Send active window to workspace silently with mainMod + CTRL + [0-9]
-  hl.bind("SUPER + CTRL + " .. i, hl.dsp.window.move({ workspace = i, silent = true }))
+  hl.bind("SUPER + CTRL + " .. i, hl.dsp.window.move({ workspace = i, follow = false }))
 end
 hl.bind("SUPER + 0", hl.dsp.focus({ workspace = 10 }))
 hl.bind("SUPER + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
