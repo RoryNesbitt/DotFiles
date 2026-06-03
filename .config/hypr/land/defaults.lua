@@ -5,4 +5,4 @@
 terminal    = "ghostty || kitty"
 fileManager = "thunar"
 menu        = "hyprlauncher"
-browser     = "waterfox || firefox"
+browser     = "zen-browser || waterfox || firefox"
