@@ -478,6 +478,58 @@ pull() {
   fi
 }
 
+status() {
+  git -C "$repo_location" status "$@"
+
+  has_link() {
+    link_dir="$1"
+    found=false
+
+    while IFS= read -r link_file; do
+      is_ignored "$link_file" && continue
+      link_rel="${link_file#"$repo_location"}"
+      if [ -L "$HOME$link_rel" ]; then
+        found=true
+        break
+      fi
+    done << FINDEOF
+$(find "$link_dir" -not -type d 2>/dev/null)
+FINDEOF
+
+    unset link_dir link_file link_rel
+    $found
+  }
+
+  print_unlinked() {
+    dir="$1"
+
+    for entry in "$dir"/.[!.]* "$dir"/*; do
+      [ -e "$entry" ] || continue
+      is_ignored "$entry" && continue
+      relative_path="${entry#"$repo_location"}"
+      home_path="$HOME$relative_path"
+
+      if [ -d "$entry" ]; then
+        if has_link "$entry"; then
+          print_unlinked "$entry"
+        else
+          printf '  %s/\n' "$relative_path"
+        fi
+      else
+        [ ! -L "$home_path" ] && printf '  %s\n' "$relative_path"
+      fi
+
+    done
+  }
+
+  unlinked_files="$(print_unlinked "$repo_location")"
+  if [ -n "$unlinked_files" ]; then
+    echo ""
+    echo "Unlinked:"
+    printf '%s\n' "$unlinked_files"
+  fi
+}
+
 ####### Helper Functions #########
 
 v_echo() {
