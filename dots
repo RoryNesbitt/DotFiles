@@ -129,6 +129,17 @@ Options:
   <args>                All arguments are passed to git pull only.
   "
       ;;
+    "status")
+      echo "Usage:
+  $script_name status <args>
+                        Check the current status of the dots directory
+                        Runs git status on the dotfile repo, then checks
+                        for unlinked (new) files
+
+Options:
+  <args>                All arguments are passed to git status only.
+  "
+      ;;
     *)
       echo "Usage:
   $script_name store            Store files in the dotfile repo
