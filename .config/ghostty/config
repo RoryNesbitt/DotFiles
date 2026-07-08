@@ -14,3 +14,4 @@ theme = Dark Pastel
 font-family = "CaskaydiaCove Nerd Font"
 
 font-size = 14
+confirm-close-surface = false

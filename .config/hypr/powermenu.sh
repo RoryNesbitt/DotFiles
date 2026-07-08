@@ -27,6 +27,6 @@ case $chosen in
     systemctl suspend
     ;;
   $logout)
-    hyprctl dispatch exit 0
+    hyprshutdown --vt 2
     ;;
 esac
