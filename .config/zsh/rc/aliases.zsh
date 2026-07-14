@@ -8,6 +8,7 @@ alias rl="clear && source $ZDOTDIR/.zshrc"
 # Editor
 alias v="$EDITOR"
 alias v.="v ."
+alias y="yazi"
 
 # ls
 alias l="\ls --color=auto -FX"
