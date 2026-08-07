@@ -2,57 +2,56 @@
 
 if [ $# = 0 ]; then
   tmux list-sessions
+  exit 0
+fi
+
+if [ "$1" = config ]; then
+  session='conf-'$2
 else
-  if [ "$1" = config ]; then
-    session='conf-'$2
-  else
-    session=$1
-  fi
-  shift
+  session=$1
+fi
+shift
 
-  if ! tmux has-session -t "$session" 2>/dev/null; then
-    case "$session" in
-    'update')
-      tmux new -s "$session" -d "fullUpdate; read key <&1"
-      ;;
-    'work' | 'uni' | 'papers' | 'projects')
-      tmux new -s "$session" -d -c ~/Documents/"$session" "$@"
-      ;;
-    'notes')
-      tmux new -s "$session" -d "$EDITOR"
-      ;;
-    'scripts')
-      tmux new -s "$session" -d -c ~/.local/scripts "$EDITOR $*"
-      ;;
-    'conf-'*)
-      tmux new -s "$session" -d -c ~/.config/"$1" "$EDITOR"
-      ;;
-    *)
-      in_list() {
-        printf '%s\n' "$2" | grep -qx "$1"
-      }
-      if in_list "$session" "$(
-        for d in "$HOME"/Documents/*/; do
-          [ -d "$d" ] && basename "$d"
-        done
-      )"; then # session is a directory in Documents
-        tmux new -s "$session" -d -c "$HOME/Documents/$session" "$@"
+if ! tmux has-session -t "$session" 2>/dev/null; then
+  case "$session" in
+  'update')
+    tmux new -s "$session" -d "fullUpdate; read key <&1"
+    ;;
+  'notes')
+    tmux new -s "$session" -d "$EDITOR"
+    ;;
+  'scripts')
+    tmux new -s "$session" -d -c ~/.local/scripts "$EDITOR $*"
+    ;;
+  'conf-'*)
+    tmux new -s "$session" -d -c ~/.config/"$1" "$EDITOR"
+    ;;
+  *)
+    in_list() {
+      printf '%s\n' "$2" | grep -qx "$1"
+    }
+    if in_list "$session" "$(
+      for d in "$HOME"/Documents/*/; do
+        [ -d "$d" ] && basename "$d"
+      done
+    )"; then # session is a directory in Documents
+      tmux new -s "$session" -d -c "$HOME/Documents/$session" "$@"
 
-      elif in_list "$session" "$(
-        awk '/^Host /{print $2}' "$HOME/.ssh/config"
-      )"; then # session is an SSH host
-        tmux new -s "$session" -d "ssh $session $* || read key <&1"
-      else
-        tmux new -s "$session" -d "$@"
-      fi
-      ;;
-    esac
-  fi # has-session
+    elif in_list "$session" "$(
+      awk '/^Host /{print $2}' "$HOME/.ssh/config"
+    )"; then # session is an SSH host
+      tmux new -s "$session" -d "ssh $session $* || read key <&1"
 
-  if [ -z "$TMUX" ]; then
-    tmux attach-session -t "$session"
-  else
-    tmux switch-client -t "$session"
-  fi # if $TMUX
-fi  # if $#
+    else # regular named session
+      tmux new -s "$session" -d "$@"
+    fi
+    ;;
+  esac
+fi # has-session
+
+if [ -z "$TMUX" ]; then
+  tmux attach-session -t "$session"
+else
+  tmux switch-client -t "$session"
+fi # if $TMUX
 
