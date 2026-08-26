@@ -14,6 +14,7 @@ hl.bind("SUPER + Return", function()
   hl.dispatch(hl.dsp.focus({ workspace = 1 }))
   hl.dispatch(hl.dsp.exec_cmd(terminal))
 end)
+hl.bind("SUPER + CTRL + Return", hl.dsp.exec_cmd(terminal))
 hl.bind("SUPER + SHIFT + Return", hl.dsp.exec_cmd(terminal))
 
 -- Browser
@@ -21,6 +22,7 @@ hl.bind("SUPER + W", function()
   hl.dispatch(hl.dsp.focus({ workspace = 2 }))
   hl.dispatch(hl.dsp.exec_cmd(browser))
 end)
+hl.bind("SUPER + CTRL + W", hl.dsp.exec_cmd(browser))
 hl.bind("SUPER + SHIFT + W", hl.dsp.exec_cmd(browser))
 
 -- Ferdium
@@ -28,6 +30,7 @@ hl.bind("SUPER + M", function()
   hl.dispatch(hl.dsp.focus({ workspace = 3 }))
   hl.dispatch(hl.dsp.exec_cmd("ferdium"))
 end)
+hl.bind("SUPER + CTRL + M", hl.dsp.exec_cmd("ferdium"))
 hl.bind("SUPER + SHIFT + M", hl.dsp.exec_cmd("ferdium"))
 
 -- Environment management
