@@ -2,7 +2,7 @@
 
 loc=$HOME/Documents/wallpapers/
 monitor=$(hyprctl monitors -j | jq -r '.[] | select(.focused) | .name')
-new_wall=$(find $loc* -type f | shuf -n 1)
-echo "${new_wall#$loc}"
+new_wall=$(find "$loc"* -type f | shuf -n 1)
+echo "${new_wall#"$loc"}"
 pkill swaybg
 swaybg -c 000000 -o "$monitor" -i "$new_wall" -m stretch > /dev/null 2>&1 &
