@@ -15,7 +15,7 @@ shift
 if ! tmux has-session -t "$session" 2>/dev/null; then
   case "$session" in
   'update')
-    tmux new -s "$session" -d "fullUpdate; read key <&1"
+    tmux new -s "$session" -d "fullUpdate; read key"
     ;;
   'notes')
     tmux new -s "$session" -d "$EDITOR"
@@ -40,7 +40,7 @@ if ! tmux has-session -t "$session" 2>/dev/null; then
     elif in_list "$session" "$(
       awk '/^Host /{print $2}' "$HOME/.ssh/config"
     )"; then # session is an SSH host
-      tmux new -s "$session" -d "ssh $session $* || read key <&1"
+      tmux new -s "$session" -d "ssh $session $*; [ \$? -eq 255 ] && read key"
 
     else # regular named session
       tmux new -s "$session" -d "$@"
