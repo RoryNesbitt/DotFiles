@@ -20,11 +20,24 @@ zstyle ":completion:*" matcher-list "m:{a-zA-Z}={A-Za-z}" # case insensitive tab
 
 #Prompt
 precmd() {
-  #print ""                        # Print empty line before prompt
+  local exitCode=$?
+
+  local pwd="%F{$SHCOLOUR}%~%f"
+  case $exitCode in
+    0) EXIT_STATUS_PROMPT="" ;;                               # success
+    126|127) EXIT_STATUS_PROMPT="[%F{blue}${exitCode}%f] " ;; # file issue
+    129|130|131|137|139|141|143)                              # signal terminated
+      signal=$(( exitCode-128 ))
+      signalName=$(kill -l $signal)
+      EXIT_STATUS_PROMPT="[%F{yellow}$exitCode-SIG${signalName}%f] "
+      ;;
+    255) EXIT_STATUS_PROMPT="[%F{magenta}${exitCode}%f] " ;;  # SSH error
+    *) EXIT_STATUS_PROMPT="[%F{red}${exitCode}%f] " ;;        # generic error
+  esac
 }
 
-PROMPT="%F{$SHCOLOUR}> %F{def}"
-RPROMPT="%F{white}[%F{$SHCOLOUR}%~%F{white}]"
+PROMPT='${EXIT_STATUS_PROMPT}%F{$SHCOLOUR}> %F{def}'
+RPROMPT=""
 
 # Vim control
 bindkey -v # vim key bindings
