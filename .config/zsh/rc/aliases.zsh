@@ -3,7 +3,7 @@
 # alias -s suffix=tool
 # alias -g global=can go anywhere in command
 #
-alias rl="clear && source $ZDOTDIR/.zshrc"
+alias rl="clear && exec zsh"
 
 # Editor
 alias v="$EDITOR"
