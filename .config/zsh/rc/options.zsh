@@ -26,7 +26,8 @@ precmd() {
   case $exitCode in
     0) EXIT_STATUS_PROMPT="" ;;                               # success
     126|127) EXIT_STATUS_PROMPT="[%F{blue}${exitCode}%f] " ;; # file issue
-    129|130|131|137|139|141|143)                              # signal terminated
+    130) EXIT_STATUS_PROMPT="[%F{yellow}^C%f] " ;;
+    <129-159>)                              # signal terminated
       signal=$(( exitCode-128 ))
       signalName=$(kill -l $signal)
       EXIT_STATUS_PROMPT="[%F{yellow}$exitCode-SIG${signalName}%f] "
