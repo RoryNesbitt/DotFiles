@@ -13,6 +13,9 @@ compinit -d $ZDOTDIR/zcompdump
 compinit
 zstyle ":completion:*:*:*:*:*" menu select
 zstyle ":completion:*" matcher-list "m:{a-zA-Z}={A-Za-z}" # case insensitive tab completion
+fpath=($ZDOTDIR/completions $fpath)                       # load local completions
+autoload -Uz compinit
+compinit
 
 # NVM
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm

@@ -1,0 +1,146 @@
+#compdef dots
+
+_dots_subcmds() {
+	local -a subcmds
+	subcmds=(
+		'store: store files in the dotfile repo'
+		'remove: remove files from the dotfile repo'
+		'link: symlink files that are in the dotfile repo'
+		'unlink: remove symlink to the files'
+		'clean: remove dead symlinks'
+		'fix: convert relative symlinks to absolute'
+		'help: print the help page'
+	)
+	_describe 'dots subcommand' subcmds
+}
+
+_dots_git_words() {
+	local -a words=("${words[@]}")
+	words[1]="git"
+	local service="git"
+	_git
+}
+
+_dots_repo_target() {
+	local repo relpath
+	repo="$(dots -d 2>/dev/null)"
+	repo="${repo:-$HOME/.config/dotfiles}"
+
+	case "$PWD" in
+	"$HOME"/*) relpath="${PWD#$HOME/}" ;;
+	*) relpath="" ;;
+	esac
+
+	dots_repo_target="${repo}${relpath:+/$relpath}"
+}
+
+#
+_dots_repo_files() {
+	_dots_repo_target
+	_files -W "$dots_repo_target"
+}
+
+_dots_linked_files() {
+	_dots_repo_target
+	local -a candidates
+	local f base
+	for f in "$dots_repo_target"/*(ND); do
+		base="${f:t}"
+		[[ -L "$PWD/$base" ]] && candidates+=("$base")
+	done
+	_wanted files expl 'linked dotfile' compadd -a candidates
+}
+
+_dots() {
+	local curcontext="$curcontext" state
+	local cur prev subcmd
+	cur="${words[CURRENT]}"
+	prev="${words[CURRENT - 1]}"
+	subcmd="${words[2]}"
+
+	local -a top_opts store_opts remove_opts link_opts clean_opts pull_opts
+	top_opts=('-d:print repo location' '-D:dryrun' '-f:force' '-v:verbose' '-h:help')
+	help_opts=('-h:help')
+	store_opts=('-h:help' '-D:dryrun' '-v:verbose' '-f:force')
+	remove_opts=('-h:help' '-D:dryrun' '-v:verbose' '-f:force' '-y:keep local, replace symlink' '-n:remove symlink only')
+	link_opts=('-h:help' '-D:dryrun' '-v:verbose' '-f:force')
+	clean_opts=('-h:help' '-D:dryrun' '-v:verbose' '-q:quiet')
+	pull_opts=('-D:dryrun (show dead symlinks without pulling)')
+
+	# decide when to show git completion
+	if ((CURRENT == 2)); then
+		if [[ -z "$cur" ]]; then
+			_dots_subcmds
+		elif [[ "$cur" == --* ]]; then
+			_dots_git_words
+		elif [[ "$cur" == -* ]]; then
+			_describe -t dots-options 'dots option' top_opts
+		else
+			_alternative \
+				'dots-subcommands:dots subcommand:_dots_subcmds' \
+				'git-commands:git command:_dots_git_words'
+		fi
+		return
+	fi
+
+	case "$subcmd" in
+	help)
+		if [[ "$cur" == -* ]]; then
+			_describe 'dots help options' help_opts
+		else
+			# `dots help <subcommand>` — only complete once
+			((CURRENT == 3)) && _dots_subcmds
+		fi
+		return
+		;;
+	store)
+		if [[ "$cur" == -* ]]; then
+			_describe 'dots store options' store_opts
+		else
+			_files
+		fi
+		return
+		;;
+	link)
+		if [[ "$cur" == -* ]]; then
+			_describe 'dots link options' link_opts
+		else
+			_dots_repo_files
+		fi
+		return
+		;;
+	unlink)
+		if [[ "$cur" == -* ]]; then
+			_describe 'dots unlink options' link_opts
+		else
+			_dots_linked_files
+		fi
+		return
+		;;
+	remove)
+		if [[ "$cur" == -* ]]; then
+			_describe 'dots remove options' remove_opts
+		else
+			_dots_repo_files
+		fi
+		return
+		;;
+	clean | fix)
+		[[ "$cur" == -* ]] && _describe 'dots clean/fix options' clean_opts
+		return
+		;;
+	pull)
+		if [[ "$cur" == -* ]]; then
+			_describe 'dots pull options' pull_opts
+		fi
+		_dots_git_words
+		return
+		;;
+	*)
+		_dots_git_words
+		return
+		;;
+	esac
+}
+
+compdef _dots dots
