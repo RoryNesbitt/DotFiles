@@ -18,13 +18,13 @@ if ! tmux has-session -t "$session" 2>/dev/null; then
     tmux new -s "$session" -d "fullUpdate; read key"
     ;;
   'notes')
-    tmux new -s "$session" -d "$EDITOR"
+    tmux new -s "$session" -d "${VISUAL:-${EDITOR:-vi}}"
     ;;
   'scripts')
-    tmux new -s "$session" -d -c ~/.local/scripts "$EDITOR $*"
+    tmux new -s "$session" -d -c ~/.local/scripts "${VISUAL:-${EDITOR:-vi}}" "$@"
     ;;
   'conf-'*)
-    tmux new -s "$session" -d -c ~/.config/"$1" "$EDITOR"
+    tmux new -s "$session" -d -c ~/.config/"$1" "${VISUAL:-${EDITOR:-vi}}"
     ;;
   *)
     in_list() {

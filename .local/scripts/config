@@ -18,5 +18,5 @@ fi
 if command -v tmux >/dev/null; then
   tm config "$dir"
 else
-  $EDITOR "$HOME/.config/$dir"
+  ${VISUAL:-${EDITOR:-vi}} "$HOME/.config/$dir"
 fi
