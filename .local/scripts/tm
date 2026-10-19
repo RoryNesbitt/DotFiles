@@ -20,6 +20,9 @@ if ! tmux has-session -t "$session" 2>/dev/null; then
   'notes')
     tmux new -s "$session" -d "${VISUAL:-${EDITOR:-vi}}"
     ;;
+  'top')
+    tmux new -s "$session" -d "btop || htop || top"
+    ;;
   'scripts')
     tmux new -s "$session" -d -c ~/.local/scripts "${VISUAL:-${EDITOR:-vi}}" "$@"
     ;;
